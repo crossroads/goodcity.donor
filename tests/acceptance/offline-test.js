@@ -6,14 +6,14 @@ import testSkip from '../helpers/test-skip';
 var App, offer, t;
 
 module('Offline error', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     Ember.run.later = () => true;
     offer = FactoryGuy.make("offer");
     var i18n = App.__container__.lookup('service:i18n');
     t = i18n.t.bind(i18n);
   },
-  teardown: function() {
+  afterEach: function() {
     Ember.run(App, 'destroy');
   }
 });

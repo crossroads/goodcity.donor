@@ -9,10 +9,10 @@ var App, store, offer, gogovan_transport, crossroads_transport,
   gogovan_transport2, crossroads_transport2, offer2;
 
 module('Donor Plan Transport:', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    store = TestHelper.getStore();
+    store = FactoryGuy.store;
     syncDataStub(TestHelper);
 
     gogovan_transport = FactoryGuy.make('gogovan_transport', { name: 'Van' });
@@ -28,7 +28,7 @@ module('Donor Plan Transport:', {
     offer2 = FactoryGuy.make("offer", { state: 'reviewed', gogovanTransport: gogovan_transport2, crossroadsTransport: crossroads_transport2 });
   },
 
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }

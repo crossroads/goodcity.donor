@@ -25,6 +25,10 @@ module.exports = function(app) {
     res.send(offers_json);
   });
 
+  itemsRouter.get("/:id", function(req, res) {
+    res.send(items_json);
+  });
+
   itemsRouter.delete('/:id', function(req, res) {
     res.send();
   });

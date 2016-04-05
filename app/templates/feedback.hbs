@@ -1,0 +1,26 @@
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    {{outlet "appMenuList"}}
+
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
+
+      <section class="middle tab-bar-section">
+        <h1 class="title">{{t "menu.feedback"}}</h1>
+      </section>
+    </nav>
+
+    <section class="main-section faq_list">
+      <div class="row">
+        <div class="small-12 columns">
+
+          {{user-voice}}
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>

@@ -6,7 +6,7 @@ import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 var App, t;
 
 module('Driver: GGV Order details', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup();
     syncDataStub(TestHelper);
@@ -14,7 +14,7 @@ module('Driver: GGV Order details', {
     t = i18n.t.bind(i18n);
   },
 
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }

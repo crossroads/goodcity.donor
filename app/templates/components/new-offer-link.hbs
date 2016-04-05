@@ -1,0 +1,21 @@
+<a {{action "confirmNewOffer"}} class="button expand">
+  {{t "offers.index.new_donation"}}
+</a>
+
+{{#if existingOffer}}
+  <div id="addNewOfferModal" class="overlayModal small reveal-modal ui" data-options="close_on_background_click:false" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+
+    <div class="new_offer_message">
+      {{t "offers.index.new_offer_message"}}
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns buttons-list">
+        <a class="right button addNewItemLink">{{t "offers.index.add_item"}}</a>
+        <a class="right button addNewOfferLink">{{t "offers.index.new_offer"}}</a>
+      </div>
+    </div>
+
+    <div><a class="right closeLink">{{t "cancel"}}</a></div>
+  </div>
+{{/if}}

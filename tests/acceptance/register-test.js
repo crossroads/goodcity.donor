@@ -8,12 +8,12 @@ import '../factories/district';
 var App, hk_user;
 
 module('Acceptance: Register', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     lookup('service:session').set('authToken', null);
-    hk_user = FactoryGuy.build('with_hk_mobile');
+    hk_user = FactoryGuy.make('with_hk_mobile');
   },
-  teardown: function() {
+  afterEach: function() {
     Ember.run(App, 'destroy');
   }
 });
@@ -22,10 +22,10 @@ test("All required registration details are filled", function() {
   expect(5);
 
   visit('/register');
-  fillIn('#mobile', hk_user.mobile);
+  fillIn('#mobile', hk_user.get("mobile"));
   triggerEvent('#mobile', 'blur');
-  fillIn('#first_name',  hk_user.firstName );
-  fillIn('#last_name', hk_user.lastName);
+  fillIn('#first_name',  hk_user.get("firstName") );
+  fillIn('#last_name', hk_user.get("lastName"));
   click("#all");
 
   andThen(function() {
@@ -36,9 +36,9 @@ test("All required registration details are filled", function() {
   triggerEvent('#mobile', 'blur');
 
   andThen(function() {
-    equal(find('#mobile').val(), hk_user.mobile);
-    equal(find('#first_name').val(), hk_user.firstName);
-    equal(find('#last_name').val(), hk_user.lastName);
+    equal(find('#mobile').val(), hk_user.get("mobile"));
+    equal(find('#first_name').val(), hk_user.get("firstName"));
+    equal(find('#last_name').val(), hk_user.get("lastName"));
     equal(find('.district-selection :selected').text().trim(), "Tung Chung");
   });
 
@@ -54,8 +54,8 @@ test("cannot register unless mobile number details are entered", function() {
 
   visit('/register');
   andThen(function() {
-    fillIn("#first_name",  hk_user.firstName );
-    fillIn('#last_name', hk_user.lastName);
+    fillIn("#first_name",  hk_user.get("firstName") );
+    fillIn('#last_name', hk_user.get("lastName"));
 
     click("#registerUser");
 
@@ -69,10 +69,10 @@ test("mobile number length should be 8 digit (excluding country code)", function
   expect(1);
 
   visit('/register');
-  fillIn('#mobile', hk_user.mobile);
+  fillIn('#mobile', hk_user.get("mobile"));
   triggerEvent('#mobile', 'blur');
-  fillIn("#first_name",  hk_user.firstName );
-  fillIn('#last_name', hk_user.lastName);
+  fillIn("#first_name",  hk_user.get("firstName") );
+  fillIn('#last_name', hk_user.get("lastName"));
 
   andThen(function() {
     equal(find('#mobile').val().length, 8);

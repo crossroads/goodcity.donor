@@ -1,0 +1,66 @@
+#braintree-dropin-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+  padding-bottom: 0;
+  border-radius: 0.2rem;
+}
+
+#braintree-checkout-form {
+  input {
+    border: none;
+    height: 2.4rem;
+    font-size: 0.95rem;
+
+    &:focus {
+      background-color: #f9f9f9;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #6E787F;
+      font-size: 0.95rem;
+      font-weight: lighter;
+      padding-top: 0.15rem;
+      padding-left: 0.3rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    &:-moz-placeholder{
+      color: #6E787F;
+      font-size: 0.95rem;
+      font-weight: lighter;
+      padding-top: 0.15rem;
+      padding-left: 0.3rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    &::-moz-placeholder {
+      color: #6E787F;
+      font-size: 0.95rem;
+      font-weight: lighter;
+      padding-top: 0.15rem;
+      padding-left: 0.3rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    &::-moz-p {
+      color: #6E787F;
+      font-size: 0.95rem;
+      font-weight: lighter;
+      padding-top: 0.15rem;
+      padding-left: 0.3rem;
+      -webkit-font-smoothing: antialiased;
+
+    }
+    &:-ms-input-placeholder {
+      color: #6E787F;
+      font-size: 0.95rem;
+      font-weight: lighter;
+      padding-top: 0.15rem;
+      padding-left: 0.3rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+  }
+
+}

@@ -7,10 +7,10 @@ import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 var App, store, offer, item1, item2, image;
 
 module('Display Offer', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    store = TestHelper.getStore();
+    store = FactoryGuy.store;
     syncDataStub(TestHelper);
 
     offer = FactoryGuy.make("offer");
@@ -19,7 +19,7 @@ module('Display Offer', {
     image = FactoryGuy.make("image", {item:item1,favourite:true});
   },
 
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }

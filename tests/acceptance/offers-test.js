@@ -7,7 +7,7 @@ var App, offer, offer1, offer2, item, item1, item2, item3, offer3, offer4, item3
   del1, del2, offer5, item5, del3, offer6, item6, ggvOrder, ggvOrder1, ggvOrder2, del4, offer7, item7;
 
 module('Offer Index View', {
-  setup: function() {
+  beforeEach: function() {
     // offers must be created by the logged in user in order to be shown in the index
     App = startApp();
     TestHelper.setup();
@@ -47,7 +47,7 @@ module('Offer Index View', {
     item7 = FactoryGuy.make("item", {state:"accepted", offer: offer7});
 
   },
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }

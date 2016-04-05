@@ -1,5 +1,4 @@
 import config from '../../config/environment';
-import FactoryGuy from 'ember-data-factory-guy';
 import '../factories/territory';
 import '../factories/contact';
 import '../factories/schedule';
@@ -20,11 +19,14 @@ import '../factories/version';
 
 export default function(testHelper) {
   config.APP.PRELOAD_TYPES.concat(config.APP.PRELOAD_AUTHORIZED_TYPES).concat("offer").forEach(function(type) {
-    testHelper.handleFindAll(type, 0);
+    testHelper.mockFindAll(type, 0);
   });
 
+  var data = {"addresses":[{"id":2,"street":"Yasmeen Rapid","flat":"Suite 590","building":"06932","district_id":67,"addressable_id":2,"addressable_type":"User"}],
+    "user_profile":{"id":2,"first_name":"David","last_name":"Dara51","mobile":"51111111","address_id":2,"image_id":null,"permission_id":null}};
+
   $.mockjax({url:"/api/v1/auth/current_user_profil*",
-    responseText: {"user_profile": FactoryGuy.build("user_profile")} });
+    responseText: data });
 
   //hide sync-data related mocks from console, but show test related mocks
   $.mockjaxSettings.logging = false;

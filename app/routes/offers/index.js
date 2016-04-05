@@ -6,7 +6,7 @@ export default AuthorizeRoute.extend({
     return this.store.peekAll('offer');
   },
 
-  afterModel(my_offers) {
+  redirect(my_offers) {
     var route = this;
     switch(my_offers.get('length')) {
       case 0 : route.transitionTo('offers.new'); break;

@@ -9,7 +9,7 @@ var App, offer1, item1, offer2, item2, offer3, item3, offer4,
   offer6, item6, offer7, offer8, ggv_order3, delivery3;
 
 module('Display Transport Details', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup();
     syncDataStub(TestHelper);
@@ -42,7 +42,7 @@ module('Display Transport Details', {
     offer7 = FactoryGuy.make("offer_with_items", {state:"received"});
   },
 
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
@@ -161,18 +161,23 @@ test("cancel booking of scheduled offer with active GGV order state", function()
 });
 
 test("cancel booking of scheduled offer with pending GGV order state", function() {
+  // todo: remove workaround for message box button actions not firing only under test environment
+  lookup("service:messageBox").custom = (message, btn1Text, btn1Callback, btn2Text, btn2Callback) => {
+    btn2Callback();
+  };
+
   visit('/offers/' + offer5.id + "/transport_details");
+
   andThen(function() {
     equal(currentURL(), "/offers/" + offer5.id + "/transport_details");
-    click(find("a:contains('Cancel Booking')"));
-    andThen(function(){
-      Ember.$("#confirmModal .ok").click();
-    });
-    andThen(function(){
-      equal(currentURL(), "/offers/" + offer5.id + "/offer_details");
-    });
   });
 
+  click("a:contains('Cancel Booking')");
+  // confirm prompt invoked, ok automatically called with above workaround
+
+  andThen(function(){
+    equal(currentURL(), "/offers/" + offer5.id + "/offer_details");
+  });
 });
 
 test("for received offer", function() {

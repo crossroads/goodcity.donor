@@ -4,13 +4,12 @@ import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
-var App, store, offer1, offer2, item2, item1, item3, item4;
+var App, offer1, offer2, item2, item1, item3, item4;
 
 module('Donor: Display Item Status', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    store = TestHelper.getStore();
     syncDataStub(TestHelper);
 
     offer1 = FactoryGuy.make("offer", {state:"submitted"});
@@ -22,7 +21,7 @@ module('Donor: Display Item Status', {
     item4 = FactoryGuy.make("item", {offer: offer2, state:"rejected"});
   },
 
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }

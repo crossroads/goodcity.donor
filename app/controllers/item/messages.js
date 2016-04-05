@@ -1,13 +1,13 @@
 import Ember from "ember";
 import MessagesBaseController from "shared-goodcity/controllers/messages_base";
+const { getOwner } = Ember;
 
 export default MessagesBaseController.extend({
   item: null,
-  noMessage: Ember.computed.empty("model"),
+  noMessage: Ember.computed.empty("messages"),
   offerDetailsController: Ember.inject.controller("offer/offer_details"),
 
-  alert: Ember.inject.service(),
-  confirm: Ember.inject.service(),
+  messageBox: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
   cancelByDonor: Ember.computed('item', {
@@ -26,7 +26,7 @@ export default MessagesBaseController.extend({
 
     if(this.get("isItemVanished") && !this.get("cancelByDonor")) {
       if(currentPath.indexOf(`items/${this.get("item.id")}`) >= 0) {
-        this.get("alert").show(this.get("i18n").t("404_error"), () => this.transitionTo("offers"));
+        this.get("messageBox").alert(this.get("i18n").t("404_error"), () => this.transitionToRoute("offers"));
       }
     }
   }),
@@ -37,15 +37,15 @@ export default MessagesBaseController.extend({
       var offer = item.get('offer');
 
       if (offer.get("state") !== "draft" && offer.get("items.length") <= 1) {
-        this.get("confirm").show(this.get("i18n").t("item.cancel_last_item_confirm"), () => {
+        this.get("messageBox").confirm(this.get("i18n").t("item.cancel_last_item_confirm"), () => {
           this.get("offerDetailsController").send("cancelOffer", offer, true);
         });
         return;
       }
 
-      this.get("confirm").show(this.get("i18n").t("delete_confirm"), () => {
+      this.get("messageBox").confirm(this.get("i18n").t("delete_confirm"), () => {
         this.set("cancelByDonor", true);
-        var loadingView = controller.container.lookup('component:loading').append();
+        var loadingView = getOwner(controller).lookup('component:loading').append();
 
         offer.get('items').removeObject(item);
 

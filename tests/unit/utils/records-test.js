@@ -8,12 +8,12 @@ import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 var store, App;
 
 module("Records Util", {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    store = TestHelper.getStore();
+    store = FactoryGuy.store;
   },
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
   }
 });
@@ -21,25 +21,25 @@ module("Records Util", {
 test("unloads source record", function(assert) {
   assert.expect(2);
   var offer = FactoryGuy.make("offer");
-  assert.ok(store.all("offer").get("length") > 0);
+  assert.ok(store.peekAll("offer").get("length") > 0);
   recordsUtil.unloadRecordTree(offer);
-  andThen(() => assert.equal(store.all("offer").get("length"), 0));
+  andThen(() => assert.equal(store.peekAll("offer").get("length"), 0));
 });
 
 testSkip("unloads related record", function(assert) {
   assert.expect(2);
   var offer = FactoryGuy.make("offer", "with_items");
-  assert.ok(store.all("item").get("length") > 0);
+  assert.ok(store.peekAll("item").get("length") > 0);
   recordsUtil.unloadRecordTree(offer);
-  andThen(() => assert.equal(store.all("item").get("length"), 0));
+  andThen(() => assert.equal(store.peekAll("item").get("length"), 0));
 });
 
 testSkip("does not unload taxonomy record", function(assert) {
   assert.expect(2);
   var offer = FactoryGuy.make("offer", "with_gogovan_transport");
-  assert.ok(store.all("gogovan_transport").get("length") > 0);
+  assert.ok(store.peekAll("gogovan_transport").get("length") > 0);
   recordsUtil.unloadRecordTree(offer);
-  andThen(() => assert.ok(store.all("gogovan_transport").get("length") > 0));
+  andThen(() => assert.ok(store.peekAll("gogovan_transport").get("length") > 0));
 });
 
 // package.item is no longer async don't have another async relationship to try
@@ -49,7 +49,7 @@ testSkip("does not load an async relationship (belongsTo) not yet loaded", funct
     Ember.run(() => assert.equal("async call was made", "no async call"));
   }});
   var packageItem = FactoryGuy.make("package", {item:1});
-  assert.equal(store.all("item").get("length"), 0);
+  assert.equal(store.peekAll("item").get("length"), 0);
   recordsUtil.unloadRecordTree(packageItem);
   andThen(() => {});
 });
@@ -58,7 +58,7 @@ testSkip("does not load an async relationship (belongsTo) not yet loaded", funct
 testSkip("does unload async relationship (belongsTo) if already loaded", function(assert) {
   assert.expect(2);
   var packageItem = FactoryGuy.make("package");
-  assert.equal(store.all("item").get("length"), 1);
+  assert.equal(store.peekAll("item").get("length"), 1);
   recordsUtil.unloadRecordTree(packageItem);
-  andThen(() => assert.equal(store.all("item").get("length"), 0));
+  andThen(() => assert.equal(store.peekAll("item").get("length"), 0));
 });

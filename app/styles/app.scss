@@ -2,11 +2,12 @@
 @import "joyride_override";
 @import "date_time_picker";
 @import "porterage_charges";
-@import "go_to_top_button";
 
 /* template specific */
 @import "templates/tour";
-@import "templates/faq";
+@import "templates/uservoice";
+@import "templates/components/new_offer_link";
+@import "templates/components/braintree_form";
 @import "templates/loading_image";
 @import "templates/offers/index";
 @import "templates/offer/index";

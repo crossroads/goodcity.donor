@@ -13,12 +13,12 @@ module.exports = function(environment) {
       }
     },
     contentSecurityPolicy: {
-      "img-src": "'self' data: https://res.cloudinary.com",
+      "img-src": "'self' data: https://res.cloudinary.com filesystem: *",
       "style-src": "'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com",
       "font-src": "'self' data: https://maxcdn.bootstrapcdn.com",
-      "script-src": "'self' 'unsafe-eval'"
+      "script-src": "'self' 'unsafe-eval' https://widget.uservoice.com https://by2.uservoice.com https://api.sandbox.braintreegateway.com https://client-analytics.sandbox.braintreegateway.com",
+      "frame-src": "'self' 'unsafe-eval' https://widget.uservoice.com https://assets.braintreegateway.com"
     },
-
     APP: {
       // Cloudinary Keys
       NAME: 'app.goodcity',
@@ -78,6 +78,13 @@ module.exports = function(environment) {
       'wss://localhost:1337',
       'https://api.cloudinary.com'
     ].join(' ');
+    //Only added for development env. to fix issue related to BLOB: object
+    ENV.contentSecurityPolicy["img-src"] = [
+      'http://localhost:4200',
+      'data: https://res.cloudinary.com',
+      'blob: filesystem/g',
+      'filesystem: *'
+    ].join(' ');
   }
 
   if (environment === 'test') {
@@ -115,7 +122,7 @@ module.exports = function(environment) {
     ENV.cordova.GcmSenderId = '919797298115';
   }
 
-  if (process.env.staging === 'true') {
+  if ((process.env.staging || process.env.STAGING) === 'true') {
     ENV.staging = true;
     ENV.APP.API_HOST_URL = 'https://api-staging.goodcity.hk';
     ENV.APP.SOCKETIO_WEBSERVICE_URL = 'https://socket-staging.goodcity.hk:81/goodcity';
@@ -131,6 +138,12 @@ module.exports = function(environment) {
 
     ENV.googleAnalytics = { webPropertyId: 'UA-62978462-4' };
     ENV.cordova.GcmSenderId = '161361907015';
+
+    // VSO build
+    if (process.env.BUILD_BUILDNUMBER) {
+      ENV.APP.VERSION = process.env.VERSION + "." + process.env.BUILD_BUILDNUMBER;
+      ENV.APP.APP_SHA = process.env.BUILD_SOURCEVERSION;
+    }
   } else {
     ENV.staging = false;
   }

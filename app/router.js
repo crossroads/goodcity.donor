@@ -7,17 +7,17 @@ var Router = GoodcityRouter.extend(googlePageview, {
 });
 
 Router.map(function() {
-  this.resource('tour');
+  this.route('tour');
   this.route('register');
   this.route('faq');
-  this.route('pics');
-  this.route('terms_and_conditions');
+  this.route('feedback');
+  this.route('support');
 
-  this.resource('offers', function () {
+  this.route('offers', function () {
     this.route('index', { path: '/'});
     this.route('new', { path: '/new'});
 
-    this.resource('offer', { path: '/:offer_id'}, function() {
+    this.route('offer', { resetNamespace: true, path: '/:offer_id'}, function() {
       this.route('index', { path: '/'});
       this.route('confirm');
       this.route('ios_notification');
@@ -32,7 +32,7 @@ Router.map(function() {
       this.route('offer_details');
       this.route('transport_details');
 
-      this.resource('delivery', { path: '/delivery/:delivery_id'}, function(){
+      this.route('delivery', { resetNamespace: true, path: '/delivery/:delivery_id'}, function(){
         this.route('book_timeslot');
         this.route('available_time_slots');
         this.route('contact_details');
@@ -47,7 +47,7 @@ Router.map(function() {
         this.route('cancel_booking');
       });
 
-      this.resource('item', {path: '/items/:item_id'}, function() {
+      this.route('item', { resetNamespace: true, path: '/items/:item_id' }, function() {
         this.route('index', { path: '/'});
         this.route('edit');
         this.route('edit_images');

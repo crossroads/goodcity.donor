@@ -7,7 +7,7 @@ import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 var App, offer1, reviewer, item1, item2, message1;
 
 module('Display Item Details', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup();
     syncDataStub(TestHelper);
@@ -19,7 +19,7 @@ module('Display Item Details', {
     message1 = FactoryGuy.make("message", {sender: reviewer, offer: offer1, item: item1, state: "read"});
   },
 
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }

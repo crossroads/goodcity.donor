@@ -7,7 +7,7 @@ import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 var App, offer, offer1, item, item1;
 
 module('Edit Item', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
     TestHelper.setup(App);
     syncDataStub(TestHelper);
@@ -21,7 +21,7 @@ module('Edit Item', {
     FactoryGuy.makeList("donor_condition", 2);
   },
 
-  teardown: function() {
+  afterEach: function() {
     Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }

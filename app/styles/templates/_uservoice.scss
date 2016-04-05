@@ -1,0 +1,9 @@
+.uservoice-loading-indicator{
+  position: absolute;
+  left: 40%;
+
+  @media #{$small-only} {
+    left: 33%;
+    margin-top: 11rem !important;
+  }
+}

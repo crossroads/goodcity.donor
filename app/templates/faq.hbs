@@ -1,102 +1,111 @@
-{{#faq-list}}
-  <div class="contain-to-grid sticky faq_nav_bar">
-    <nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false">
-      <section class="left-small">
-        {{link-to (t "back") 'tour' classNames='back'}}
-      </section>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    {{outlet "appMenuList"}}
 
-      <section class="middle tab-bar-section">
-        <h1 class="title">{{t "faqs.title"}}</h1>
+    {{#init-foundation}}
+      <nav class="tab-bar {{unless session.isLoggedIn 'sticky_title_bar'}}">
+        <section class="left-small">
+          {{#if session.isLoggedIn}}
+            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          {{else}}
+            {{link-to (t "back") 'tour' classNames='back'}}
+          {{/if}}
+        </section>
+
+        <section class="middle tab-bar-section">
+          <h1 class="title">{{t "faqs.title"}}</h1>
+        </section>
+      </nav>
+    {{/init-foundation}}
+
+    {{#faq-list currentController=this}}
+      <section class="main-section faq_list {{unless session.isLoggedIn 'offer_messages_section'}}">
+        <div class="row">
+          <div class="small-12 columns">
+            <p>{{t "faqs.description"}}</p>
+
+            <ul class="question_list">
+              <li><a href="faq#question1">{{t "faqs.questions.question1"}}</a></li>
+              <li><a href="faq#question2">{{t "faqs.questions.question2"}}</a></li>
+              <li><a href="faq#question3">{{t "faqs.questions.question3"}}</a></li>
+              <li><a href="faq#question4">{{t "faqs.questions.question4"}}</a></li>
+              <li><a href="faq#question5">{{t "faqs.questions.question5"}}</a></li>
+              <li><a href="faq#question6">{{t "faqs.questions.question6"}}</a></li>
+              <li><a href="faq#question7">{{t "faqs.questions.question7"}}</a></li>
+            </ul>
+
+
+            <p id="question1"><b>{{t "faqs.questions.question1"}}</b></p>
+
+            <p>{{t "faqs.answers.answer1.good_condition"}}</p>
+
+            <p>{{t "faqs.answers.answer1.useful"}}</p>
+
+            <p id="question2"><b>{{t "faqs.questions.question2"}}</b></p>
+
+            <p>{{t "faqs.answers.answer2.review"}}</p>
+
+            <p>{{t "faqs.answers.answer2.messaging"}}</p>
+
+            <p>{{t "faqs.answers.answer2.supervisors"}}</p>
+
+            <p id="question3"><b>{{t "faqs.questions.question3"}}</b></p>
+
+            <ul>
+              <li>{{t "faqs.answers.answer3.gogovan"}}</li>
+              <li>{{t "faqs.answers.answer3.drop_off"}}</li>
+            </ul>
+
+            <p id="question4"><b>{{t "faqs.questions.question4"}}</b></p>
+
+            <p>{{t "faqs.answers.answer4"}}</p>
+
+            <p id="question5"><b>{{t "faqs.questions.question5"}}</b></p>
+
+            {{t "faqs.answers.answer5.title"}}
+
+            <ul>
+              <li>{{t "faqs.answers.answer5.community"}}</li>
+              <li>{{t "faqs.answers.answer5.drug"}}</li>
+              <li>{{t "faqs.answers.answer5.education"}}</li>
+              <li>{{t "faqs.answers.answer5.elderly"}}</li>
+              <li>{{t "faqs.answers.answer5.environmental"}}</li>
+              <li>{{t "faqs.answers.answer5.families"}}</li>
+              <li>{{t "faqs.answers.answer5.medical_n_hospitals"}}</li>
+              <li>{{t "faqs.answers.answer5.orphanages"}}</li>
+              <li>{{t "faqs.answers.answer5.special_needs"}}</li>
+              <li>{{t "faqs.answers.answer5.risk"}}</li>
+              <li>{{t "faqs.answers.answer5.rehabilitation"}}</li>
+              <li>{{t "faqs.answers.answer5.service_orgs"}}</li>
+              <li>{{t "faqs.answers.answer5.social_enterprise"}}</li>
+              <li>{{t "faqs.answers.answer5.sports"}}</li>
+              <li>{{t "faqs.answers.answer5.suicide_prevention"}}</li>
+              <li>{{t "faqs.answers.answer5.domestic_workers"}}</li>
+              <li>{{t "faqs.answers.answer5.new_arrivals"}}</li>
+              <li>{{t "faqs.answers.answer5.women"}}</li>
+              <li>{{t "faqs.answers.answer5.vocational_training"}}</li>
+              <li>{{t "faqs.answers.answer5.animals_welfare"}}</li>
+            </ul>
+
+            <p id="question6"><b>{{t "faqs.questions.question6"}}</b></p>
+
+            <p>
+              {{t "faqs.answers.answer6"}}
+              {{#external-link linkUrl="http://www.globalhand.org/"}}
+                {{t "faqs.answers.global_hand"}}
+              {{/external-link}}
+            </p>
+
+            <p id="question7"><b>{{t "faqs.questions.question7"}}</b></p>
+
+            <p>{{t "faqs.answers.answer7.hk"}}</p>
+
+            <p>{{t "faqs.answers.answer7.crossroads"}}</p>
+
+          </div>
+        </div>
+        {{go-to-top-button}}
       </section>
-    </nav>
+    {{/faq-list}}
   </div>
-
-  <section class="main-section faq_list">
-    <div class="row">
-      <div class="small-12 columns">
-        <p>{{t "faqs.description"}}</p>
-
-        <ul class="question_list">
-          <li><a href="faq#question1">{{t "faqs.questions.question1"}}</a></li>
-          <li><a href="faq#question2">{{t "faqs.questions.question2"}}</a></li>
-          <li><a href="faq#question3">{{t "faqs.questions.question3"}}</a></li>
-          <li><a href="faq#question4">{{t "faqs.questions.question4"}}</a></li>
-          <li><a href="faq#question5">{{t "faqs.questions.question5"}}</a></li>
-          <li><a href="faq#question6">{{t "faqs.questions.question6"}}</a></li>
-          <li><a href="faq#question7">{{t "faqs.questions.question7"}}</a></li>
-        </ul>
-
-
-        <p id="question1"><b>{{t "faqs.questions.question1"}}</b></p>
-
-        <p>{{t "faqs.answers.answer1.good_condition"}}</p>
-
-        <p>{{t "faqs.answers.answer1.useful"}}</p>
-
-        <p id="question2"><b>{{t "faqs.questions.question2"}}</b></p>
-
-        <p>{{t "faqs.answers.answer2.review"}}</p>
-
-        <p>{{t "faqs.answers.answer2.messaging"}}</p>
-
-        <p>{{t "faqs.answers.answer2.supervisors"}}</p>
-
-        <p id="question3"><b>{{t "faqs.questions.question3"}}</b></p>
-
-        <ul>
-          <li>{{t "faqs.answers.answer3.gogovan"}}</li>
-          <li>{{t "faqs.answers.answer3.crossroad"}}</li>
-          <li>{{t "faqs.answers.answer3.drop_off"}}</li>
-        </ul>
-
-        <p id="question4"><b>{{t "faqs.questions.question4"}}</b></p>
-
-        <p>{{t "faqs.answers.answer4"}}</p>
-
-        <p id="question5"><b>{{t "faqs.questions.question5"}}</b></p>
-
-        {{t "faqs.answers.answer5.title"}}
-
-        <ul>
-          <li>{{t "faqs.answers.answer5.community"}}</li>
-          <li>{{t "faqs.answers.answer5.drug"}}</li>
-          <li>{{t "faqs.answers.answer5.education"}}</li>
-          <li>{{t "faqs.answers.answer5.elderly"}}</li>
-          <li>{{t "faqs.answers.answer5.environmental"}}</li>
-          <li>{{t "faqs.answers.answer5.families"}}</li>
-          <li>{{t "faqs.answers.answer5.medical_n_hospitals"}}</li>
-          <li>{{t "faqs.answers.answer5.orphanages"}}</li>
-          <li>{{t "faqs.answers.answer5.special_needs"}}</li>
-          <li>{{t "faqs.answers.answer5.risk"}}</li>
-          <li>{{t "faqs.answers.answer5.rehabilitation"}}</li>
-          <li>{{t "faqs.answers.answer5.service_orgs"}}</li>
-          <li>{{t "faqs.answers.answer5.social_enterprise"}}</li>
-          <li>{{t "faqs.answers.answer5.sports"}}</li>
-          <li>{{t "faqs.answers.answer5.suicide_prevention"}}</li>
-          <li>{{t "faqs.answers.answer5.domestic_workers"}}</li>
-          <li>{{t "faqs.answers.answer5.new_arrivals"}}</li>
-          <li>{{t "faqs.answers.answer5.women"}}</li>
-          <li>{{t "faqs.answers.answer5.vocational_training"}}</li>
-          <li>{{t "faqs.answers.answer5.animals_welfare"}}</li>
-        </ul>
-
-        <p id="question6"><b>{{t "faqs.questions.question6"}}</b></p>
-
-        <p>
-          {{t "faqs.answers.answer6"}}
-          {{#external-link linkUrl="http://www.globalhand.org/"}}
-            {{t "faqs.answers.global_hand"}}
-          {{/external-link}}
-        </p>
-
-        <p id="question7"><b>{{t "faqs.questions.question7"}}</b></p>
-
-        <p>{{t "faqs.answers.answer7.hk"}}</p>
-
-        <p>{{t "faqs.answers.answer7.crossroads"}}</p>
-
-      </div>
-    </div>
-    {{go-to-top-button}}
-  </section>
-{{/faq-list}}
+</div>

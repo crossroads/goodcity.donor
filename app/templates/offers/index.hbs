@@ -12,58 +12,60 @@
       </section>
     </nav>
 
-    <section class="main-section">
-      <div class="row">
-        <div class="small-12 columns">
+    {{#visit-page-start}}
+      <section class="main-section">
+        <div class="row">
+          <div class="small-12 columns">
 
-          {{#link-to "offers.new" class="button expand"}}{{t "offers.index.new_donation"}}{{/link-to}}
+            {{new-offer-link}}
 
-          <ul class="list list-items">
-            {{#each arrangedContent as |offer|}}
-              <li>
-                {{#link-to 'offer.offer_details' offer}}
-                  <span class="list-image">
-                    {{cloudinary-image-tag src=offer.displayImageUrl}}
-                  </span>
-                  <span class="info">
-                    <h3>{{offer.statusText}}</h3>
-                    <div class='offer_description'>
-                    {{#unless offer.isDraft}}
-                      {{#if offer.isScheduled }}
-                        {{#if offer.delivery.isGogovan}}
-                          {{#if offer.delivery.gogovanOrder.isCompleted}}
-                            {{display-datetime offer.delivery.gogovanOrder.completedAt format='dddd, MMMM Do'}}
+            <ul class="list list-items">
+              {{#each arrangedContent as |offer|}}
+                <li>
+                  {{#link-to 'offer.offer_details' offer}}
+                    <span class="list-image">
+                      {{cloudinary-image-tag src=offer.displayImageUrl}}
+                    </span>
+                    <span class="info">
+                      <h3>{{offer.statusText}}</h3>
+                      <div class='offer_description'>
+                      {{#unless offer.isDraft}}
+                        {{#if offer.isScheduled }}
+                          {{#if offer.delivery.isGogovan}}
+                            {{#if offer.delivery.gogovanOrder.isCompleted}}
+                              {{display-datetime offer.delivery.gogovanOrder.completedAt format='dddd, MMMM Do'}}
+                            {{else}}
+                              {{display-datetime offer.delivery.schedule.scheduledAt format='dddd, MMMM Do'}}
+                            {{/if}}
+                            <br/>
+                            {{#if offer.delivery.gogovanOrder.isPending}}
+                              {{t "offers.index.awaiting_driver"}}<br/>
+                            {{else}}
+                              {{t "offers.index.driver_name"}}: {{offer.delivery.gogovanOrder.driverName}},
+                              {{t "offers.index.phone"}}: {{offer.delivery.gogovanOrder.driverMobile}},
+                              {{t "offers.index.vehicle"}}: {{offer.delivery.gogovanOrder.driverLicense}}
+                            {{/if}}
                           {{else}}
                             {{display-datetime offer.delivery.schedule.scheduledAt format='dddd, MMMM Do'}}
-                          {{/if}}
-                          <br/>
-                          {{#if offer.delivery.gogovanOrder.isPending}}
-                            {{t "offers.index.awaiting_driver"}}<br/>
-                          {{else}}
-                            {{t "offers.index.driver_name"}}: {{offer.delivery.gogovanOrder.driverName}},
-                            {{t "offers.index.phone"}}: {{offer.delivery.gogovanOrder.driverMobile}},
-                            {{t "offers.index.vehicle"}}: {{offer.delivery.gogovanOrder.driverLicense}}
+                            <br/>{{offer.delivery.schedule.slotName}}<br/>
                           {{/if}}
                         {{else}}
-                          {{display-datetime offer.delivery.schedule.scheduledAt format='dddd, MMMM Do'}}
-                          <br/>{{offer.delivery.schedule.slotName}}<br/>
+                          {{t "offers.index.approved"}}: {{offer.approvedItems.length}}<br/>
+                          {{t "offers.index.rejected"}}: {{offer.rejectedItems.length}}<br/>
                         {{/if}}
-                      {{else}}
-                        {{t "offers.index.approved"}}: {{offer.approvedItems.length}}<br/>
-                        {{t "offers.index.rejected"}}: {{offer.rejectedItems.length}}<br/>
-                      {{/if}}
-                    {{/unless}}
-                    </div>
-                    {{partial 'unread_message_bubble'}}
-                  </span>
-                {{/link-to}}
-              </li>
-            {{/each}}
-          </ul>
-          <hr>
+                      {{/unless}}
+                      </div>
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+                  {{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+            <hr>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    {{/visit-page-start}}
 
   </div>
 </div>

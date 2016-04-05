@@ -3,9 +3,36 @@
     <ul class="off-canvas-list">
       <li><label>{{t "application.app_menu"}}</label></li>
       <li>{{#link-to 'offers'}}{{t "application.my_offers"}}{{/link-to}}</li>
+
+      {{#unless (is-equal config.environment 'production')}}
+        <li>
+          {{#if cordova.iOSDevice}}
+            {{#external-link linkUrl=supportGCLink}}
+              {{t "menu.support_gc"}} <i class="fa fa-exter"></i>
+            {{/external-link}}
+          {{else}}
+            {{#link-to 'support'}}{{t "menu.support_gc"}}{{/link-to}}
+          {{/if}}
+        </li>
+      {{/unless}}
+
+      <li>{{#link-to 'faq' (query-params questionAnchor=null)}}{{t "menu.faq"}}{{/link-to}}</li>
+      <li>{{#link-to 'feedback'}}{{t "menu.feedback"}}{{/link-to}}</li>
+
+      {{#unless (is-equal config.environment 'production')}}
+        {{#if cordova.iOSDevice}}
+          <li>
+            <a>
+              {{t "menu.rate"}} <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            </a>
+          </li>
+        {{/if}}
+      {{/unless}}
+
       <li><a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a></li>
     </ul>
 
     {{partial "app_version"}}
+
   </aside>
 {{/init-foundation}}

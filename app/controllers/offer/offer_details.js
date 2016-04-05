@@ -2,14 +2,14 @@ import Ember from 'ember';
 import '../../computed/local-storage';
 import recordsUtil from '../../utils/records';
 import ItemBaseController from "../item/edit_images";
+const { getOwner } = Ember;
 
 export default ItemBaseController.extend({
   items: Ember.computed.alias('model.items'),
   sortProperties: ["latestUpdatedTime:desc"],
   sortedItems: Ember.computed.sort("offerAndItems", "sortProperties"),
-  confirm: Ember.inject.service(),
   i18n: Ember.inject.service(),
-  alert: Ember.inject.service(),
+  messageBox: Ember.inject.service(),
 
   cancelByDonor: Ember.computed('model', {
     get() {
@@ -27,7 +27,7 @@ export default ItemBaseController.extend({
 
     if(this.get("isOfferVanished") && !this.get("cancelByDonor")) {
       if(currentPath.indexOf(`offers/${this.get("model.id")}`) >= 0 && currentPath.indexOf("items") < 0) {
-        this.get("alert").show(this.get("i18n").t("404_error"), () => this.transitionTo("offers"));
+        this.get("messageBox").alert(this.get("i18n").t("404_error"), () => this.transitionToRoute("offers"));
       }
     }
   }),
@@ -61,7 +61,7 @@ export default ItemBaseController.extend({
           message = this.get("i18n").t("offer.offer_details.ggv_booking_alert");
         }
 
-        this.get("confirm").show(message, () => {
+        this.get("messageBox").confirm(message, () => {
           this.send("allowAddItem");
         });
       } else {
@@ -80,7 +80,7 @@ export default ItemBaseController.extend({
 
     deleteOffer(offer) {
       this.set("cancelByDonor", true);
-      var loadingView = this.container.lookup('component:loading').append();
+      var loadingView = getOwner(this).lookup('component:loading').append();
       offer.deleteRecord();
       offer.save()
         .then(() => {
@@ -97,7 +97,7 @@ export default ItemBaseController.extend({
       } else if(alreadyConfirmed) {
         this.send("deleteOffer", offer);
       } else{
-        this.get("confirm").show(this.get("i18n").t("delete_confirm"), () => {
+        this.get("messageBox").confirm(this.get("i18n").t("delete_confirm"), () => {
           this.send("deleteOffer", offer);
         });
       }

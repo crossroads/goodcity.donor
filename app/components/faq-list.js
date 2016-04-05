@@ -5,9 +5,10 @@ export default initFoundation.extend({
 
   didInsertElement() {
     this._super();
+    var topMargin = this.get("session.isLoggedIn") ? 20 : 70;
 
     Ember.run.scheduleOnce('afterRender', this, function(){
-      var controller = this.get('_controller');
+      var controller = this.get('currentController');
       if(controller && controller.questionAnchor) {
         controller.send('displayQuestion');
       }
@@ -20,7 +21,7 @@ export default initFoundation.extend({
         var scrollOffset = Ember.$(anchor.attr('href').split('faq')[1]).offset().top;
 
         Ember.$('html, body').animate({
-          scrollTop: scrollOffset - 130
+          scrollTop: scrollOffset - topMargin
         }, 'fast');
 
         return false;
