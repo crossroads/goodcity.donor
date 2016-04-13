@@ -7,8 +7,8 @@ I18nTranslationsZhTw =
 
     "menu":
       "support_gc": "Support GoodCity!"
-      "faq": "Frequently Asked Questions"
-      "feedback": "Feedback & Support"
+      "faq": "常見問題"
+      "feedback": "回饋與支援"
       "rate": "Rate on iTunes"
 
     "application":
@@ -63,7 +63,7 @@ I18nTranslationsZhTw =
         "arrange_transport" : "請安排運輸"
         "closed" : "已完成"
         "received" : "已收到"
-        "receiving": "Receiving"
+        "receiving": "正在接收"
         "van_booked" : "已預約貨車"
         "van_confirmed": "已確認貨車安排"
         "picked_up": "已經提取"
@@ -76,7 +76,7 @@ I18nTranslationsZhTw =
         "approved" :"已接受的物品"
         "rejected" :"不接受的物品"
         "donations": "捐獻"
-        "inactive": "Inactive: you can re-submit this offer."
+        "inactive": "暫停：請重新提交"
         "add_item": "Add Item"
         "new_offer": "New Offer"
         "new_offer_message": "You have an offer still in progress. Are you starting a new offer which will be transported separately or should we add this item to your existing offer?"
