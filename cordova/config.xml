@@ -83,4 +83,5 @@
   <plugin name="cordova-plugin-statusbar" spec="~2.1.1"/>
   <plugin name="cordova-plugin-splashscreen" spec="~3.1.0"/>
   <plugin name="com.nrswolf.cordova.push-notifications-status" spec="https://github.com/nrswolf/cordova-plugin-push-notifications-status.git"/>
+  <plugin name="cordova-plugin-ios-no-export-compliance" spec="https://github.com/mikaoelitiana/cordova-plugin-ios-no-export-compliance.git" />
 </widget>
