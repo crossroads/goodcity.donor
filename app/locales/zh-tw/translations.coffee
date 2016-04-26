@@ -172,15 +172,15 @@ I18nTranslationsZhTw =
 
     "faqs":
       "title": "常見問題"
-      "description" : "GoodCity.HK aims to be the world's most efficient city-wide service for charitable goods donations."
+      "description" : "「妥當配物資，快捷助我城」為好人好市之目標。"
       "questions":
-        "question1": "你們會接收甚麼類型的物資？"
-        "question2": "審查員根據甚麼標準決定接收哪樣物資？"
-        "question3": "我可選擇甚麼運輸方法呢？"
+        "question1": "好人好市接收甚麼類型的物資？"
+        "question2": "審查員根據甚麼標準接收物資？"
+        "question3": "有哪幾種貨運方法？"
         "question4": "我可以邀請別人使用好人好市應用程式嗎？"
         "question5": "甚麼人受惠於這些物資呢？"
-        "question6": "我住在海外也可以捐贈物資嗎？"
-        "question7": "為甚麼將基地設在香港呢？"
+        "question6": "身在在海外也可以捐出物資嗎？"
+        "question7": "為何選址香港？"
 
       "answers":
         "answer1":
