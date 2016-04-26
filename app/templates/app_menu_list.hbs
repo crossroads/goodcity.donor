@@ -4,7 +4,7 @@
       <li><label>{{t "application.app_menu"}}</label></li>
       <li>{{#link-to 'offers'}}{{t "application.my_offers"}}{{/link-to}}</li>
 
-      {{#unless (is-equal config.environment 'production')}}
+      {{#unless is-production}}
         <li>
           {{#if cordova.iOSDevice}}
             {{#external-link linkUrl=supportGCLink}}
@@ -19,7 +19,7 @@
       <li>{{#link-to 'faq' (query-params questionAnchor=null)}}{{t "menu.faq"}}{{/link-to}}</li>
       <li>{{#link-to 'feedback'}}{{t "menu.feedback"}}{{/link-to}}</li>
 
-      {{#unless (is-equal config.environment 'production')}}
+      {{#unless is-production}}
         {{#if cordova.iOSDevice}}
           <li>
             <a>
