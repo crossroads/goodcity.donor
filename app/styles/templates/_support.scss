@@ -1,0 +1,27 @@
+.support_gc_page {
+  i.fa-heart {
+    color: #f46769;
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+    vertical-align: middle;
+
+    @media #{$small-only} {
+      font-size: 1.2rem;
+    }
+  }
+
+  .donation_info {
+    margin: 1rem 0;
+  }
+
+  .center {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  li {
+    @media #{$small-only} {
+      font-size: 0.7rem;
+    }
+  }
+}

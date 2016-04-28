@@ -16,9 +16,21 @@ I18nTranslationsZhTw =
       "my_offers" : "我的捐獻"
 
     "support":
-      "amount": "Amount"
+      "title": "Thank you!"
+      "rely_on_donation": "We rely on donations to operate & improve GoodCity.HK for those in greatest need."
+      "give_secure": "Give securely now"
+      "donate_again": "You can give again using your stored payment details or change payment method below."
+      "about_goodcity": "GoodCity.HK is an initiative of Crossroads Foundation Limited, a registered, tax-exempt, Hong Kong non-profit organisation."
+      "other_methods": "Other giving methods available"
+      "via_crossroads": "via Crossroads"
+      "contact_us": "Please contact us if:"
+      "need_receipt": "You need a tax receipt (for donations over $100)"
+      "know_cost": "You want to know more about our running costs"
+      "wish_for_sponser": "You wish to discuss becoming a major sponsor"
+      "amount": "HKD Amount"
       "proceed": "Proceed"
-      "thanks": "感謝閣下捐獻。"
+      "thanks": "Thank you. Your donation has been processed."
+      "display_error": "There is following issue with your donation:"
       "error": "付款服務出現問題，請稍後再試。"
 
     "tour":
