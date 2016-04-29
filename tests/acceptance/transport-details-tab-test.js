@@ -82,7 +82,7 @@ test("for scheduled offer", function() {
   andThen(function() {
     equal(currentURL(), "/offers/" + offer4.id + "/transport_details");
 
-    equal($.trim($('.transport-content .row:eq(2)').text()), "Accepted items to be transported");
+    equal($.trim($('.transport-content .row:eq(5)').text()), "Accepted items to be transported");
     equal($(".items_list img").length, 1);
     equal($('.transport-buttons a').length, 2);
   });
