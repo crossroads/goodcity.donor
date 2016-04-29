@@ -58,6 +58,8 @@ export default Ember.Component.extend({
 
                 if(response.response) {
                   message = _this.get("i18n").t("support.thanks").string;
+                  _this.set("session.currentUser.donationAmount", amount);
+                  _this.set("session.currentUser.donationDate", moment().toDate());
                 } else if (response.error) {
                   message = _this.get("i18n").t("support.display_error") + "<li>" + response.error + "</li>";
                 } else {

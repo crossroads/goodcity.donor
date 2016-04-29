@@ -21,7 +21,9 @@
 
           {{#if hasDonationDetail}}
 
-            <div class="center">You donated HK$200 on 28 April 2016.</div>
+            <div class="center">
+              {{t "support.donation_done_on" amount=donationAmount date=(display-datetime donationDate format='DD MMMM YYYY')}}
+            </div>
             <div class="center">{{t "support.donate_again"}}</div>
 
           {{else}}

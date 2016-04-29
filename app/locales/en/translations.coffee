@@ -19,6 +19,7 @@ I18nTranslationsEn =
       "title": "Thank you!"
       "rely_on_donation": "We rely on donations to operate & improve GoodCity.HK for those in greatest need."
       "give_secure": "Give securely now"
+      "donation_done_on": "You donated HK${{amount}} on {{date}}."
       "donate_again": "You can give again using your stored payment details or change payment method below."
       "about_goodcity": "GoodCity.HK is an initiative of Crossroads Foundation Limited, a registered, tax-exempt, Hong Kong non-profit organisation."
       "other_methods": "Other giving methods available"
