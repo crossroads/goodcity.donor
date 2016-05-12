@@ -31,7 +31,7 @@ test("Rediect to login if not logged-in", function() {
   visit("/offers");
 
   andThen(function() {
-    equal(Ember.$("#messageBoxText").text(), t("must_login").toString());
+    equal(Ember.$.trim(Ember.$("#messageBoxText").text()), t("must_login").toString());
     okClick();
   });
 

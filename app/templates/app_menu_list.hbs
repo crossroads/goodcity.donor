@@ -4,11 +4,11 @@
       <li><label>{{t "application.app_menu"}}</label></li>
       <li>{{#link-to 'offers'}}{{t "application.my_offers"}}{{/link-to}}</li>
 
-      {{#unless (is-equal config.environment 'production')}}
+      {{#unless is-production}}
         <li>
           {{#if cordova.iOSDevice}}
             {{#external-link linkUrl=supportGCLink}}
-              {{t "menu.support_gc"}} <i class="fa fa-exter"></i>
+              {{t "menu.support_gc"}} <i class="fa fa-external-link"></i>
             {{/external-link}}
           {{else}}
             {{#link-to 'support'}}{{t "menu.support_gc"}}{{/link-to}}
@@ -19,7 +19,7 @@
       <li>{{#link-to 'faq' (query-params questionAnchor=null)}}{{t "menu.faq"}}{{/link-to}}</li>
       <li>{{#link-to 'feedback'}}{{t "menu.feedback"}}{{/link-to}}</li>
 
-      {{#unless (is-equal config.environment 'production')}}
+      {{#unless is-production}}
         {{#if cordova.iOSDevice}}
           <li>
             <a>

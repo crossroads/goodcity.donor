@@ -14,13 +14,17 @@ export default Ember.Component.extend({
   i18n: Ember.inject.service(),
 
   didInsertElement() {
+    this.braintreeSetup();
+  },
+
+  braintreeSetup() {
+    Ember.$("#braintree-dropin-container").empty();
     var token_url = "/braintree/generate_token";
     var add_customer_url = "/braintree/make_transaction ";
     var authToken = this.get('session.authToken');
     var _this = this;
-    var router = this.get("router");
     var initialLoading = getOwner(this).lookup('component:loading').append();
-    var message;
+    var message, myIntegration;
 
     new AjaxPromise(token_url, "GET", authToken)
       .then(data => {
@@ -30,8 +34,9 @@ export default Ember.Component.extend({
           container: "braintree-dropin-container",
           form: "braintree-checkout-form",
 
-          onReady() {
+          onReady(integration) {
             initialLoading.destroy();
+            myIntegration = integration;
           },
 
           onPaymentMethodReceived(object) {
@@ -48,8 +53,21 @@ export default Ember.Component.extend({
             new AjaxPromise(add_customer_url, "POST", authToken, { payment_method_nonce: object.nonce, amount: amount })
               .then((response) => {
                 loadingView.destroy();
-                message = response ? _this.get("i18n").t("support.thanks") : _this.get("i18n").t("support.error");
-                _this.get("messageBox").alert(message, () => router.transitionTo("offers"));
+                _this.set("disabled", false);
+                _this.set("amount", null);
+
+                if(response.response) {
+                  message = _this.get("i18n").t("support.thanks").string;
+                  _this.set("session.currentUser.donationAmount", amount);
+                  _this.set("session.currentUser.donationDate", moment().toDate());
+                } else if (response.error) {
+                  message = _this.get("i18n").t("support.display_error") + "<li>" + response.error + "</li>";
+                } else {
+                  message = _this.get("i18n").t("support.error").string;
+                }
+                _this.get("messageBox").alert(message.htmlSafe(), () => {
+                  myIntegration.teardown(() => _this.braintreeSetup());
+                });
               });
           }
         });

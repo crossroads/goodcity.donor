@@ -6,20 +6,33 @@ I18nTranslationsZhTw =
     "socket_offline_error": "正在嘗試連線…"
 
     "menu":
-      "support_gc": "Support GoodCity!"
+      "support_gc": "支持好人好市！"
       "faq": "常見問題"
       "feedback": "回饋與支援"
-      "rate": "Rate on iTunes"
+      "rate": "在iTunes上評分"
 
     "application":
       "app_menu" : "目錄"
       "my_offers" : "我的捐獻"
 
     "support":
-      "amount": "Amount"
+      "title": "Thank you!"
+      "rely_on_donation": "We rely on donations to operate & improve GoodCity.HK for those in greatest need."
+      "give_secure": "Give securely now"
+      "donation_done_on": "You donated HK${{amount}} on {{date}}."
+      "donate_again": "You can give again using your stored payment details or change payment method below."
+      "about_goodcity": "GoodCity.HK is an initiative of Crossroads Foundation Limited, a registered, tax-exempt, Hong Kong non-profit organisation."
+      "other_methods": "Other giving methods available"
+      "via_crossroads": "via Crossroads"
+      "contact_us": "Please contact us if:"
+      "need_receipt": "You need a tax receipt (for donations over $100)"
+      "know_cost": "You want to know more about our running costs"
+      "wish_for_sponser": "You wish to discuss becoming a major sponsor"
+      "amount": "HKD Amount"
       "proceed": "Proceed"
-      "thanks": "Thank you for your donation."
-      "error": "There is an error with payment service. Please try again later."
+      "thanks": "Thank you. Your donation has been processed."
+      "display_error": "There is following issue with your donation:"
+      "error": "付款服務出現問題，請稍後再試。"
 
     "tour":
       "step1.title" : "1. 圖片上傳及說明"
@@ -47,8 +60,8 @@ I18nTranslationsZhTw =
       "phone_number": "電話號碼"
       "john": "John"
       "doe": "Doe"
-      "agree_toc": "By using GoodCity.HK you are agreeing to be bound by these"
-      "terms": "terms of use"
+      "agree_toc": "如使用好人好市服務，則表示閣下同意以下"
+      "terms": "使用條款"
 
     "offers":
       "index":
@@ -76,10 +89,10 @@ I18nTranslationsZhTw =
         "approved" :"已接受的物品"
         "rejected" :"不接受的物品"
         "donations": "捐獻"
-        "inactive": "暫停：請重新提交"
-        "add_item": "Add Item"
-        "new_offer": "New Offer"
-        "new_offer_message": "You have an offer still in progress. Are you starting a new offer which will be transported separately or should we add this item to your existing offer?"
+        "inactive": "暫停：可以再次提交本捐獻項目"
+        "add_item": "加入項目"
+        "new_offer": "新捐獻項目"
+        "new_offer_message": "其中一項捐獻仍在處理中，請問閣下希望將新物資列為新捐獻項目，還是加入至現存捐獻項目？"
 
     "offer":
       "camera": "照相機"
@@ -97,10 +110,10 @@ I18nTranslationsZhTw =
         "heading": "物資出售"
         "message": "有時候，要幫助窮困人士， <br> 最好的方法就是出售捐出的物品。 <br> 您是否同意出售物品？ <br> "
       "notifications":
-        "title": "Notifications"
-        "alert_updates": "Would you like to be alerted when we have questions or status updates for your offer?"
-        "no": "No Thanks"
-        "notify": "Notify Me"
+        "title": "信息"
+        "alert_updates": "當我們有問題或更新捐獻項目的時候，閣下願意收到通知嗎？"
+        "no": "不用了，謝謝。"
+        "notify": "通知我"
 
       "index":
         "item_count" : "捐出物品 ({{itemCount}}) 件"
@@ -129,7 +142,7 @@ I18nTranslationsZhTw =
         "not_needed": "不需要"
         "closed_offer_message": "此項捐獻已結束。不再需要此類物資，請見諒。"
         "offer_received": "已收到捐獻"
-        "offer_start_receiving": "{{firstName}} {{lastName}} began receiving items"
+        "offer_start_receiving": "{{firstName}} {{lastName}} 開始接收物資"
         "crossroads_booking_alert" : "我們會盡快處理新增的物品。我們的收集團隊通常只會接收已被審查及接受的物資。<br><br>如我們接受了大型物件，我們可能會取消及重新安排運輸。"
         "ggv_booking_alert": "我們會盡快處理新的物品，請不要送出未被接受的物資。<br><br>如果你需要更改運輸安排以容納更多的物品，請按運送詳情。"
 
@@ -141,7 +154,7 @@ I18nTranslationsZhTw =
         "accepted_items_count": "目前已接納的物資數目為 ({{acceptedCount}})"
         "goods_received" : "收到物資的日期"
         "thank": "非常感謝"
-        "receiving": "Your offer is currently being received."
+        "receiving": "我們正在接收你捐獻的物資。"
 
       "display_joyride" :
         "camera": "點選 <i class='fa fa-camera'></i> 加入更多項目"
@@ -172,15 +185,15 @@ I18nTranslationsZhTw =
 
     "faqs":
       "title": "常見問題"
-      "description" : "GoodCity.HK aims to be the world's most efficient city-wide service for charitable goods donations."
+      "description" : "「妥當配物資，快捷助我城」為好人好市之目標。"
       "questions":
-        "question1": "你們會接收甚麼類型的物資？"
-        "question2": "審查員根據甚麼標準決定接收哪樣物資？"
-        "question3": "我可選擇甚麼運輸方法呢？"
+        "question1": "好人好市接收甚麼類型的物資？"
+        "question2": "審查員根據甚麼標準接收物資？"
+        "question3": "有哪幾種貨運方法？"
         "question4": "我可以邀請別人使用好人好市應用程式嗎？"
         "question5": "甚麼人受惠於這些物資呢？"
-        "question6": "我住在海外也可以捐贈物資嗎？"
-        "question7": "為甚麼將基地設在香港呢？"
+        "question6": "身在在海外也可以捐出物資嗎？"
+        "question7": "為何選址香港？"
 
       "answers":
         "answer1":

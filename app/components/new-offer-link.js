@@ -3,6 +3,9 @@ const { getOwner } = Ember;
 
 export default Ember.Component.extend({
 
+  messageBox: Ember.inject.service(),
+  i18n: Ember.inject.service(),
+
   allOffers: Ember.computed(function(){
     var store = this.get('targetObject.store');
     return store.peekAll("offer");
@@ -14,6 +17,10 @@ export default Ember.Component.extend({
       offers.filterBy("isReviewed", true).get("firstObject") ||
       offers.filterBy("isSubmitted", true).get("firstObject");
   }),
+
+  locale: function(str){
+    return this.get("i18n").t(str);
+  },
 
   actions: {
     addNewOffer() {
@@ -43,39 +50,16 @@ export default Ember.Component.extend({
 
     confirmNewOffer() {
       if(this.get("existingOffer")) {
-        this.confirmAddNewOffer(() => this.send("addNewOffer"), () => this.send("addNewItem"));
+        this.get("messageBox").custom(
+          this.locale("offers.index.new_offer_message"),
+          this.locale("offers.index.new_offer"), () => this.send("addNewOffer"),
+          this.locale("offers.index.add_item"), () => this.send("addNewItem"),
+          true
+        );
+
       } else {
         this.send("addNewOffer");
       }
     },
   },
-
-  confirmAddNewOffer: function(newOfferCallback, newItemCallback) {
-    var _this = this;
-    Ember.$("#addNewOfferModal").removeClass("open");
-    Ember.$("#addNewOfferModal").foundation("reveal", "open");
-    Ember.$(".loading-indicator").remove();
-
-    Ember.$("#addNewOfferModal .closeLink").click(() => {
-      _this.closeConfirmBox();
-    });
-
-    Ember.$("#addNewOfferModal .addNewOfferLink").click(() => {
-      _this.closeConfirmBox();
-      newOfferCallback();
-    });
-
-    Ember.$("#addNewOfferModal .addNewItemLink").click(() => {
-      _this.closeConfirmBox();
-      newItemCallback();
-    });
-  },
-
-  closeConfirmBox: function() {
-    Ember.run.next(function() {
-      Ember.$("#addNewOfferModal").foundation("reveal", "close");
-      Ember.$("#addNewOfferModal *").unbind('click');
-    });
-  },
-
 });

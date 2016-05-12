@@ -7,6 +7,10 @@ export default MessagesBaseController.extend({
   noMessage: Ember.computed.empty("messages"),
   offerDetailsController: Ember.inject.controller("offer/offer_details"),
 
+  displayChatNote: Ember.computed('noMessage', 'disabled', function(){
+    return this.get("noMessage") && !this.get("disabled");
+  }),
+
   messageBox: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
