@@ -19,13 +19,13 @@ export default Ember.Controller.extend({
     backLink() {
       if(this.get("cordova").isIOS()) {
 
-        var onEnabled = function() {
+        var onEnabled = () => {
           this.transitionToRoute('offer.confirm');
-        }.bind(this);
+        };
 
-        var onDisabled = function() {
+        var onDisabled = () => {
           this.transitionToRoute('offer.ios_notification');
-        }.bind(this);
+        };
 
         this.get("cordova").verifyIosNotificationSetting(onEnabled, onDisabled);
 

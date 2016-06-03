@@ -114,7 +114,10 @@ I18nTranslationsEn =
         "alert_updates": "Would you like to be alerted when we have questions or status updates for your offer?"
         "no": "No Thanks"
         "notify": "Notify Me"
-
+        "change_ios_settings": "Change your settings to be alerted when we have questions or status updates for your offer."
+        "open_settings": "1. Go to Settings."
+        "tap_notifications": "2. Tap Notifications."
+        "set_notification_on": "3. Set \"Allow Notifications\" to On."
 
       "index":
         "item_count" : "Offer items ({{itemCount}})"
