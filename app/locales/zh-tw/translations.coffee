@@ -114,6 +114,10 @@ I18nTranslationsZhTw =
         "alert_updates": "當我們有問題或更新捐獻項目的時候，閣下願意收到通知嗎？"
         "no": "不用了，謝謝。"
         "notify": "通知我"
+        "change_ios_settings": "Change your settings to be alerted when we have questions or status updates for your offer."
+        "open_settings": "1. Go to Settings."
+        "tap_notifications": "2. Tap Notifications."
+        "set_notification_on": "3. Set \"Allow Notifications\" to On."
 
       "index":
         "item_count" : "捐出物品 ({{itemCount}}) 件"
