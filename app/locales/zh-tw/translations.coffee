@@ -118,6 +118,8 @@ I18nTranslationsZhTw =
         "open_settings": "1. Go to Settings."
         "tap_notifications": "2. Tap Notifications."
         "set_notification_on": "3. Set \"Allow Notifications\" to On."
+        "open_settings_button": "Open Settings"
+        "close": "Close"
 
       "index":
         "item_count" : "捐出物品 ({{itemCount}}) 件"
