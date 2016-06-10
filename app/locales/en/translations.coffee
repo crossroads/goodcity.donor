@@ -27,7 +27,7 @@ I18nTranslationsEn =
       "contact_us": "Please contact us if:"
       "need_receipt": "You need a tax receipt (for donations over $100)"
       "know_cost": "You want to know more about our running costs"
-      "wish_for_sponser": "You wish to discuss becoming a major sponsor"
+      "wish_for_sponsor": "You wish to discuss becoming a major sponsor"
       "amount": "HKD Amount"
       "proceed": "Proceed"
       "thanks": "Thank you. Your donation has been processed."
