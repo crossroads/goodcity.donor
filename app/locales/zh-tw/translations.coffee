@@ -21,7 +21,7 @@ I18nTranslationsZhTw =
       "give_secure": "立即捐款，保險穩妥"
       "donation_done_on": "閣下於 {{date}} 捐款港幣 {{amount}}。"
       "donate_again": "閣下可以儲存好的付款資料重新捐款，或在下面更改付款方法。"
-      "about_goodcity": "好人好市由十字路會有限公司發起。十字路會已註冊為香港豁免繳稅的非牟利機構。"
+      "about_goodcity": "好人好市由十字路會發起。十字路會已註冊成為香港豁免繳稅的非牟利機構。"
       "other_methods": "有其他捐款方式供閣下選擇"
       "via_crossroads": "通過十字路會"
       "contact_us": "如遇下列情況，請聯絡我們："
