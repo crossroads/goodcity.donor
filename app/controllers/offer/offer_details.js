@@ -87,7 +87,7 @@ export default ItemBaseController.extend({
           recordsUtil.unloadRecordTree(offer);
           this.transitionToRoute('offers.index');
         })
-        .catch(error => { offer.rollback(); throw error; })
+        .catch(error => { offer.rollbackAttributes(); throw error; })
         .finally(() => {loadingView.destroy(); this.set("cancelByDonor", false);});
     },
 
