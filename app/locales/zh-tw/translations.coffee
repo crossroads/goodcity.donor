@@ -17,21 +17,21 @@ I18nTranslationsZhTw =
 
     "support":
       "title": "非常感謝！"
-      "rely_on_donation": "好人好市有賴各界慷慨捐款，才得以運作，改善貧困人士的生命。"
-      "give_secure": "立即捐款，保險穩妥"
+      "rely_on_donation": "好人好市有賴各界慷慨捐助才得以運作，改善貧困人士的生命。"
+      "give_secure": "立即捐款，我們確保捐款過程保險穩妥。"
       "donation_done_on": "閣下於 {{date}} 捐款港幣 {{amount}}。"
-      "donate_again": "閣下可以儲存好的付款資料重新捐款，或在下面更改付款方法。"
-      "about_goodcity": "好人好市由十字路會發起。十字路會已註冊成為香港豁免繳稅的非牟利機構。"
-      "other_methods": "有其他捐款方式供閣下選擇"
+      "donate_again": "閣下可以儲存付款資料，加快下次捐款過程，或在下面更改付款方法。"
+      "about_goodcity": "好人好市由十字路會發起，十字路會是香港已註冊豁免稅項的非牟利機構。"
+      "other_methods": "閣下可選擇其他捐款方法"
       "via_crossroads": "通過十字路會"
-      "contact_us": "如遇下列情況，請聯絡我們："
+      "contact_us": "如遇下列情況，請即聯絡我們："
       "need_receipt": "（如捐款超過港幣100元）閣下需要扣稅收據。"
-      "know_cost": "閣下希望得知我們營運經費的詳情。"
-      "wish_for_sponsor": "閣下希望成為主要贊助人。"
+      "know_cost": "查詢好人好市營運經費的詳情。"
+      "wish_for_sponsor": "成為主要贊助人。"
       "amount": "港幣數目"
       "proceed": "繼續"
       "thanks": "謝謝！閣下的捐款已經處理完畢。"
-      "display_error": "閣下的捐款出現問題，須跟進："
+      "display_error": "閣下的捐款出現問題，須要跟進："
       "error": "付款服務出現問題，請稍後再試。"
 
     "tour":
@@ -45,7 +45,7 @@ I18nTranslationsZhTw =
       "accepted_items" : "已接受的物資："
       "quick_easy" : "簡易又快捷"
       "step4.title" : "4. 幫助到有需要的人"
-      "make_goodcity" : "這個城市怎樣會變得更美好？"
+      "make_goodcity" : "怎樣令這個城市變得更美好？"
       "faq" : "常見問題"
 
     "register":
@@ -58,8 +58,8 @@ I18nTranslationsZhTw =
       "fill_all_fields": "請填妥所有欄目"
       "use_of_personal_info": "我們如何使用你的個人資料"
       "phone_number": "電話號碼"
-      "john": "John"
-      "doe": "Doe"
+      "john": "無名"
+      "doe": "氏"
       "agree_toc": "如使用好人好市服務，則表示閣下同意以下"
       "terms": "使用條款"
 
