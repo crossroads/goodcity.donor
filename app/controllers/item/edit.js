@@ -43,7 +43,7 @@ export default Ember.Controller.extend({
           this.transitionToRoute('offer.offer_details');
         })
         .catch(error => {
-          this.get("model").rollback();
+          this.get("model").rollbackAttributes();
           throw error;
         })
         .finally(() => loadingView.destroy());

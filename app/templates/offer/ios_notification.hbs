@@ -30,3 +30,24 @@
     </div>
   </div>
 </div>
+
+{{#message-box btn1Text=(t "offer.notifications.open_settings_button") btn1Callback=(action "openSettings") btn2Text=(t "offer.notifications.close") btn2Callback=(action "closeDialog") isVisible=displayUserPrompt classNames="popupOverlay ios_notification"}}
+
+  {{t "offer.notifications.change_ios_settings"}}
+
+  <div>
+    <img src="assets/images/ios-settings-icon.png"/>
+    {{t "offer.notifications.open_settings"}}
+  </div>
+
+  <div>
+    <img src="assets/images/ios-tap-notifications.png"/>
+    {{t "offer.notifications.tap_notifications"}}
+  </div>
+
+  <div>
+    <img src="assets/images/ios-settings-on.png"/>
+    {{t "offer.notifications.set_notification_on"}}
+  </div>
+
+{{/message-box}}

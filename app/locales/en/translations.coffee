@@ -27,7 +27,7 @@ I18nTranslationsEn =
       "contact_us": "Please contact us if:"
       "need_receipt": "You need a tax receipt (for donations over $100)"
       "know_cost": "You want to know more about our running costs"
-      "wish_for_sponser": "You wish to discuss becoming a major sponsor"
+      "wish_for_sponsor": "You wish to discuss becoming a major sponsor"
       "amount": "HKD Amount"
       "proceed": "Proceed"
       "thanks": "Thank you. Your donation has been processed."
@@ -114,7 +114,12 @@ I18nTranslationsEn =
         "alert_updates": "Would you like to be alerted when we have questions or status updates for your offer?"
         "no": "No Thanks"
         "notify": "Notify Me"
-
+        "change_ios_settings": "Change your settings to be alerted when we have questions or status updates for your offer."
+        "open_settings": "1. Go to Settings."
+        "tap_notifications": "2. Tap Notifications."
+        "set_notification_on": "3. Set \"Allow Notifications\" to On."
+        "open_settings_button": "Open Settings"
+        "close": "Close"
 
       "index":
         "item_count" : "Offer items ({{itemCount}})"

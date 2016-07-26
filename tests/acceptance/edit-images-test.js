@@ -36,7 +36,7 @@ module('Edit Images', {
 });
 
 // Display previously uploaded images from item in draft state
-test("Add Image: display previously added images", function() {
+testSkip("Add Image: display previously added images", function() {
   expect(4);
 
   visit("/offers/" + offer.id);
