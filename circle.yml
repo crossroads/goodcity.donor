@@ -1,4 +1,6 @@
 machine:
+  environment:
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx1024m -XX:+HeapDumpOnOutOfMemoryError"'
   node:
     version: 4
 
@@ -16,6 +18,8 @@ test:
     - sleep 5
   override:
     - ./node_modules/ember-cli/bin/ember test
+  post:
+    - echo "Killing ember server to free memory for app build" && killall ember
 
 deployment:
   staging:
