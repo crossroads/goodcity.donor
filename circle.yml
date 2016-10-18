@@ -21,20 +21,6 @@ dependencies:
     - gem update fastlane
   post:
     - bower install
-    - |
-      if [ "${CIRCLE_BRANCH}" = 'live' ] ; then
-        echo 'export PROVISIONING_FILE=app.goodcity.hk.mobileprovision' >> ~/.circlerc
-      else
-        echo 'export PROVISIONING_FILE=app-staging.goodcity.hk.mobileprovision' >> ~/.circlerc
-      fi
-    - source ~/.circlerc && ../node_modules/.bin/azure-filestore download -f $PROVISIONING_FILE:
-        pwd: scripts
-    - source ~/.circlerc && ./install-provisioning-file.sh:
-        pwd: scripts
-    - source ~/.circlerc && ../node_modules/.bin/azure-filestore download -f goodcity.keystore:
-        pwd: cordova
-    - source ~/.circlerc && ../node_modules/.bin/azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE:
-        pwd: fastlane
 
 test:
   pre:
@@ -50,12 +36,24 @@ deployment:
   staging:
     branch: master
     commands:
+      - ../node_modules/.bin/azure-filestore download -f app-staging.goodcity.hk.mobileprovision:
+          pwd: scripts
+      - ./install-provisioning-file.sh:
+          pwd: scripts
       - bundle exec cap staging deploy
       - bundle exec rake staging android app:release
       - bundle exec rake staging ios app:release
   production:
     branch: live
     commands:
+      - ../node_modules/.bin/azure-filestore download -f app.goodcity.hk.mobileprovision:
+          pwd: scripts
+      - ./install-provisioning-file.sh:
+          pwd: scripts
+      - ../node_modules/.bin/azure-filestore download -f goodcity.keystore:
+          pwd: cordova
+      - ../node_modules/.bin/azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE:
+          pwd: fastlane
       - bundle exec cap production deploy
       - bundle exec rake production android app:release
       - bundle exec rake production ios app:release
