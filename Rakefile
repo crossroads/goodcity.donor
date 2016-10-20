@@ -175,7 +175,7 @@ namespace :azure do
     raise(BuildError, "AZURE_SHARE not set.") unless env?("AZURE_SHARE")
     raise(BuildError, "AZURE_SAS_TOKEN not set.") unless env?("AZURE_SAS_TOKEN")
     if ENV["CI"]
-      sh %{ source ~/.circlerc; azure-filestore upload -d #{platform} -f "#{app_file}" -t #{azure_file} }
+      sh %{ source ~/.circlerc; PATH=$(npm bin):$PATH; azure-filestore upload -d #{platform} -f "#{app_file}" -t #{azure_file} }
     end
     log("Uploaded app to azure...")
     build_details.map{|key, value| log("#{key.upcase}: #{value}")}

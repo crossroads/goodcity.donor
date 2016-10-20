@@ -36,7 +36,7 @@ deployment:
   staging:
     branch: master
     commands:
-      - ../node_modules/.bin/azure-filestore download -f app-staging.goodcity.hk.mobileprovision:
+      - PATH=$(npm bin):$PATH; azure-filestore download -f app-staging.goodcity.hk.mobileprovision:
           pwd: scripts
       - ./install-provisioning-file.sh:
           pwd: scripts
@@ -46,13 +46,13 @@ deployment:
   production:
     branch: live
     commands:
-      - ../node_modules/.bin/azure-filestore download -f app.goodcity.hk.mobileprovision:
+      - PATH=$(npm bin):$PATH; azure-filestore download -f app.goodcity.hk.mobileprovision:
           pwd: scripts
       - ./install-provisioning-file.sh:
           pwd: scripts
-      - ../node_modules/.bin/azure-filestore download -f goodcity.keystore:
+      - PATH=$(npm bin):$PATH; azure-filestore download -f goodcity.keystore:
           pwd: cordova
-      - ../node_modules/.bin/azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE:
+      - PATH=$(npm bin):$PATH; azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE:
           pwd: fastlane
       - bundle exec cap production deploy
       - bundle exec rake production android app:release
