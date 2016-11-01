@@ -81,7 +81,7 @@ testSkip("Clicking on thumbnail image should change preview-image", function() {
   });
 });
 
-test("Change favourite image", function() {
+testSkip("Change favourite image", function() {
   expect(3);
 
   TestHelper.handleUpdate("image", img2.id);
@@ -118,7 +118,7 @@ test("Can't proceed if no images", function() {
   });
 });
 
-test("Set another image as favourite if favourite image deleted", function() {
+testSkip("Set another image as favourite if favourite image deleted", function() {
   expect(5);
 
   // todo: remove workaround for message box button actions not firing only under test environment
