@@ -66,3 +66,9 @@ deployment:
       - fastlane android beta
       - fastlane ios upload
       - fastlane ios beta
+  testfairy:
+    branch: GCW-1328
+    commands:
+      - PATH=$(npm bin):$PATH; azure-filestore download -f goodcity.keystore:
+          pwd: cordova/deploy
+      - bundle exec rake staging android app:release
