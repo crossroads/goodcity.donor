@@ -47,7 +47,7 @@ deployment:
           pwd: scripts
       - bundle exec cap staging deploy
       - PATH=$(npm bin):$PATH; azure-filestore download -f goodcity.keystore:
-          pwd: cordova/deploy
+          pwd: cordova
       - bundle exec rake staging android app:release
       - bundle exec rake staging ios app:release
   production:
