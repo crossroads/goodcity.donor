@@ -8,7 +8,8 @@ UPLOADER_VERSION=1.10
 
 # Your Keystore, Storepass and Alias, the ones you use to sign your app.
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-KEYSTORE=$SCRIPT_DIR/goodcity.keystore
+CORDOVA_DIR="$(dirname "$SCRIPT_DIR")"
+KEYSTORE=$CORDOVA_DIR/goodcity.keystore
 STOREPASS=$GOODCITY_KEYSTORE_PASSWORD
 ALIAS=$GOODCITY_KEYSTORE_ALIAS
 
