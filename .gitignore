@@ -8,6 +8,11 @@ tmp
 node_modules
 bower_components
 
+# fastlane
+Preview.html
+fastlane/report.xml
+fastlane/*.json
+
 # misc
 .sass-cache
 connect.lock
@@ -21,3 +26,5 @@ cordova/platforms
 .DS_Store
 cordova/plugins/*
 cordova/.secret_keys
+*.mobileprovision
+*.keystore
