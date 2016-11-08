@@ -46,6 +46,8 @@ deployment:
       - ./install-provisioning-file.sh:
           pwd: scripts
       - bundle exec cap staging deploy
+      - PATH=$(npm bin):$PATH; azure-filestore download -f goodcity.keystore:
+          pwd: cordova/deploy
       - bundle exec rake staging android app:release
       - bundle exec rake staging ios app:release
   production:
@@ -65,9 +67,3 @@ deployment:
       - fastlane android beta
       - fastlane ios upload
       - fastlane ios beta
-  testfairy:
-    branch: GCW-1328
-    commands:
-      - PATH=$(npm bin):$PATH; azure-filestore download -f goodcity.keystore:
-          pwd: cordova/deploy
-      - bundle exec rake staging android app:release
