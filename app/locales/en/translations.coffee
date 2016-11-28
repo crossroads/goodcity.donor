@@ -4,6 +4,7 @@
 I18nTranslationsEn =
   Ember.$.extend true, SharedTranslationsEn,
     "socket_offline_error": "Attempting to connect..."
+    "QuotaExceededError": "This site may not work properly in Safari's <b>private mode.</b> Please try</br><ul><li><a href='https://itunes.apple.com/in/app/goodcity.hk/id1012253845?mt=8' style='color: black!important; background-color: #dee4eb !important;'>Downloading the iOS App</a></li><li>Using regular (not private) mode in Safari</li><li>Using Chrome's private browsing mode</li></ul>"
 
     "menu":
       "support_gc": "Support GoodCity!"
