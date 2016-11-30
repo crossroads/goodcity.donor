@@ -42,7 +42,9 @@ module.exports = function(environment) {
 
       AIRBRAKE_HOST: "https://errbit.crossroads.org.hk",
       AIRBRAKE_PROJECT_ID: 0,
-      AIRBRAKE_PROJECT_KEY: "010f0d73f56efb6150cb2744e814e46b"
+      AIRBRAKE_PROJECT_KEY: "010f0d73f56efb6150cb2744e814e46b",
+      ANDROID_APP_ID: "hk.goodcity.app",
+      IOS_APP_ID: "1012253845"
     },
 
     cordova: {
