@@ -22,16 +22,13 @@
         <li>{{#link-to 'feedback'}}{{t "menu.feedback"}}{{/link-to}}</li>
       {{/unless}}
 
-      {{#unless is-production}}
-        {{#if cordova.iOSDevice}}
-          <li>
-            <a>
-              {{t "menu.rate"}} <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-            </a>
-          </li>
-        {{/if}}
-      {{/unless}}
-
+      {{#if isMobileApp}}
+        <li>
+          <a {{action 'rateApp'}}>
+            {{t "menu.rate"}} <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+          </a>
+        </li>
+      {{/if}}
       <li><a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a></li>
     </ul>
 
