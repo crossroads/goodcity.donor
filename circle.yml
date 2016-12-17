@@ -17,7 +17,7 @@ dependencies:
     - echo 'export PATH=$ANDROID_HOME/build-tools/23.0.3:$PATH' >> ~/.circlerc
     - npm install bower ember-cli phantomjs-prebuilt cordova
     - node circle-branch.js
-    - gem update fastlane
+    - gem update fastlane spaceship
   post:
     - bower install
     - |
