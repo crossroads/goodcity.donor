@@ -10,7 +10,7 @@ I18nTranslationsEn =
       "support_gc": "Support GoodCity!"
       "faq": "Frequently Asked Questions"
       "feedback": "Feedback & Support"
-      "rate": "Rate on iTunes"
+      "rate": "Rate this app"
 
     "application":
       "app_menu" : "App Menu"
