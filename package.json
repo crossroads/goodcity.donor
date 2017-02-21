@@ -40,7 +40,7 @@
     "ember-cli-htmlbars-inline-precompile": "^0.3.6",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-jshint": "^2.0.1",
-    "ember-cli-qunit": "^3.0.1",
+    "ember-cli-qunit": "1.2.1",
     "ember-cli-release": "^0.2.9",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-test-loader": "^1.1.0",
@@ -57,7 +57,7 @@
     "ember-try": "~0.1.2",
     "ember-load-initializers": "^0.6.0",
     "ember-welcome-page": "^2.0.2",
-    "loader.js": "^4.0.0"
+    "loader.js": "4.0.0"
   },
   "engines": {
     "node": ">= 4.3"
@@ -67,6 +67,6 @@
     "ember-resolver": "^2.0.3",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
     "slick-carousel": "^1.5.8",
-     "loader.js": "^4.0.0"
+     "loader.js": "4.0.0"
   }
 }
