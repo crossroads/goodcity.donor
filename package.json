@@ -4,6 +4,7 @@
   "description": "Small description for goodcity goes here",
   "license": "MIT",
   "author": "",
+  "private": true,
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -55,7 +56,6 @@
     "xml2js": "^0.4.12",
     "ember-try": "~0.1.2",
     "ember-load-initializers": "^0.6.0",
-    "ember-source": "~2.11.1",
     "ember-welcome-page": "^2.0.2",
     "loader.js": "^4.0.0"
   },
@@ -66,7 +66,7 @@
     "azure-api": "git://github.com/crossroads/azure-api.git#master",
     "ember-resolver": "^2.0.3",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
-    "slick-carousel": "^1.5.8"
-  },
-  "private": true
+    "slick-carousel": "^1.5.8",
+     "loader.js": "^4.0.0"
+  }
 }
