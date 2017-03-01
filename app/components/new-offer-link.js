@@ -2,12 +2,12 @@ import Ember from 'ember';
 const { getOwner } = Ember;
 
 export default Ember.Component.extend({
-
+  store: Ember.inject.service('store'),
   messageBox: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
   allOffers: Ember.computed(function(){
-    var store = this.get('targetObject.store');
+    var store = this.get('store');
     return store.peekAll("offer");
   }),
 
@@ -28,7 +28,7 @@ export default Ember.Component.extend({
     },
 
     addNewItem(){
-      var store = this.get('targetObject.store');
+      var store = this.get('store');
       var loadingView = getOwner(this).lookup('component:loading').append();
       var offer = this.get("existingOffer");
       var defaultDonorCondition = store.peekAll("donorCondition").sortBy("id").get("firstObject");
