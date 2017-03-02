@@ -7,8 +7,7 @@ export default Ember.Component.extend({
   i18n: Ember.inject.service(),
 
   allOffers: Ember.computed(function(){
-    var store = this.get('store');
-    return store.peekAll("offer");
+    return this.store.peekAll("offer");
   }),
 
   existingOffer: Ember.computed('offers.@each.state', function(){
