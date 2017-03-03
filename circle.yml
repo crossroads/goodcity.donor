@@ -4,6 +4,7 @@ machine:
     XCODE_SCHEME: app.goodcity
     XCODE_WORKSPACE: app.goodcity
     GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: Crossroads Foundation Limited"
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 
 dependencies:
   override:
@@ -20,9 +21,9 @@ dependencies:
     - yarn add --force node-sass
     - yarn add bower ember-cli phantomjs-prebuilt cordova
     - bundle install
-    - bower install
     - gem update fastlane spaceship
   post:
+    - ./node_modules/bower/bin/bower install
     - |
       if [ "${CIRCLE_BRANCH}" = 'live' ] ; then
         echo 'export PROVISIONING_FILE=app.goodcity.hk.mobileprovision' >> ~/.circlerc
