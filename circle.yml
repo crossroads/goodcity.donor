@@ -6,6 +6,8 @@ machine:
     GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: Crossroads Foundation Limited"
 
 dependencies:
+  override:
+    - yarn install
   pre:
     - brew update
     - brew install homebrew/versions/node4-lts
@@ -14,8 +16,10 @@ dependencies:
     - echo 'export ANDROID_HOME=/usr/local/opt/android-sdk' >> ~/.circlerc
     - ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk --no-ui --all --filter platform-tools,build-tools-23.0.3,android-23,extra-android-m2repository,extra-google-m2repository
     - echo 'export PATH=$ANDROID_HOME/build-tools/23.0.3:$PATH' >> ~/.circlerc
-    - npm install bower ember-cli phantomjs-prebuilt cordova
-    - node circle-branch.js
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - yarn add --force node-sass
+    - yarn add bower ember-cli phantomjs-prebuilt cordova
+    - bundle install
     - gem update fastlane spaceship
   post:
     - bower install
