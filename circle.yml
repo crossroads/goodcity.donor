@@ -20,9 +20,9 @@ dependencies:
     - yarn add --force node-sass
     - yarn add bower ember-cli phantomjs-prebuilt cordova
     - bundle install
+    - bower install
     - gem update fastlane spaceship
   post:
-    - bower install
     - |
       if [ "${CIRCLE_BRANCH}" = 'live' ] ; then
         echo 'export PROVISIONING_FILE=app.goodcity.hk.mobileprovision' >> ~/.circlerc
