@@ -10,7 +10,7 @@ dependencies:
     - brew update
     - brew unlink node
     - brew install homebrew/versions/node4-lts
-    - export PATH="/usr/local/opt/node@4/bin:$PATH"
+    - echo 'export PATH="/usr/local/opt/node@4/bin:$PATH"' >> ~/.circlerc
     - brew install watchman
     - brew install android-sdk
     - echo 'export ANDROID_HOME=/usr/local/opt/android-sdk' >> ~/.circlerc
