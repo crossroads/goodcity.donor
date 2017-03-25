@@ -172,8 +172,10 @@ test("cancel booking of scheduled offer with pending GGV order state", function(
     equal(currentURL(), "/offers/" + offer5.id + "/transport_details");
   });
 
-  click("a:contains('Cancel Booking')");
-  // confirm prompt invoked, ok automatically called with above workaround
+  andThen(function() {
+    click("a:contains('Cancel Booking')");
+    // confirm prompt invoked, ok automatically called with above workaround
+  });
 
   andThen(function(){
     equal(currentURL(), "/offers/" + offer5.id + "/offer_details");

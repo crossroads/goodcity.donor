@@ -161,7 +161,9 @@ test("Can't delete last image", function() {
     equal(currentURL(), edit_images_url);
   });
 
-  click("#main-image-controls .fa-trash");
+  andThen(function() {
+    click("#main-image-controls .fa-trash");
+  });
 
   andThen(function() {
     equal(find("#photo-list img").length, 1);
