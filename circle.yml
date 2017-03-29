@@ -10,7 +10,6 @@ dependencies:
   cache_directories:
     - ~/.cache/yarn
   pre:
-    - brew update
     - brew install homebrew/versions/node4-lts
     - brew install watchman
     - brew install android-sdk
