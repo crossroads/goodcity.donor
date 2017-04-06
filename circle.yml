@@ -25,6 +25,7 @@ dependencies:
   override:
     - yarn install
   post:
+    - cp $ANDROID_HOME/build-tools/23.0.1/zipalign $ANDROID_HOME/tools/
     - bower install
     - |
       if [ "${CIRCLE_BRANCH}" = 'live' ] ; then
