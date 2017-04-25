@@ -20,7 +20,6 @@ dependencies:
   override:
     - yarn install
   post:
-    - yarn link shared-goodcity
     - yarn add --force node-sass
     - yarn add bower ember-cli phantomjs-prebuilt cordova
     - bundle install
