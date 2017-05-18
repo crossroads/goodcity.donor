@@ -10,7 +10,7 @@ I18nTranslationsEn =
       "support_gc": "Support GoodCity!"
       "faq": "Frequently Asked Questions"
       "feedback": "Feedback & Support"
-      "rate": "Rate on iTunes"
+      "rate": "Rate this app"
 
     "application":
       "app_menu" : "App Menu"
@@ -213,7 +213,7 @@ I18nTranslationsEn =
 
           "messaging": "Reviewers can ask you questions via the app's messaging features. This means we can avoid asking you to fill in complicated forms. For most items, your photos and brief notes will be enough."
 
-          "supervisors": "Reviewers also have live access to expert supervisors. Our supervisors have typically been facilitating donated goods in Hong Kong for at least five years. They know how to evaluate unusual offers: like a commercial pizza oven, 100,000 new business suits, boxes of fake flowers and all manner of wierd and wonderful things."
+          "supervisors": "Reviewers also have live access to expert supervisors. Our supervisors have typically been facilitating donated goods in Hong Kong for at least five years. They know how to evaluate unusual offers: like a commercial pizza oven, 100,000 new business suits, boxes of fake flowers and all manner of weird and wonderful things."
 
         "answer3":
           "gogovan": "<b>Fast commercial van hire:</b> from within our app you can book a truck. This is the fastest method and you pay the driver directly."
