@@ -22,7 +22,6 @@
     "active-model-adapter": "2.1.1",
     "body-parser": "^1.13.3",
     "broccoli-asset-rev": "^2.4.2",
-    "broccoli-sass": "^0.6.6",
     "connect-restreamer": "^1.0.2",
     "cors": "^2.7.1",
     "ember-ajax": "^2.4.1",
