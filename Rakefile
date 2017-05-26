@@ -3,8 +3,8 @@
 #
 # Tasks overview
 #   rake app:build (default)
-#   rake app:deploy (upload to TestFairy; also upload to Azure storage for live builds)
-#   rake app:release (build and upload to TestFairy; also upload to Azure storage for live builds)
+#   rake app:deploy (upload to Azure storage for live builds)
+#   rake app:release (build and upload to Azure storage for live builds)
 #
 # Defaults:
 #   ENV=staging PLATFORM=<based on host machine: darwin -> ios, linux -> android>
@@ -56,10 +56,10 @@ task default: %w(app:build)
 namespace :app do
   desc "Builds the app"
   task build: %w(ember:install ember:build cordova:install cordova:prepare cordova:build)
-  desc "Uploads the app to TestFairy and Azure storage"
-  task deploy: %w(testfairy:upload azure:upload)
+  desc "Uploads the app to Azure storage"
+  task deploy: %w(azure:upload)
   desc "Equivalent to rake app:build app:deploy"
-  task release: %w(app:build testfairy:upload azure:upload)
+  task release: %w(app:build azure:upload)
 end
 
 ENVIRONMENTS.each do |env|
@@ -108,11 +108,13 @@ namespace :ember do
 end
 
 namespace :cordova do
+
   desc "Install cordova package globally"
   task :install do
     sh %{ npm list --depth 1 --global cordova; if [ $? -ne 0 ]; then npm install -g cordova@6.5.0; fi }
     sh %{ npm list --depth 1 --global cordova-update-config; if [ $? -ne 0 ]; then npm install -g cordova-update-config; fi }
   end
+
   desc "Cordova prepare {platform}"
   task :prepare do
     # Before cordova prepare build ember app that will auto update the dist folder too
@@ -136,6 +138,7 @@ namespace :cordova do
       end
     end
   end
+
   desc "Cordova build {platform}"
   task build: :prepare do
     Dir.chdir(CORDOVA_PATH) do
@@ -146,21 +149,6 @@ namespace :cordova do
     if ENV["CI"]
       sh %{ if [ -e "#{app_file}" ]; then cp "#{app_file}" "${CIRCLE_ARTIFACTS:-$BUILD_STAGINGDIRECTORY}/"; fi }
     end
-  end
-end
-
-namespace :testfairy do
-  task :upload do
-    return unless TESTFAIRY_PLATFORMS.include?(platform)
-    raise(BuildError, "#{app_file} does not exist!") unless File.exists?(app_file)
-    raise(BuildError, "TESTFAIRY_API_KEY not set.") unless env?("TESTFAIRY_API_KEY")
-    if ENV["CI"]
-      sh %{ source ~/.circlerc; #{testfairy_upload_script} "#{app_file}" }
-    else
-      sh %{ #{testfairy_upload_script} "#{app_file}" }
-    end
-    log("Uploaded app...")
-    build_details.map{|key, value| log("#{key.upcase}: #{value}")}
   end
 end
 
@@ -275,10 +263,6 @@ def app_version
     print "Enter GoodCity app version: "
     @ver = STDIN.gets.strip
   end
-end
-
-def testfairy_upload_script
-  "#{CORDOVA_PATH}/deploy/testfairy-#{platform}-upload.sh"
 end
 
 def is_staging
