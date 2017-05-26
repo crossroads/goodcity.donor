@@ -45,7 +45,7 @@ test:
 
 deployment:
   staging:
-    branch: GCW-1438-CI-Mobile-Provisioning-profile
+    branch: master
     commands:
       - bundle exec cap staging deploy
       - bundle exec rake staging android app:build
