@@ -19,31 +19,16 @@ platform :ios do
   lane :beta do
     raise_if_no_env_var(["APP_VERSION", "PILOT_USERNAME", "PILOT_IPA", "PILOT_TESTER_EMAIL", "ITUNESCONNECT_PASSWORD"])
     version_number = ENV["APP_VERSION"]
-    latest_testflight_build_number(version: version_number)
     sh %{ source ~/.circlerc; fastlane-credentials add --username $PILOT_USERNAME --password $ITUNESCONNECT_PASSWORD }
+    latest_testflight_build_number(version: version_number, username: ENV['PILOT_USERNAME'])
     pilot
     deliver(
+      username: ENV['PILOT_USERNAME'],
       skip_binary_upload: true,
       skip_screenshots: true,
       app_version: version_number,
       copyright: COPYRIGHT,
       force: true # to prevent fastlane from crashing waiting for user confirmation
-    )
-  end
-
-  desc "Upload to AppStore"
-  lane :upload do
-    version_number = ENV["APP_VERSION"]
-    latest_testflight_build_number( version: "#{version_number}" )
-
-    deliver(
-      username: ENV["ITUNESCONNECT_USER"],
-      ipa: ENV["IPA_FILE"],
-      skip_binary_upload: true,
-      skip_screenshots: true,
-      app_version: "#{version_number}",
-      copyright: "#{Time.now.year} Crossroads Foundation Limited",
-      force: true            # to prevent fastlane from crashing waiting for user confirmation
     )
   end
 
