@@ -5,5 +5,5 @@ import config from '../../config/environment';
 export default transportDetails.extend({
   crossroadsContact: Ember.computed(function(){
     return config.APP.CROSSROADS_CONTACT;
-  }),
+  })
 });

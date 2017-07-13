@@ -27,6 +27,6 @@ export default initFoundation.extend({
         return false;
       });
     });
-  },
+  }
 
 });

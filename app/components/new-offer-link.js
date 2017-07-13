@@ -59,6 +59,6 @@ export default Ember.Component.extend({
       } else {
         this.send("addNewOffer");
       }
-    },
-  },
+    }
+  }
 });

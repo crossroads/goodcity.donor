@@ -39,7 +39,7 @@ export default Ember.Component.extend({
               hideJoyrideOverlay();
               setSeenTour();
             }
-          },
+          }
         }).foundation('joyride', 'start');
 
         Ember.$(".joyride-close-tip").click(function(){
@@ -59,5 +59,5 @@ export default Ember.Component.extend({
         }
       });
     }
-  },
+  }
 });
