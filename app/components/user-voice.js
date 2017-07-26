@@ -30,7 +30,7 @@ export default Ember.Component.extend({
 
     UserVoice.push(['embed', '#widget', {
       mode: 'contact',
-      height: height,
+      height: height
     }]);
   }
 });

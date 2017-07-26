@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
       function(){
         console.log("error opened settings");
       });
-    },
+    }
 
   }
 });

@@ -109,6 +109,6 @@ export default ItemBaseController.extend({
 
     handleBrokenImage() {
       this.get("model.reviewedBy").set("hasImage", null);
-    },
+    }
   }
 });
