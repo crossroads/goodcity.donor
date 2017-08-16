@@ -57,5 +57,5 @@ deployment:
     branch: live
     commands:
       - bundle exec cap production deploy
-      - bundle exec rake production ios app:build
-      - fastlane ios beta
+      - bundle exec rake production android app:build
+      - fastlane android beta
