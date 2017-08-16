@@ -133,7 +133,7 @@ I18nTranslationsZhTw =
         "condition" : "物資狀況"
 
       "offer_details" :
-        "heading" : "捐獻細節"
+        "heading" : "捐獻     細節"
         "submitted_status": "我們正在審查您捐出的物品"
         "in_review_status": "您捐出的物品正由 {{firstName}}審查"
         "is_collection": "收集站"
@@ -154,7 +154,7 @@ I18nTranslationsZhTw =
         "ggv_booking_alert": "我們會盡快處理新的物品，請不要送出未被接受的物資。<br><br>如果你需要更改運輸安排以容納更多的物品，請按運送詳情。"
 
       "transport_details" :
-        "heading": "運送詳情"
+        "heading": "運送    詳情"
         "no_items": "此項捐獻 <br> 並沒有需要運送的物資"
         "arrange_transport": "安排運輸"
         "wait_for_transport": "審查完成後， <br> 隨即可以安排運送物資"
