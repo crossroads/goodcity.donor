@@ -60,4 +60,4 @@ deployment:
       - bundle exec rake production android app:build
       - bundle exec fastlane android beta
       - bundle exec rake production ios app:build
-      - bundle exec fastlane ios beta
+      - fastlane ios beta
