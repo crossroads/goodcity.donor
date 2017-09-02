@@ -17,7 +17,6 @@ dependencies:
     - brew update
     - brew install homebrew/versions/node4-lts
     - brew install watchman
-    - yarn add codeclimate-test-reporter
     - mkdir -p ${ANDROID_HOME}
     - if ! $(grep -q "Revision=23.0.1" $ANDROID_HOME/tools/source.properties); then (curl -o ~/android-sdk.zip https://dl.google.com/android/repository/tools_r23.0.1-macosx.zip && unzip -d ${ANDROID_HOME} ~/android-sdk.zip) && (( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk --no-ui --all --filter platform-tools,build-tools-23.0.1,android-23,extra-android-m2repository,extra-google-m2repository); fi
     - if ! (which yarn); then curl -o- -L https://yarnpkg.com/install.sh | bash; fi
@@ -26,6 +25,7 @@ dependencies:
   post:
     - yarn add --force node-sass
     - yarn add bower ember-cli@2.12.2 phantomjs-prebuilt cordova
+    - yarn add codeclimate-test-reporter
     - bundle install
     - gem update fastlane spaceship
     - bower install
@@ -50,9 +50,9 @@ deployment:
     commands:
       - bundle exec cap staging deploy
       - bundle exec rake staging android app:build
-      - fastlane android staging
+      - bundle exec fastlane android staging
       - bundle exec rake staging ios app:build
-      - fastlane ios staging
+      - bundle exec fastlane ios staging
   production:
     branch: live
     commands:
