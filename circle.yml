@@ -41,7 +41,6 @@ test:
     - sleep 5
   override:
     - COVERAGE=true ember test
-    - codeclimate-test-reporter < coverage/lcov.info
   post:
     - echo "Killing ember server to free memory for app build" && killall ember
 
