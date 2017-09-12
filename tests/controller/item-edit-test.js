@@ -24,14 +24,12 @@ moduleFor('controller:item.edit', 'item.edit controller', {
 });
 
 // test('check default properties', function(assert){
-//   var ctrl = this.subject();
 //   i18n: Ember.inject.service(),
 //   assert.equal(ctrl.get('itemDescriptionPlaceholder'), true);
 // });
 
 
 test('check get propertie', function(assert){
-  // var ctrl = this.subject();
   var item = FactoryGuy.make("item");
   ctrl.set('model', item);
   assert.equal(ctrl.get('model'), item);
