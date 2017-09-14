@@ -5,7 +5,6 @@ import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import Ember from 'ember';
 
-
 var App, ctrl;
 
 moduleFor('controller:item.edit', 'item.edit controller', {
