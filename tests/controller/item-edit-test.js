@@ -8,7 +8,6 @@ import Ember from 'ember';
 var App, ctrl;
 
 moduleFor('controller:item.edit', 'item.edit controller', {
-  // needs: ['service:i18n'],
   beforeEach: function() {
     ctrl = this.subject();
     App = startApp();
@@ -22,25 +21,8 @@ moduleFor('controller:item.edit', 'item.edit controller', {
   }
 });
 
-// test('check default properties', function(assert){
-//   i18n: Ember.inject.service(),
-//   assert.equal(ctrl.get('itemDescriptionPlaceholder'), true);
-// });
-
-
 test('check get propertie', function(assert){
   var item = FactoryGuy.make("item");
   ctrl.set('model', item);
   assert.equal(ctrl.get('model'), item);
 });
-
-// test('check submitItem action', function(assert){
-//   var offer = FactoryGuy.make("offer");
-//   var donorCondition = FactoryGuy.make("donor_condition");
-//   var item = FactoryGuy.make("item",{offer:offer, donorCondition: donorCondition, state: "draft"});
-//   Ember.run(function(){
-//     ctrl.set('model', item);
-//     ctrl.send("submitItem");
-//     assert.equal(ctrl.get('model.state'), "submit");
-//   });
-// });
