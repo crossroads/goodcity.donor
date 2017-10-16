@@ -26,8 +26,3 @@ moduleFor('controller:support', 'support controller', {
 test('check hasDonationDetail', function(assert){
   assert.equal(ctrl.get('hasDonationDetail'), false);
 });
-
-// test('check donationAmount', function(assert){
-//   // ctrl.set("session.currentUser.donationAmount", 10);
-//   assert.equal(ctrl.get('donationAmount'), 10);
-// });
