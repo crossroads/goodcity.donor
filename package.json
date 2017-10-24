@@ -43,7 +43,6 @@
     "ember-cli-release": "^0.2.9",
     "ember-cli-sass": "^6.1.1",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "~2.9.0",
     "ember-data-factory-guy": "2.7.0-beta.8",
@@ -67,6 +66,7 @@
     "azure-api": "git://github.com/crossroads/azure-api.git#master",
     "ember-resolver": "^2.0.3",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
+    "ember-cli-test-loader": "^1.1.0",
     "slick-carousel": "^1.5.8",
     "loader.js": "4.0.0"
   }
