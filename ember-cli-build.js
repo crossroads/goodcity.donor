@@ -10,7 +10,7 @@ module.exports = function(defaults) {
     },
     minifyJS: {
       options: {
-        exclude: ["**/app.js"]
+        exclude: ["**/goodcity.js"]
       }
     },
     fingerprint: {
