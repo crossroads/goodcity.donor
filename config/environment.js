@@ -6,6 +6,22 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     defaultLocationType: 'auto',
+
+    rollbar: {
+      accessToken: '9db40d21a058461081ac9b666f59cd8b',
+      payload: {
+        client: {
+          javascript: {
+            source_map_enabled: true, //this is now true by default
+            code_version: "0",
+            // Optionally have Rollbar guess which frames the error was thrown from
+            // when the browser does not provide line and column numbers.
+            guess_uncaught_frames: true
+          }
+        }
+      }
+    },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -71,12 +87,12 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     // RESTAdapter Settings
-    ENV.APP.API_HOST_URL = 'http://localhost:3000';
+    ENV.APP.API_HOST_URL = 'http://localhost:4000';
     ENV.APP.SOCKETIO_WEBSERVICE_URL = 'http://localhost:1337/goodcity';
 
     ENV.contentSecurityPolicy["connect-src"] = [
       'http://localhost:4200',
-      'http://localhost:3000',
+      'http://localhost:4000',
       'http://localhost:1337',
       'ws://localhost:1337',
       'wss://localhost:1337',
