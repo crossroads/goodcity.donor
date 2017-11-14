@@ -4,9 +4,17 @@ var webRelease = process.env.EMBER_CLI_CORDOVA === '0' && ['production', 'stagin
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    sourcemaps: ['js', 'css'],
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js']
+    },
+    minifyJS: {
+      options: {
+        exclude: ["**/goodcity.js"]
+      }
+    },
     fingerprint: {
-      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map'],
+      extensions: ['css', 'png', 'jpg', 'gif', 'map'],
       enabled: webRelease
     },
     gzip: {
