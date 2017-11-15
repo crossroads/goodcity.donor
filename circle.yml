@@ -44,7 +44,11 @@ test:
   post:
     - codeclimate-test-reporter < 'coverage/lcov.info'
     - ember build
-    - curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app-staging.goodcity.hk/assets/goodcity.js
+    - if [ "${CIRCLE_BRANCH}" == "live" ];
+        then curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app.goodcity.hk/assets/goodcity.js;
+      else
+        curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app-staging.goodcity.hk/assets/goodcity.js;
+      fi
     - echo "Killing ember server to free memory for app build" && killall ember
 
 deployment:
