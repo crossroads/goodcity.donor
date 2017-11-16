@@ -1,62 +1,63 @@
-import Ember from 'ember';
-import startApp from '../helpers/start-app';
-import testSkip from "../helpers/test-skip";
+// import Ember from 'ember';
+// import startApp from '../helpers/start-app';
+// import testSkip from "../helpers/test-skip";
+// import { module, test } from 'qunit';
 
-var App, t;
+// var App, t;
 
-module('Authorization', {
-  beforeEach: function() {
-    App = startApp();
-    var i18n = App.__container__.lookup('service:i18n');
-    t = i18n.t.bind(i18n);
-  },
-  afterEach: function() {
-    Ember.run(App, 'destroy');
-  }
-});
+// module('Authorization', {
+//   beforeEach: function() {
+//     App = startApp();
+//     var i18n = App.__container__.lookup('service:i18n');
+//     t = i18n.t.bind(i18n);
+//   },
+//   afterEach: function() {
+//     Ember.run(App, 'destroy');
+//   }
+// });
 
-testSkip("Rediect to login if not logged-in", function() {
-  expect(2);
+// testSkip("Rediect to login if not logged-in", function() {
+//   expect(2);
 
-  // todo: remove workaround for message box button actions not firing only under test environment
-  var okClick;
-  var messageBox = lookup("service:messageBox");
-  var oldCustom = messageBox.custom;
-  messageBox.custom = (message, btn1Text, btn1Callback, btn2Text, btn2Callback) => {
-    okClick = btn1Callback;
-    oldCustom.call(messageBox, message, btn1Text, btn1Callback, btn2Text, btn2Callback);
-  };
+//   // todo: remove workaround for message box button actions not firing only under test environment
+//   var okClick;
+//   var messageBox = lookup("service:messageBox");
+//   var oldCustom = messageBox.custom;
+//   messageBox.custom = (message, btn1Text, btn1Callback, btn2Text, btn2Callback) => {
+//     okClick = btn1Callback;
+//     oldCustom.call(messageBox, message, btn1Text, btn1Callback, btn2Text, btn2Callback);
+//   };
 
-  lookup('service:session').set('authToken', null);
+//   lookup('service:session').set('authToken', null);
 
-  visit("/offers");
+//   visit("/offers");
 
-  andThen(function() {
-    equal(Ember.$.trim(Ember.$("#messageBoxText").text()), t("must_login").toString());
-    okClick();
-  });
+//   andThen(function() {
+//     equal(Ember.$.trim(Ember.$("#messageBoxText").text()), t("must_login").toString());
+//     okClick();
+//   });
 
-  andThen(function() {
-    equal(currentURL(), '/login');
-  });
-});
+//   andThen(function() {
+//     equal(currentURL(), '/login');
+//   });
+// });
 
-test("On login page redirect to home-page if already logged-in", function() {
-  expect(1);
+// test("On login page redirect to home-page if already logged-in", function() {
+//   expect(1);
 
-  visit("/login");
+//   visit("/login");
 
-  andThen(function() {
-    equal(currentURL(), '/offers');
-  });
-});
+//   andThen(function() {
+//     equal(currentURL(), '/offers');
+//   });
+// });
 
-test("On register page redirect to home-page if already logged-in", function() {
-  expect(1);
+// test("On register page redirect to home-page if already logged-in", function() {
+//   expect(1);
 
-  visit("/register");
+//   visit("/register");
 
-  andThen(function() {
-    equal(currentURL(), '/offers');
-  });
-});
+//   andThen(function() {
+//     equal(currentURL(), '/offers');
+//   });
+// });
