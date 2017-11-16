@@ -1,20 +1,20 @@
-// import Ember from 'ember';
-// import startApp from '../helpers/start-app';
+import Ember from 'ember';
+import startApp from '../helpers/start-app';
 // import testSkip from "../helpers/test-skip";
-// import { module, test } from 'qunit';
+import { module, test } from 'qunit';
 
-// var App, t;
+var App, t;
 
-// module('Authorization', {
-//   beforeEach: function() {
-//     App = startApp();
-//     var i18n = App.__container__.lookup('service:i18n');
-//     t = i18n.t.bind(i18n);
-//   },
-//   afterEach: function() {
-//     Ember.run(App, 'destroy');
-//   }
-// });
+module('Authorization', {
+  beforeEach: function() {
+    App = startApp();
+    var i18n = App.__container__.lookup('service:i18n');
+    t = i18n.t.bind(i18n);
+  },
+  afterEach: function() {
+    Ember.run(App, 'destroy');
+  }
+});
 
 // testSkip("Rediect to login if not logged-in", function() {
 //   expect(2);
@@ -42,22 +42,22 @@
 //   });
 // });
 
-// test("On login page redirect to home-page if already logged-in", function() {
-//   expect(1);
+test("On login page redirect to home-page if already logged-in", function(assert) {
+  assert.expect(1);
 
-//   visit("/login");
+  visit("/login");
 
-//   andThen(function() {
-//     equal(currentURL(), '/offers');
-//   });
-// });
+  andThen(function() {
+    assert.equal(currentURL(), '/offers');
+  });
+});
 
-// test("On register page redirect to home-page if already logged-in", function() {
-//   expect(1);
+test("On register page redirect to home-page if already logged-in", function(assert) {
+  assert.expect(1);
 
-//   visit("/register");
+  visit("/register");
 
-//   andThen(function() {
-//     equal(currentURL(), '/offers');
-//   });
-// });
+  andThen(function() {
+    assert.equal(currentURL(), '/offers');
+  });
+});
