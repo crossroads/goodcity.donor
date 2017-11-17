@@ -1,15 +1,17 @@
 import { test, moduleForModel } from 'ember-qunit';
 import testSkip from '../../helpers/test-skip';
+import Ember from 'ember';
 
 moduleForModel('item', 'Item Model', {
+  unit: true,
   needs: ['model:item', 'model:image', 'model:package', 'model:message',
     'model:offer', 'model:donor_condition', 'model:rejection_reason',
     'model:package_type', 'model:user', 'model:delivery',
     'model:gogovan_transport', 'model:crossroads_transport']
 });
 
-test('Item is a valid ember-data Model', function () {
-  expect(1);
+test('Item is a valid ember-data Model', function (assert) {
+  assert.expect(1);
 
   var store  = this.store();
   var record = null;
@@ -19,11 +21,11 @@ test('Item is a valid ember-data Model', function () {
     record = store.peekRecord('item', 1);
   });
 
-  equal(record.get('donorDescription'), 'test-item');
+  assert.equal(record.get('donorDescription'), 'test-item');
 });
 
-testSkip('Default image for item', function () {
-  expect(1);
+testSkip('Default image for item', function (assert) {
+  assert.expect(1);
 
   var store = this.store();
   var defaultImageURL = null;
@@ -39,7 +41,7 @@ testSkip('Default image for item', function () {
     defaultImageURL = record.get('defaultImageURL');
   });
 
-  equal(defaultImageURL, "testimage2");
+  assert.equal(defaultImageURL, "testimage2");
 });
 
 testSkip('Default image for item when no favourite is selected', function () {
