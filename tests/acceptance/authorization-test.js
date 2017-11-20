@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-// import testSkip from "../helpers/test-skip";
+import testSkip from "../helpers/test-skip";
 import { module, test } from 'qunit';
 
 var App, t;
@@ -16,31 +16,31 @@ module('Authorization', {
   }
 });
 
-// testSkip("Rediect to login if not logged-in", function() {
-//   expect(2);
+testSkip("Rediect to login if not logged-in", function() {
+  expect(2);
 
-//   // todo: remove workaround for message box button actions not firing only under test environment
-//   var okClick;
-//   var messageBox = lookup("service:messageBox");
-//   var oldCustom = messageBox.custom;
-//   messageBox.custom = (message, btn1Text, btn1Callback, btn2Text, btn2Callback) => {
-//     okClick = btn1Callback;
-//     oldCustom.call(messageBox, message, btn1Text, btn1Callback, btn2Text, btn2Callback);
-//   };
+  // todo: remove workaround for message box button actions not firing only under test environment
+  var okClick;
+  var messageBox = lookup("service:messageBox");
+  var oldCustom = messageBox.custom;
+  messageBox.custom = (message, btn1Text, btn1Callback, btn2Text, btn2Callback) => {
+    okClick = btn1Callback;
+    oldCustom.call(messageBox, message, btn1Text, btn1Callback, btn2Text, btn2Callback);
+  };
 
-//   lookup('service:session').set('authToken', null);
+  lookup('service:session').set('authToken', null);
 
-//   visit("/offers");
+  visit("/offers");
 
-//   andThen(function() {
-//     equal(Ember.$.trim(Ember.$("#messageBoxText").text()), t("must_login").toString());
-//     okClick();
-//   });
+  andThen(function() {
+    equal(Ember.$.trim(Ember.$("#messageBoxText").text()), t("must_login").toString());
+    okClick();
+  });
 
-//   andThen(function() {
-//     equal(currentURL(), '/login');
-//   });
-// });
+  andThen(function() {
+    equal(currentURL(), '/login');
+  });
+});
 
 test("On login page redirect to home-page if already logged-in", function(assert) {
   assert.expect(1);
