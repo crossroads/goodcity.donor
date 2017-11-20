@@ -27,32 +27,32 @@ module('Edit Item', {
   }
 });
 
-// test("Create Item with details", function() {
-//   expect(4);
+test("Create Item with details", function(assert) {
+  assert.expect(2);
 
-//   var edit_item_url = "/offers/" + offer.id + "/items/" + item.id + "/edit";
-//   visit(edit_item_url);
+  var edit_item_url = "/offers/" + offer.id + "/items/" + item.id + "/edit";
+  visit(edit_item_url);
 
-//   andThen(function() {
-//     equal(currentURL(), edit_item_url);
-//   });
+  andThen(function() {
+    assert.equal(currentURL(), edit_item_url);
+  });
 
-//   fillIn("textarea[name=donorDescription]", "this is test item");
-//   click(":radio[value=1]");
+  fillIn("textarea[name=donorDescription]", "this is test item");
+  click(":radio[value=1]");
 
-//   andThen(function() {
-//     equal(find("textarea[name=donorDescription]").val(), "this is test item");
-//   });
+  andThen(function() {
+    assert.equal(find("textarea[name=donorDescription]").val(), "this is test item");
+  });
 
-//   TestHelper.handleUpdate("item", item.id);
-//   click("button:contains('Save Details')");
-//   Ember.run(function(){ item.set("state", "submitted"); });
+  // TestHelper.handleUpdate("item", item.id);
+  // click("button:contains('Save Details')");
+  // Ember.run(function(){ item.set("state", "submitted"); });
 
-//   andThen(function(){
-//     equal(currentURL(), "/offers/" + offer.id + "/offer_details");
-//     equal($('.item-content li:eq(0) .ellipsis').text(), "this is test item");
-//   });
-// });
+  // andThen(function(){
+  //   equal(currentURL(), "/offers/" + offer.id + "/offer_details");
+  //   equal($('.item-content li:eq(0) .ellipsis').text(), "this is test item");
+  // });
+});
 
 test("Discard Item with details", function() {
   var edit_item_url = "/offers/" + offer.id + "/items/" + item.id + "/edit";
