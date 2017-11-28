@@ -7,7 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     defaultLocationType: 'auto',
 
-    emberRollbarClient: {
+    'emberRollbarClient': {
       accessToken: '9db40d21a058461081ac9b666f59cd8b',
       payload: {
         client: {
@@ -21,7 +21,10 @@ module.exports = function(environment) {
           }
         }
       }
-    },
+      // By default Rollbar logging is enabled in every environment except test and development.
+      // Here is an example if you want to use it only in production
+      enabled: environment === 'production'
+    };
 
     EmberENV: {
       FEATURES: {
