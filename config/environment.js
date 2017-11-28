@@ -7,7 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     defaultLocationType: 'auto',
 
-    rollbar: {
+    emberRollbarClient: {
       accessToken: '9db40d21a058461081ac9b666f59cd8b',
       payload: {
         client: {
