@@ -21,9 +21,6 @@ module.exports = function(environment) {
           }
         }
       }
-      // By default Rollbar logging is enabled in every environment except test and development.
-      // Here is an example if you want to use it only in production
-      enabled: environment === 'production'
     };
 
     EmberENV: {
