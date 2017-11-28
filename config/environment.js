@@ -21,7 +21,7 @@ module.exports = function(environment) {
           }
         }
       }
-    };
+    },
 
     EmberENV: {
       FEATURES: {
