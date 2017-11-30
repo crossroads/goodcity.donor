@@ -8,6 +8,7 @@ module.exports = function(environment) {
     defaultLocationType: 'auto',
 
     'emberRollbarClient': {
+      enabled: environment !== 'test' && environment !== 'development',
       accessToken: '9db40d21a058461081ac9b666f59cd8b',
       payload: {
         client: {
