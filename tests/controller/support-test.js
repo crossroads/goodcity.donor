@@ -1,6 +1,5 @@
 import { test, moduleFor } from 'ember-qunit';
 import startApp from '../helpers/start-app';
-import syncDataStub from '../helpers/empty-sync-data-stub';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import Ember from 'ember';
 
@@ -12,7 +11,6 @@ moduleFor('controller:support', 'support controller', {
     ctrl = this.subject();
     App = startApp();
     TestHelper.setup();
-    syncDataStub(TestHelper);
   },
 
   afterEach: function() {

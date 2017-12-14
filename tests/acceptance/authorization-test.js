@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import testSkip from "../helpers/test-skip";
+import { module, test } from 'qunit';
 
 var App, t;
 
@@ -41,22 +42,22 @@ testSkip("Rediect to login if not logged-in", function() {
   });
 });
 
-test("On login page redirect to home-page if already logged-in", function() {
-  expect(1);
+test("On login page redirect to home-page if already logged-in", function(assert) {
+  assert.expect(1);
 
   visit("/login");
 
   andThen(function() {
-    equal(currentURL(), '/offers');
+    assert.equal(currentURL(), '/offers');
   });
 });
 
-test("On register page redirect to home-page if already logged-in", function() {
-  expect(1);
+test("On register page redirect to home-page if already logged-in", function(assert) {
+  assert.expect(1);
 
   visit("/register");
 
   andThen(function() {
-    equal(currentURL(), '/offers');
+    assert.equal(currentURL(), '/offers');
   });
 });

@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
@@ -10,7 +9,6 @@ module('Donor: Display Item Status', {
   beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    syncDataStub(TestHelper);
 
     offer1 = FactoryGuy.make("offer", {state:"submitted"});
     item1 = FactoryGuy.make("item", {offer: offer1, state:"submitted"});

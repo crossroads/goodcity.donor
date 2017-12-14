@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import syncDataStub from '../helpers/empty-sync-data-stub';
 import testSkip from "../helpers/test-skip";
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
@@ -13,7 +12,6 @@ module('Edit Images', {
   beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    syncDataStub(TestHelper);
 
     $.mockjax({url:"/api/v1/images/generate_signatur*",responseText:{
       "api_key":   "1111",

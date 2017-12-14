@@ -4,6 +4,7 @@ import FactoryGuy from 'ember-data-factory-guy';
 import '../factories/user';
 import '../factories/territory';
 import '../factories/district';
+import { module, test } from 'qunit';
 
 var App, hk_user;
 
@@ -18,8 +19,8 @@ module('Acceptance: Register', {
   }
 });
 
-test("All required registration details are filled", function() {
-  expect(5);
+test("All required registration details are filled", function(assert) {
+  assert.expect(5);
 
   visit('/register');
   fillIn('#mobile', hk_user.get("mobile"));
@@ -36,21 +37,21 @@ test("All required registration details are filled", function() {
   triggerEvent('#mobile', 'blur');
 
   andThen(function() {
-    equal(find('#mobile').val(), hk_user.get("mobile"));
-    equal(find('#first_name').val(), hk_user.get("firstName"));
-    equal(find('#last_name').val(), hk_user.get("lastName"));
-    equal(find('.district-selection :selected').text().trim(), "Tung Chung");
+    assert.equal(find('#mobile').val(), hk_user.get("mobile"));
+    assert.equal(find('#first_name').val(), hk_user.get("firstName"));
+    assert.equal(find('#last_name').val(), hk_user.get("lastName"));
+    assert.equal(find('.district-selection :selected').text().trim(), "Tung Chung");
   });
 
   click("#registerUser");
 
   andThen(function(){
-    equal(currentURL(), "/authenticate");
+    assert.equal(currentURL(), "/authenticate");
   });
 });
 
-test("cannot register unless mobile number details are entered", function() {
-  expect(1);
+test("cannot register unless mobile number details are entered", function(assert) {
+  assert.expect(1);
 
   visit('/register');
   andThen(function() {
@@ -60,13 +61,13 @@ test("cannot register unless mobile number details are entered", function() {
     click("#registerUser");
 
     andThen(function() {
-      equal(currentURL(), '/register');
+      assert.equal(currentURL(), '/register');
     });
   });
 });
 
-test("mobile number length should be 8 digit (excluding country code)", function() {
-  expect(1);
+test("mobile number length should be 8 digit (excluding country code)", function(assert) {
+  assert.expect(1);
 
   visit('/register');
   fillIn('#mobile', hk_user.get("mobile"));
@@ -75,6 +76,6 @@ test("mobile number length should be 8 digit (excluding country code)", function
   fillIn('#last_name', hk_user.get("lastName"));
 
   andThen(function() {
-    equal(find('#mobile').val().length, 8);
+    assert.equal(find('#mobile').val().length, 8);
   });
 });
