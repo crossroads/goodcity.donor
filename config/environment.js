@@ -7,7 +7,8 @@ module.exports = function(environment) {
     baseURL: '/',
     defaultLocationType: 'auto',
 
-    rollbar: {
+    'emberRollbarClient': {
+      enabled: environment !== 'test' && environment !== 'development',
       accessToken: '9db40d21a058461081ac9b666f59cd8b',
       payload: {
         client: {
@@ -17,7 +18,7 @@ module.exports = function(environment) {
             // Optionally have Rollbar guess which frames the error was thrown from
             // when the browser does not provide line and column numbers.
             environment: environment,
-            guess_uncaught_frames: true
+            guess_uncaught_frames: false
           }
         }
       }
@@ -57,10 +58,6 @@ module.exports = function(environment) {
       SHA: process.env.APP_SHA || "00000000",
       SHARED_SHA:  process.env.APP_SHARED_SHA || "00000000",
       VERSION: process.env.VERSION || "1.0.0",
-
-      AIRBRAKE_HOST: "https://errbit.crossroads.org.hk",
-      AIRBRAKE_PROJECT_ID: 0,
-      AIRBRAKE_PROJECT_KEY: "010f0d73f56efb6150cb2744e814e46b",
       ANDROID_APP_ID: "hk.goodcity.app",
       IOS_APP_ID: "1012253845"
     },
