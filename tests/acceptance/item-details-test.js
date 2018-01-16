@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
@@ -10,7 +9,6 @@ module('Display Item Details', {
   beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    syncDataStub(TestHelper);
 
     reviewer = FactoryGuy.make("user");
     offer1 = FactoryGuy.make("offer", {state:"under_review", reviewedBy: reviewer});

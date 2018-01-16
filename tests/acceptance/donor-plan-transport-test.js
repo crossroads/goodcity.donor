@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
@@ -13,7 +12,6 @@ module('Donor Plan Transport:', {
     App = startApp();
     TestHelper.setup();
     store = FactoryGuy.store;
-    syncDataStub(TestHelper);
 
     gogovan_transport = FactoryGuy.make('gogovan_transport', { name: 'Van' });
     crossroads_transport = FactoryGuy.make('crossroads_transport', { name: '3/8 Truck' });

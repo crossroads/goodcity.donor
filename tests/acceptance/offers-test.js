@@ -2,6 +2,7 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
+import { module, test } from 'qunit';
 
 var App, offer, offer1, offer2, item, item1, item2, item3, offer3, offer4, item3, item4, del,
   del1, del2, offer5, item5, del3, offer6, item6, ggvOrder, ggvOrder1, ggvOrder2, del4, offer7, item7;
@@ -53,16 +54,16 @@ module('Offer Index View', {
   }
 });
 
-test('Offers list & link to add items', function() {
+test('Offers list & link to add items', function(assert) {
   visit('/offers');
 
   andThen(function() {
-    equal(currentURL(), "/offers");
+    assert.equal(currentURL(), "/offers");
 
     var checkLink = function(offerId, expectedText) {
       var url = "/offers/" + offerId + "/offer_details";
       var foundText = Ember.$("a[href='" + url + "'] h3").text();
-      ok(foundText.indexOf(expectedText) > -1, "Found: " + foundText + " => Expected: " + expectedText);
+      assert.ok(foundText.indexOf(expectedText) > -1, "Found: " + foundText + " => Expected: " + expectedText);
     };
 
     checkLink(offer.id, "In review");
@@ -75,6 +76,6 @@ test('Offers list & link to add items', function() {
     checkLink(offer7.id, "Picked up");
 
     // test: link to complete offers
-    equal(find("a:contains('Make a New Donation')").length > 0, true);
+    assert.equal(find("a:contains('Make a New Donation')").length > 0, true);
   });
 });

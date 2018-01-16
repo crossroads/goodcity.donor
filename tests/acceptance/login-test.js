@@ -3,6 +3,7 @@ import startApp from '../helpers/start-app';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import '../factories/user_profile';
+import { module, test } from 'qunit';
 
 var App, hk_user, non_hk_user;
 
@@ -25,8 +26,8 @@ module('Acceptance: Login', {
   }
 });
 
-test("User able to enter mobile number and get the sms code", function() {
-  expect(1);
+test("User able to enter mobile number and get the sms code", function(assert) {
+  assert.expect(1);
 
   logoutUser('/login');
   fillIn('#mobile', hk_user.get("mobile"));
@@ -34,12 +35,12 @@ test("User able to enter mobile number and get the sms code", function() {
   click("#getsmscode");
 
   andThen(function() {
-    equal(currentURL(), "/authenticate");
+    assert.equal(currentURL(), "/authenticate");
   });
 });
 
-test("User is able to enter sms code and confirm and redirected to offers", function() {
-  expect(2);
+test("User is able to enter sms code and confirm and redirected to offers", function(assert) {
+  assert.expect(2);
 
   var authToken = window.localStorage.authToken;
   logoutUser('/authenticate');
@@ -48,29 +49,29 @@ test("User is able to enter sms code and confirm and redirected to offers", func
   triggerEvent('#pin', 'blur');
 
   andThen(function() {
-    equal(find('#pin').val().length, 4);
+    assert.equal(find('#pin').val().length, 4);
     window.localStorage.authToken = authToken;
   });
 
   click("#submit_pin");
 
   andThen(function(){
-    equal(currentURL(), "/offers");
+    assert.equal(currentURL(), "/offers");
   });
 });
 
-test("Logout clears authToken", function() {
-  expect(1);
+test("Logout clears authToken", function(assert) {
+  assert.expect(1);
 
   visit("/offers");
   click("a:contains('Logout')");
   andThen(function() {
-    equal(typeof window.localStorage.authToken, "undefined");
+    assert.equal(typeof window.localStorage.authToken, "undefined");
   });
 });
 
-test("User is able to resend the sms code", function() {
-  expect(1);
+test("User is able to resend the sms code", function(assert) {
+  assert.expect(1);
 
   $.mockjax({url:"/api/v1/auth/send_pi*",responseText:{
     "otp_auth_key" : "/JqONEgEjrZefDV3ZIQsNA=="
@@ -82,7 +83,7 @@ test("User is able to resend the sms code", function() {
   click("#resend-pin");
 
   andThen(function() {
-    equal(window.localStorage.otpAuthKey, '"/JqONEgEjrZefDV3ZIQsNA=="');
+    assert.equal(window.localStorage.otpAuthKey, '"/JqONEgEjrZefDV3ZIQsNA=="');
   });
 
 });

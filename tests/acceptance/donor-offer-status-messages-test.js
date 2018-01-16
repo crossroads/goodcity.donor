@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
@@ -12,7 +11,6 @@ module('Donor: Display Offer Status', {
   beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-    syncDataStub(TestHelper);
 
     reviewer = FactoryGuy.make("user");
     reviewer1 = FactoryGuy.make("user_with_image");

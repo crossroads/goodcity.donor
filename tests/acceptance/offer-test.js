@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
 import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
@@ -11,7 +10,6 @@ module('Display Offer', {
     App = startApp();
     TestHelper.setup();
     store = FactoryGuy.store;
-    syncDataStub(TestHelper);
 
     offer = FactoryGuy.make("offer");
     item1 = FactoryGuy.make("item", {offer:offer,state:"submitted"});
