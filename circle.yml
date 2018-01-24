@@ -53,9 +53,9 @@ deployment:
     commands:
       - bundle exec cap staging deploy
       - bundle exec rake staging android app:build
-      - fastlane android staging
+      - bundle exec fastlane android staging
       - bundle exec rake staging ios app:build
-      - fastlane ios staging
+      - bundle exec fastlane ios staging
       - curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app-staging.goodcity.hk/assets/goodcity.js;
       - curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app-staging.goodcity.hk/assets/vendor.js;
   production:
@@ -63,8 +63,8 @@ deployment:
     commands:
       - bundle exec cap production deploy
       - bundle exec rake production android app:build
-      - fastlane android beta
+      - bundle exec fastlane android beta
       - bundle exec rake production ios app:build
-      - fastlane ios beta
+      - bundle exec fastlane ios beta
       - curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app.goodcity.hk/assets/goodcity.js;
       - curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app.goodcity.hk/assets/vendor.js;
