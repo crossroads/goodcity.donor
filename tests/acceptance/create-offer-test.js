@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import { make } from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import { module, test } from 'qunit';
 // import { mockFindAll } from 'ember-data-factory-guy';
 
@@ -11,10 +10,8 @@ var App;
 module('Create New Offer', {
   beforeEach: function() {
     App = startApp({}, 2);
-    TestHelper.setup();
   },
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });

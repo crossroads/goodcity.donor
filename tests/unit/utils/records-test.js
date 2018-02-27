@@ -3,18 +3,13 @@ import { module, test } from "qunit";
 import startApp from "../../helpers/start-app";
 import testSkip from "../../helpers/test-skip";
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
 var store, App;
 
 module("Records Util", {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
     store = FactoryGuy.store;
-  },
-  afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
   }
 });
 

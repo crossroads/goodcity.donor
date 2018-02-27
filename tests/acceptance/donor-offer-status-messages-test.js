@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
 var App, offer1, offer2, reviewer, reviewer1, reviewerName,
   offer7, offer3, offer4, delivery1, delivery2, offer5, delivery3, offer6,
@@ -10,7 +9,6 @@ var App, offer1, offer2, reviewer, reviewer1, reviewerName,
 module('Donor: Display Offer Status', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
 
     reviewer = FactoryGuy.make("user");
     reviewer1 = FactoryGuy.make("user_with_image");
@@ -39,7 +37,6 @@ module('Donor: Display Offer Status', {
   },
 
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });

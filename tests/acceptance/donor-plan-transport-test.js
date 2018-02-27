@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
 var App, store, offer, gogovan_transport, crossroads_transport,
   gogovan_transport1, crossroads_transport1, offer1,
@@ -10,7 +9,6 @@ var App, store, offer, gogovan_transport, crossroads_transport,
 module('Donor Plan Transport:', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
     store = FactoryGuy.store;
 
     gogovan_transport = FactoryGuy.make('gogovan_transport', { name: 'Van' });
@@ -27,7 +25,6 @@ module('Donor Plan Transport:', {
   },
 
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });
