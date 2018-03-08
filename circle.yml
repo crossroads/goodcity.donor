@@ -15,7 +15,7 @@ dependencies:
     - ~/android-sdk
   pre:
     - brew update
-    - brew install homebrew/versions/node4-lts
+    - brew install homebrew/core/node4-lts
     - echo 'export PATH="/usr/local/opt/node@4/bin:$PATH"' >> ~/.circlerc
     - brew install watchman
     - mkdir -p ${ANDROID_HOME}
