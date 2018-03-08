@@ -8,9 +8,9 @@
   <hook src="scripts/update_build_number.py" type="before_prepare" />
   <platform name="android">
     <hook type="after_prepare" src="scripts/copyAndroidAssets.js"/>
-    <preference name="LoadUrlTimeoutValue" value="120000"/>
+    <preference name="LoadUrlTimeoutValue" value="700000"/>
     <preference name="SplashScreen" value="screen"/>
-    <preference name="SplashScreenDelay" value="5000"/>
+    <preference name="SplashScreenDelay" value="10000"/>
     <preference name="Orientation" value="portrait"/>
     <icon src="res/android/drawable-ldpi/icon.png" density="ldpi"/>
     <icon src="res/android/drawable-mdpi/icon.png" density="mdpi"/>
