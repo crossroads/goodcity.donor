@@ -59,6 +59,9 @@
     </feature>
     <preference name="Orientation" value="portrait"/>
     <preference name="Fullscreen" value="true"/>
+    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+      <string>Need camera access to take pictures</string>
+    </edit-config>
   </platform>
   <access origin="*"/>
   <allow-intent href="https://maps.google.com/*"/>
@@ -86,6 +89,3 @@
   <plugin name="com.phonegap.plugins.nativesettingsopener" spec="https://github.com/selahssea/Cordova-open-native-settings.git" />
   <plugin name="cordova-launch-review" spec="1.0.3" />
 </widget>
-<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
-  <string>Need camera access to take pictures</string>
-</edit-config>
