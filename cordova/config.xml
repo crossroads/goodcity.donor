@@ -8,7 +8,7 @@
   <hook src="scripts/update_build_number.py" type="before_prepare" />
   <platform name="android">
     <hook type="after_prepare" src="scripts/copyAndroidAssets.js"/>
-    <preference name="LoadUrlTimeoutValue" value="120000"/>
+    <preference name="LoadUrlTimeoutValue" value="200000"/>
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="5000"/>
     <preference name="Orientation" value="portrait"/>
@@ -60,7 +60,7 @@
     <preference name="Orientation" value="portrait"/>
     <preference name="Fullscreen" value="true"/>
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">
-      <string>Need camera access to take pictures</string>
+      <string>So you can photograph items for donation.</string>
     </edit-config>
   </platform>
   <access origin="*"/>
@@ -80,9 +80,6 @@
   <plugin name="cordova-plugin-device" spec="~1.1.1"/>
   <plugin name="cordova-plugin-whitelist" spec="~1.2.1"/>
   <plugin name="cordova-plugin-inappbrowser" spec="~1.2.1"/>
-  <plugin name="cordova-plugin-network-information" spec="~1.2.0">
-    <variable name="CAMERA_USAGE_DESCRIPTION" value="So you can photograph items for donation." />
-  </plugin>
   <plugin name="cordova-plugin-actionsheet" spec="https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git"/>
   <plugin name="cordova-plugin-camera" spec="~2.1.0"/>
   <plugin name="cordova-plugin-splashscreen" spec="~3.1.0"/>
