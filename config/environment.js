@@ -96,7 +96,8 @@ module.exports = function(environment) {
       'http://localhost:1337',
       'ws://localhost:1337',
       'wss://localhost:1337',
-      'https://api.cloudinary.com'
+      'https://api.cloudinary.com',
+      'https://codepush.azurewebsites.net'
     ].join(' ');
     //Only added for development env. to fix issue related to BLOB: object
     ENV.contentSecurityPolicy["img-src"] = [
@@ -135,7 +136,8 @@ module.exports = function(environment) {
       'ws://socket.goodcity.hk:81',
       'wss://socket.goodcity.hk:81',
       'https://api.cloudinary.com',
-      'https://errbit.crossroads.org.hk'
+      'https://errbit.crossroads.org.hk',
+      'https://codepush.azurewebsites.net'
     ].join(' ');
 
     ENV.googleAnalytics = { webPropertyId: 'UA-62978462-1' };
@@ -153,7 +155,8 @@ module.exports = function(environment) {
       'ws://socket-staging.goodcity.hk:81',
       'wss://socket-staging.goodcity.hk:81',
       'https://api.cloudinary.com',
-      'https://errbit.crossroads.org.hk'
+      'https://errbit.crossroads.org.hk',
+      'https://codepush.azurewebsites.net'
     ].join(' ');
 
     ENV.googleAnalytics = { webPropertyId: 'UA-62978462-4' };

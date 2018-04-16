@@ -16,6 +16,7 @@
           StatusBar.overlaysWebView(false);
           StatusBar.backgroundColorByName("black");
           StatusBar.styleLightContent();
+          codePush.sync();
       }
     </script>
 
@@ -27,6 +28,8 @@
     <!-- "Add to homescreen" icon for ios devices -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
     <link rel="apple-touch-icon" href="assets/images/goodcity-icon-57.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="assets/images/goodcity-icon-72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="assets/images/goodcity-icon-114.png" />
