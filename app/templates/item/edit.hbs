@@ -21,7 +21,7 @@
       </div>
 
       <div class="small-6 columns">
-        {{#online-button classNames="add_item_link button expand" disabled=(is-equal model.offer.state 'received')}}{{t "items.add_item.save"}}{{/online-button}}
+        {{#online-button classNames="add_item_link button expand" offer=model.offer}}{{t "items.add_item.save"}}{{/online-button}}
       </div>
     </div>
   </div>
