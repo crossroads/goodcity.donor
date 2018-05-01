@@ -3,13 +3,14 @@ const { getOwner } = Ember;
 
 export default Ember.Controller.extend({
 
+  offer: Ember.computed.alias('model.offer'),
   i18n: Ember.inject.service(),
   itemDescriptionPlaceholder: Ember.computed(function(){
     return this.get("i18n").t("items.add_item.description_placeholder").string;
   }),
 
-  isOfferReviewed: Ember.computed("model", "model.offer.state", function() {
-    return this.get("model.offer.state") === "received";
+  isOfferReviewed: Ember.computed("model", "model.state", "offer", "offer.state", function() {
+    return this.get("offer.state") === "received";
   }),
 
   formData: Ember.computed("model", {
