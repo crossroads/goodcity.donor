@@ -8,6 +8,10 @@ export default Ember.Controller.extend({
     return this.get("i18n").t("items.add_item.description_placeholder").string;
   }),
 
+  isOfferReviewed: Ember.computed("model", "model.offer.state", function() {
+    return this.get("model.offer.state") === "received";
+  }),
+
   formData: Ember.computed("model", {
     get: function() {
       var item = this.get('model');
