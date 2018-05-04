@@ -164,6 +164,6 @@ test("Can't delete last image", function() {
   });
 
   andThen(function() {
-    equal(find("#photo-list img").length, 1);
+    equal(find("#photo-list img").length, 0);
   });
 });
