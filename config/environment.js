@@ -56,7 +56,7 @@ module.exports = function(environment) {
       CONTACT_EMAIL: 'info@goodcity.hk',
 
       PRELOAD_TYPES: ["territory"],
-      PRELOAD_AUTHORIZED_TYPES: ["donor_condition","permission", "timeslot", "gogovan_transport", "crossroads_transport", "version"],
+      PRELOAD_AUTHORIZED_TYPES: ["donor_condition","permission", "timeslot", "gogovan_transport", "crossroads_transport"],
       SHA: process.env.APP_SHA || "00000000",
       SHARED_SHA:  process.env.APP_SHARED_SHA || "00000000",
       VERSION: process.env.VERSION || "1.0.0",
