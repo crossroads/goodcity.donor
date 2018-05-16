@@ -10,6 +10,7 @@ export default AuthorizeRoute.extend({
   },
 
   afterModel(my_offer) {
+    this.store.findAll("version");
     if(!my_offer) {
       this.transitionTo('offers');
     } else if(my_offer && my_offer.get('itemCount') === 0) {
