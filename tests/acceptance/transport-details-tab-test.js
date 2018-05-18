@@ -2,7 +2,6 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 //import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
 var App, offer1, item1, offer2, item2, offer3, item3, offer4,
   item4, delivery1, ggv_order1, offer5, item5, item7, delivery2, ggv_order2,
@@ -11,7 +10,6 @@ var App, offer1, item1, offer2, item2, offer3, item3, offer4,
 module('Display Transport Details', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
     //syncDataStub(TestHelper);
     lookup('service:session').set('isAdmin', false);
 
@@ -43,7 +41,6 @@ module('Display Transport Details', {
   },
 
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });

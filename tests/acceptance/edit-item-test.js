@@ -2,14 +2,12 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 //import syncDataStub from '../helpers/empty-sync-data-stub';
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 
 var App, offer, offer1, item, item1;
 
 module('Edit Item', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup(App);
     //syncDataStub(TestHelper);
 
     offer = FactoryGuy.make("offer", { state: "draft" });
@@ -22,7 +20,6 @@ module('Edit Item', {
   },
 
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });
@@ -54,22 +51,22 @@ test("Create Item with details", function(assert) {
   // });
 });
 
-test("Discard Item with details", function() {
+test("Discard Item with details", function(assert) {
   var edit_item_url = "/offers/" + offer.id + "/items/" + item.id + "/edit";
   visit(edit_item_url);
 
   andThen(function() {
-    equal(currentURL(), edit_item_url);
+    assert.equal(currentURL(), edit_item_url);
+
+    fillIn("textarea[name=donorDescription]", "this will be discarded");
+
+    // TestHelper.handleDelete("item", item.id);
+    click($('.back'));
   });
 
-  fillIn("textarea[name=donorDescription]", "this will be discarded");
-
-  TestHelper.handleDelete("item", item.id);
-  click(".button:contains('Cancel')");
-
   andThen(function(){
-    equal(currentURL(), "/offers/"+ offer.id);
-    equal($('.item-content li').length, 0);
+    assert.equal(currentURL(), "/offers/"+ offer.id);
+    assert.equal($('.item-content li').length, 0);
   });
 });
 

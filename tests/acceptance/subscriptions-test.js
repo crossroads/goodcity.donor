@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import testSkip from '../helpers/test-skip';
 
 var App;
@@ -9,10 +8,8 @@ var App;
 module('Subscriptions', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
   },
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });

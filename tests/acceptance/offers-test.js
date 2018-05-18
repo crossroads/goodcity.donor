@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import { module, test } from 'qunit';
 
 var App, offer, offer1, offer2, item, item1, item2, item3, offer3, offer4, item3, item4, del,
@@ -11,7 +10,6 @@ module('Offer Index View', {
   beforeEach: function() {
     // offers must be created by the logged in user in order to be shown in the index
     App = startApp();
-    TestHelper.setup();
     var currentUserId = JSON.parse(window.localStorage.currentUserId);
     var user = FactoryGuy.make("user", {id:currentUserId});
 
@@ -49,7 +47,6 @@ module('Offer Index View', {
 
   },
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });

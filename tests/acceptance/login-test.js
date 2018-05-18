@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import '../factories/user_profile';
 import { module, test } from 'qunit';
 
@@ -10,7 +9,6 @@ var App, hk_user, non_hk_user;
 module('Acceptance: Login', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
 
     hk_user = FactoryGuy.make('with_hk_mobile');
     non_hk_user = FactoryGuy.make('with_non_hk_mobile');
@@ -21,7 +19,6 @@ module('Acceptance: Login', {
     };
   },
   afterEach: function() {
-    Ember.run(function () { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });

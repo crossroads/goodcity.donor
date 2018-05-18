@@ -2,7 +2,6 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import testSkip from "../helpers/test-skip";
 import FactoryGuy from 'ember-data-factory-guy';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import '../factories/item';
 import '../factories/image';
 
@@ -11,7 +10,6 @@ var App, offer, item, img1, img2, edit_images_url;
 module('Edit Images', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
 
     $.mockjax({url:"/api/v1/images/generate_signatur*",responseText:{
       "api_key":   "1111",
@@ -28,7 +26,6 @@ module('Edit Images', {
   },
 
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });
@@ -82,7 +79,7 @@ testSkip("Clicking on thumbnail image should change preview-image", function() {
 testSkip("Change favourite image", function() {
   expect(3);
 
-  TestHelper.handleUpdate("image", img2.id);
+  // TestHelper.handleUpdate("image", img2.id);
   visit(edit_images_url);
 
   andThen(function() {
@@ -124,8 +121,8 @@ testSkip("Set another image as favourite if favourite image deleted", function()
     btn2Callback();
   };
 
-  TestHelper.handleDelete('image', img1.id);
-  TestHelper.handleUpdate("image", img2.id);
+  // TestHelper.handleDelete('image', img1.id);
+  // TestHelper.handleUpdate("image", img2.id);
 
   visit(edit_images_url);
 

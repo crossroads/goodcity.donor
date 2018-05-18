@@ -1,6 +1,5 @@
 import { test, moduleFor } from 'ember-qunit';
 import startApp from '../helpers/start-app';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
 import Ember from 'ember';
 
 var App;
@@ -8,11 +7,9 @@ var App;
 moduleFor('controller:offers.index', 'offers.index controller', {
   beforeEach: function() {
     App = startApp();
-    TestHelper.setup();
   },
 
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });
