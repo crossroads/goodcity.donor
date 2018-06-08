@@ -97,7 +97,7 @@ export default ItemBaseController.extend({
       } else if(alreadyConfirmed) {
         this.send("deleteOffer", offer);
       } else{
-        this.get("messageBox").confirm(this.get("i18n").t("delete_confirm"), () => {
+        this.get("messageBox").custom(this.get("i18n").t("delete_confirm"), this.get("i18n").t("not_now"), null, this.get("i18n").t("offer.index.cancel"),() => {
           this.send("deleteOffer", offer);
         });
       }
