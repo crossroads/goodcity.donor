@@ -11,7 +11,7 @@ platform :ios do
 
   desc "Generate staging build (just upload to TestFairy)"
   lane :staging do
-    enable_automatic_code_signing(path: "app.goodcity.hk/cordova/platforms/ios/S. GoodCity.xcodeproj")
+    enable_automatic_code_signing(path: "/Users/distiller/app.goodcity/cordova/platforms/ios/S. GoodCity.xcodeproj")
     raise_if_no_env_var(["FL_TESTFAIRY_API_KEY"])
     testfairy
   end
