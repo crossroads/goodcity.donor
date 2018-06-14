@@ -51,7 +51,6 @@ deployment:
   staging:
     branch: master
     commands:
-      - bundle exec fastlane gym
       - bundle exec cap staging deploy
       - bundle exec rake staging android app:build
       - bundle exec fastlane android staging
