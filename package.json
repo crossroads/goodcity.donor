@@ -61,7 +61,7 @@
     "xml2js": "^0.4.12"
   },
   "engines": {
-    "node": ">= 4.3"
+    "node": ">= 6"
   },
   "dependencies": {
     "azure-api": "git://github.com/crossroads/azure-api.git#master",
