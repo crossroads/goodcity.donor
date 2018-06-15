@@ -41,7 +41,7 @@ export default MessagesBaseController.extend({
       var offer = item.get('offer');
 
       if (offer.get("state") !== "draft" && offer.get("items.length") <= 1) {
-        this.get("messageBox").confirm(this.get("i18n").t("item.cancel_last_item_confirm"), () => {
+        this.get("messageBox").custom(this.get("i18n").t("item.cancel_last_item_confirm"), this.get("i18n").t("not_now"), null, this.get("i18n").t("item.cancel"),() => {
           this.get("offerDetailsController").send("cancelOffer", offer, true);
         });
         return;
