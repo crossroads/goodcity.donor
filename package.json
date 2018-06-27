@@ -19,12 +19,12 @@
     "test": "EMBER_CLI_CORDOVA=0 ember test --server"
   },
   "devDependencies": {
-    "active-model-adapter": "2.1.1",
-    "body-parser": "^1.18.2",
-    "broccoli-asset-rev": "^2.6.0",
+    "active-model-adapter": "2.2.0",
+    "body-parser": "^1.18.3",
+    "broccoli-asset-rev": "^2.7.0",
     "connect-restreamer": "^1.0.3",
-    "cors": "^2.7.1",
-    "ember-ajax": "^2.5.1",
+    "cors": "^2.8.4",
+    "ember-ajax": "^3.1.0",
     "ember-cli": "2.11.0",
     "ember-cli-app-version": "^3.1.0",
     "ember-cli-babel": "5.2.4",

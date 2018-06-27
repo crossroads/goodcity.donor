@@ -6,11 +6,12 @@ import { module, test } from 'qunit';
 // import { mockFindAll } from 'ember-data-factory-guy';
 
 
-var App;
+var App, container;
 
 module('Create New Offer', {
   beforeEach: function() {
     App = startApp({}, 2);
+    container = App.__container__;
     TestHelper.setup();
   },
   afterEach: function() {
@@ -46,7 +47,7 @@ test("should redirect to previous empty offer", function(assert) {
   make("offer_with_items", {id:1, createdBy:user}); // check offer with items is not returned
   make("offer",{"id":5, createdBy:user});
 
-  lookup("service:messageBox").custom = (message, btn1Text, btn1Callback) => {
+  container.lookup("service:messageBox").custom = (message, btn1Text, btn1Callback) => {
     btn1Callback();
   };
 

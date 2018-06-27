@@ -37,8 +37,8 @@ module.exports = function(environment) {
       "img-src": "'self' data: https://res.cloudinary.com filesystem: *",
       "style-src": "'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com",
       "font-src": "'self' data: https://maxcdn.bootstrapcdn.com",
-      "script-src": "'self' 'unsafe-eval' https://widget.uservoice.com https://by2.uservoice.com https://api.sandbox.braintreegateway.com https://client-analytics.sandbox.braintreegateway.com",
-      "frame-src": "'self' 'unsafe-eval' https://widget.uservoice.com https://assets.braintreegateway.com https://checkout.paypal.com"
+      "script-src": "'self' 'unsafe-inline' 'unsafe-eval' https://widget.uservoice.com https://by2.uservoice.com https://api.sandbox.braintreegateway.com https://client-analytics.sandbox.braintreegateway.com",
+      "frame-src": "'self' 'unsafe-inline' 'unsafe-eval' https://widget.uservoice.com https://assets.braintreegateway.com https://checkout.paypal.com"
     },
     APP: {
       // Cloudinary Keys

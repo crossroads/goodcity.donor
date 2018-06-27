@@ -15,7 +15,7 @@ module('Acceptance: Login', {
     hk_user = FactoryGuy.make('with_hk_mobile');
     non_hk_user = FactoryGuy.make('with_non_hk_mobile');
 
-    lookup("controller:subscriptions").pusher = {
+    App.__container__.lookup("controller:subscriptions").pusher = {
       get: function() { return {}; },
       wire: function() {}
     };
@@ -29,10 +29,19 @@ module('Acceptance: Login', {
 test("User able to enter mobile number and get the sms code", function(assert) {
   assert.expect(1);
 
-  logoutUser('/login');
-  fillIn('#mobile', hk_user.get("mobile"));
-  triggerEvent('#mobile', 'blur');
-  click("#getsmscode");
+  visit("/login");
+  andThen(function() {
+    var ele_logout = $("a:contains('Logout')");
+    if(ele_logout.length > 0){
+      click(ele_logout[0]);
+    }
+  });
+
+  andThen(function() {
+    fillIn('#mobile', hk_user.get("mobile"));
+    triggerEvent('#mobile', 'blur');
+    click("#getsmscode");
+  });
 
   andThen(function() {
     assert.equal(currentURL(), "/authenticate");
@@ -43,17 +52,25 @@ test("User is able to enter sms code and confirm and redirected to offers", func
   assert.expect(2);
 
   var authToken = window.localStorage.authToken;
-  logoutUser('/authenticate');
-  visit('/authenticate');
-  fillIn('#pin', "1234");
-  triggerEvent('#pin', 'blur');
+  visit("/authenticate");
+  andThen(function() {
+    var ele_logout = $("a:contains('Logout')");
+    if(ele_logout.length > 0){
+      click(ele_logout[0]);
+    }
+  });
+
+  andThen(function() {
+    visit('/authenticate');
+    fillIn('#pin', "1234");
+    triggerEvent('#pin', 'blur');
+  });
 
   andThen(function() {
     assert.equal(find('#pin').val().length, 4);
     window.localStorage.authToken = authToken;
+    click("#submit_pin");
   });
-
-  click("#submit_pin");
 
   andThen(function(){
     assert.equal(currentURL(), "/offers");
@@ -77,10 +94,18 @@ test("User is able to resend the sms code", function(assert) {
     "otp_auth_key" : "/JqONEgEjrZefDV3ZIQsNA=="
   }});
 
-  logoutUser('/authenticate');
-  visit('/authenticate');
+  visit("/authenticate");
+  andThen(function() {
+    var ele_logout = $("a:contains('Logout')");
+    if(ele_logout.length > 0){
+      click(ele_logout[0]);
+    }
+  });
 
-  click("#resend-pin");
+  andThen(function() {
+    visit('/authenticate');
+    click("#resend-pin");
+  });
 
   andThen(function() {
     assert.equal(window.localStorage.otpAuthKey, '"/JqONEgEjrZefDV3ZIQsNA=="');

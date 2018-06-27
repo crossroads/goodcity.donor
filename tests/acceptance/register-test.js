@@ -11,7 +11,7 @@ var App, hk_user;
 module('Acceptance: Register', {
   beforeEach: function() {
     App = startApp();
-    lookup('service:session').set('authToken', null);
+    App.__container__.lookup('service:session').set('authToken', null);
     hk_user = FactoryGuy.make('with_hk_mobile');
   },
   afterEach: function() {
