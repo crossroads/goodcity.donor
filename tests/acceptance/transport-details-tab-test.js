@@ -13,7 +13,7 @@ module('Display Transport Details', {
     App = startApp();
     TestHelper.setup();
     //syncDataStub(TestHelper);
-    lookup('service:session').set('isAdmin', false);
+    App.__container__.lookup('service:session').set('isAdmin', false);
 
     offer1 = FactoryGuy.make("offer", {state:"submitted"});
     item1  = FactoryGuy.make("item", {state:"submitted", offer: offer1});
