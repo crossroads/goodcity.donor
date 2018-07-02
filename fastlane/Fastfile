@@ -27,6 +27,7 @@ platform :ios do
       skip_binary_upload: true,
       skip_screenshots: true,
       automatic_code_signing: true,
+      team_id: '6B8FS8W94M',
       app_version: version_number,
       copyright: COPYRIGHT,
       force: true # to prevent fastlane from crashing waiting for user confirmation
