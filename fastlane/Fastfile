@@ -26,6 +26,7 @@ platform :ios do
       username: ENV['PILOT_USERNAME'],
       skip_binary_upload: true,
       skip_screenshots: true,
+      automatic_code_signing: true,
       app_version: version_number,
       copyright: COPYRIGHT,
       force: true # to prevent fastlane from crashing waiting for user confirmation
