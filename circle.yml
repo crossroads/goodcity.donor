@@ -1,4 +1,6 @@
 machine:
+  xcode:
+    version: "9.0"
   environment:
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx1024m -XX:+HeapDumpOnOutOfMemoryError"'
     XCODE_SCHEME: app.goodcity
@@ -47,15 +49,10 @@ test:
 
 deployment:
   staging:
-    branch: master
+    branch: xcode-upgrade
     commands:
-      - bundle exec cap staging deploy
-      - bundle exec rake staging android app:build
-      - bundle exec fastlane android staging
       - bundle exec rake staging ios app:build
       - bundle exec fastlane ios staging
-      - curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app-staging.goodcity.hk/assets/goodcity.js;
-      - curl https://api.rollbar.com/api/1/sourcemap/download -F access_token=$ROLLBAR_KEY -F version=$APP_VERSION -F minified_url=https://app-staging.goodcity.hk/assets/vendor.js;
   production:
     branch: live
     commands:
