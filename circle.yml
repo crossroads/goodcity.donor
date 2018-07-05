@@ -1,4 +1,6 @@
 machine:
+  xcode:
+    version: "9.2"
   environment:
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx1024m -XX:+HeapDumpOnOutOfMemoryError"'
     XCODE_SCHEME: app.goodcity
@@ -24,7 +26,7 @@ dependencies:
     - yarn install
   post:
     - yarn add --force node-sass
-    - yarn add bower ember-cli@2.12.2 phantomjs-prebuilt cordova
+    - yarn add bower phantomjs-prebuilt
     - yarn add codeclimate-test-reporter
     - bundle install
     - bower install
