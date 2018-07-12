@@ -62,6 +62,12 @@
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">
       <string>So you can photograph items for donation.</string>
     </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+      <string>Needs photo library access to get photos from there</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
+      <string>Needs photo library access to save photos</string>
+    </edit-config>
   </platform>
   <access origin="*"/>
   <allow-intent href="https://maps.google.com/*"/>
