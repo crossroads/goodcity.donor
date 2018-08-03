@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="hk.goodcity.appstaging" version="0.0.0" android-versionCode="0" ios-CFBundleVersion="0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="1" id="hk.goodcity.appstaging" ios-CFBundleVersion="0" version="0.15.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>S. GoodCity</name>
   <description>The GoodCity initiative is a new way to donate quality goods in Hong Kong. See www.goodcity.hk for more details.</description>
   <author href="https://www.crossroads.org.hk">Crossroads</author>
@@ -29,44 +29,51 @@
     <hook type="after_platform_add" src="hooks/windows/include.bat"/>
   </platform>
   <platform name="ios">
-    <icon src="res/ios/icon-60@3x.png" width="180" height="180"/>
-    <icon src="res/ios/icon-60.png" width="60" height="60"/>
-    <icon src="res/ios/icon-60@2x.png" width="120" height="120"/>
-    <icon src="res/ios/icon-76.png" width="76" height="76"/>
-    <icon src="res/ios/icon-76@2x.png" width="152" height="152"/>
-    <icon src="res/ios/icon-small-40.png" width="40" height="40"/>
-    <icon src="res/ios/icon-small-40@2x.png" width="80" height="80"/>
-    <icon src="res/ios/icon.png" width="57" height="57"/>
-    <icon src="res/ios/icon@2x.png" width="114" height="114"/>
-    <icon src="res/ios/icon-72.png" width="72" height="72"/>
-    <icon src="res/ios/icon-72@2x.png" width="144" height="144"/>
-    <icon src="res/ios/icon-small.png" width="29" height="29"/>
-    <icon src="res/ios/icon-small@2x.png" width="58" height="58"/>
-    <icon src="res/ios/icon-small-50.png" width="50" height="50"/>
-    <icon src="res/ios/icon-small-50@2x.png" width="100" height="100"/>
-    <splash src="res/ios/Default~iphone.png" width="320" height="480"/>
-    <splash src="res/ios/Default@2x~iphone.png" width="640" height="960"/>
-    <splash src="res/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
-    <splash src="res/ios/Default-667h.png" width="750" height="1334"/>
-    <splash src="res/ios/Default-736h.png" width="1242" height="2208"/>
-    <splash src="res/ios/Default-1024h.png" width="768" height="1024"/>
-    <splash src="res/ios/Default-2048h.png" width="1536" height="2048"/>
-    <splash src="res/ios/Default-768h.png" width="1024" height="768"/>
-    <splash src="res/ios/Default-1536h.png" width="2048" height="1536"/>
-    <splash src="res/ios/Default-1242h.png" width="2208" height="1242"/>
+    <icon height="16" src="res/ios/Icon-App-16x16@1x.png" width="16" />
+    <icon height="32" src="res/ios/Icon-App-16x16@2x.png" width="32" />
+    <icon height="48" src="res/ios/Icon-App-16x16@3x.png" width="48" />
+    <icon height="20" src="res/ios/Icon-App-20x20@1x.png" width="20" />
+    <icon height="40" src="res/ios/Icon-App-20x20@2x.png" width="40" />
+    <icon height="60" src="res/ios/Icon-App-20x20@3x.png" width="60" />
+    <icon height="29" src="res/ios/Icon-29.png" width="29" />
+    <icon height="48" src="res/ios/Icon-48.png" width="48" />
+    <icon height="50" src="res/ios/Icon-50.png" width="50" />
+    <icon height="55" src="res/ios/Icon-55.png" width="55" />
+    <icon height="57" src="res/ios/Icon-57.png" width="57" />
+    <icon height="58" src="res/ios/Icon-58.png" width="58" />
+    <icon height="64" src="res/ios/Icon-64.png" width="64" />
+    <icon height="72" src="res/ios/Icon-72.png" width="72" />
+    <icon height="76" src="res/ios/Icon-76.png" width="76" />
+    <icon height="80" src="res/ios/Icon-80.png" width="80" />
+    <icon height="87" src="res/ios/Icon-87.png" width="87" />
+    <icon height="88" src="res/ios/Icon-88.png" width="88" />
+    <icon height="100" src="res/ios/Icon-100.png" width="100" />
+    <icon height="114" src="res/ios/Icon-114.png" width="114" />
+    <icon height="120" src="res/ios/Icon-120.png" width="120" />
+    <icon height="128" src="res/ios/Icon-128.png" width="128" />
+    <icon height="144" src="res/ios/Icon-144.png" width="144" />
+    <icon height="152" src="res/ios/Icon-152.png" width="152" />
+    <icon height="167" src="res/ios/Icon-167.png" width="167" />
+    <icon height="172" src="res/ios/Icon-172.png" width="172" />
+    <icon height="180" src="res/ios/Icon-180.png" width="180" />
+    <icon height="196" src="res/ios/Icon-196.png" width="196" />
+    <icon height="256" src="res/ios/Icon-256.png" width="256" />
+    <icon height="512" src="res/ios/Icon-512.png" width="512" />
+    <icon height="1024" src="res/ios/Icon-1024.png" width="1024" />
+    <splash src="res/screen/ios/Default@2x~universal~anyany.png"/>
     <feature name="StatusBar">
       <param name="ios-package" onload="true" value="CDVStatusBar"/>
     </feature>
     <preference name="Orientation" value="portrait"/>
     <preference name="Fullscreen" value="true"/>
-    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge" overwrite="true">
-      <string>So you can photograph items for donation.</string>
+    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+        <string>So you can photograph items for donation.</string>
     </edit-config>
-    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-      <string>Needs photo library access to get photos from there</string>
+    <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+        <string>Needs photo library access to get photos from there</string>
     </edit-config>
-    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
-      <string>Needs photo library access to save photos</string>
+    <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+        <string>Needs photo library access to save photos</string>
     </edit-config>
   </platform>
   <access origin="*"/>
@@ -76,10 +83,10 @@
   <allow-intent href="http://crossroads.uservoice.com/*"/>
   <allow-intent href="https://crossroads.uservoice.com/*"/>
   <allow-intent href="https://checkout.paypal.com/*"/>
-  <engine name="ios" spec="4.5.4"/>
-  <engine name="android" spec="~5.1.1"/>
+  <engine name="ios" spec="https://github.com/apache/cordova-ios.git#4.5.5" />
+  <engine name="android" spec="~6.2.3"/>
   <engine name="windows" spec="~4.3.1"/>
-  <plugin name="phonegap-plugin-push" spec="~1.4.5">
+  <plugin name="phonegap-plugin-push" spec="~1.9.2">
     <variable name="SENDER_ID" value="XXXXXXX"/>
   </plugin>
   <plugin name="cordova-plugin-statusbar" spec="~2.1.1"/>
@@ -88,8 +95,8 @@
   <plugin name="cordova-plugin-inappbrowser" spec="~1.2.1"/>
   <plugin name="cordova-plugin-network-information" spec="~1.2.0"/>
   <plugin name="cordova-plugin-actionsheet" spec="https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git"/>
-  <plugin name="cordova-plugin-camera" spec="~2.1.0"/>
-  <plugin name="cordova-plugin-splashscreen" spec="~3.1.0"/>
+  <plugin name="cordova-plugin-camera" spec="~2.4.1"/>
+  <plugin name="cordova-plugin-splashscreen" spec="~4.1.0"/>
   <plugin name="com.nrswolf.cordova.push-notifications-status" spec="https://github.com/nrswolf/cordova-plugin-push-notifications-status.git"/>
   <plugin name="cordova-plugin-ios-no-export-compliance" spec="https://github.com/mikaoelitiana/cordova-plugin-ios-no-export-compliance.git" />
   <plugin name="com.phonegap.plugins.nativesettingsopener" spec="https://github.com/selahssea/Cordova-open-native-settings.git" />
