@@ -45,7 +45,6 @@ module.exports = function(environment) {
       NAME: 'app.goodcity',
       APPLE_APP_ID: '1012253845',
       REVIEW_APP_NAME: 'GoodCity',
-      ANDROID_APP_URL:'market://details?id=hk.goodcity.app',
       CLOUD_NAME: 'ddoadcjjl',
       CLOUD_API_KEY: 926849638736153,
       CLOUD_URL: 'https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload',

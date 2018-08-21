@@ -2,7 +2,7 @@ import Ember from 'ember';
 const { getOwner } = Ember;
 
 export default Ember.Controller.extend({
-  appReview: Ember.inject.service(),
+
   cordova: Ember.inject.service(),
 
   actions: {
@@ -13,10 +13,7 @@ export default Ember.Controller.extend({
 
       offer.save()
         .then(() => this.transitionToRoute('offer.offer_details'))
-        .finally(() => {
-          loadingView.destroy();
-          this.get("appReview").promptReviewModal();
-        });
+        .finally(() => loadingView.destroy());
     },
 
     backLink() {
