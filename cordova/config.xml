@@ -84,7 +84,7 @@
   <allow-intent href="https://crossroads.uservoice.com/*"/>
   <allow-intent href="https://checkout.paypal.com/*"/>
   <engine name="ios" spec="https://github.com/apache/cordova-ios.git#4.5.5" />
-  <engine name="android" spec="~6.2.3"/>
+  <engine name="android" spec="~6.3.0"/>
   <engine name="windows" spec="~4.3.1"/>
   <plugin name="phonegap-plugin-push" spec="~1.9.2">
     <variable name="SENDER_ID" value="XXXXXXX"/>
