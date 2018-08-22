@@ -1,4 +1,4 @@
-androidmachine:
+machine:
   xcode:
     version: "9.2"
 
