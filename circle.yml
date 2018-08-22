@@ -1,4 +1,4 @@
-machine:
+androidmachine:
   xcode:
     version: "9.2"
 
@@ -15,7 +15,6 @@ machine:
 dependencies:
   cache_directories:
     - ~/.yarn
-    - ~/android-sdk
   pre:
     - brew update
     - brew install homebrew/core/node6-lts
