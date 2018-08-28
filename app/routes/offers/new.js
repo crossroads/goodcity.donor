@@ -4,7 +4,7 @@ export default AuthorizeRoute.extend({
   model() {
     var offer = this.store.peekAll('offer').filterBy('itemCount', 0).filterBy('state', 'draft').get('firstObject');
     if (offer) {
-      return this.transitionTo('offer', offer);
+      return this.transitionTo('offer', offer.id);
     }
 
     offer = this.store.createRecord('offer');

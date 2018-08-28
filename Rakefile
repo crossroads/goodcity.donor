@@ -28,7 +28,7 @@
 # Signing Android releases
 #   Gradle can sign the releases during the build process.
 #   Set environment varibles: GOODCITY_KEYSTORE_PASSWORD and GOODCITY_KEYSTORE_ALIAS
-#   You must also ensure the signing key exists at CORDOVA/goodcity.keystore
+#   You must also ensure the signing key exist at CORDOVA/goodcity.keystore
 
 require "json"
 require "fileutils"
@@ -48,6 +48,17 @@ TESTFAIRY_PLUGIN_NAME = "com.testfairy.cordova-plugin"
 SPLUNKMINT_PLUGIN_URL = "https://github.com/crossroads/cordova-plugin-splunkmint.git"
 KEYSTORE_FILE = "#{CORDOVA_PATH}/goodcity.keystore"
 BUILD_JSON_FILE = "#{CORDOVA_PATH}/build.json"
+IOS_SIGNING_STYLE = false
+IOS_DEBUGMODE_BUILDCONF = {
+  code_signing: "\'iPhone Developer\'",
+  package_type: 'development',
+  icloud_container_environment: 'Development'
+}.freeze
+IOS_RELEASEMODE_BUILDCONF = {
+  code_signing: "\'iPhone Distribution\'",
+  package_type: 'app-store',
+  icloud_container_environment: 'Production'
+}.freeze
 
 # Default task
 task default: %w(app:build)
@@ -120,7 +131,7 @@ namespace :cordova do
     # Before cordova prepare build ember app that will auto update the dist folder too
     Rake::Task["ember:build"].invoke
     create_build_json_file
-    sh %{ ln -s "#{ROOT_PATH}/dist" "#{CORDOVA_PATH}/www" } unless File.exists?("#{CORDOVA_PATH}/www")
+    sh %{ ln -s "#{ROOT_PATH}/dist" "#{CORDOVA_PATH}/www" } unless File.exist?("#{CORDOVA_PATH}/www")
     build_details.map{|key, value| log("#{key.upcase}: #{value}")}
     sh %{ cd #{CORDOVA_PATH}; cordova-update-config --appname "#{app_name}" --appid #{app_id} --appversion #{app_version} }
 
@@ -129,6 +140,7 @@ namespace :cordova do
       system({"ENVIRONMENT" => environment}, "cordova prepare #{platform}")
       unless platform == "ios"
         sh %{ cordova plugin add #{SPLUNKMINT_PLUGIN_URL} --variable MINT_APIKEY="#{splunk_mint_key}" }
+        sh %{ cordova plugin add cordova-android-support-gradle-release --variable ANDROID_SUPPORT_VERSION=27 }
       end
     end
     if platform == "ios"
@@ -143,7 +155,8 @@ namespace :cordova do
   task build: :prepare do
     Dir.chdir(CORDOVA_PATH) do
       build = (environment == "staging" && platform == 'android') ? "debug" : "release"
-      system({"ENVIRONMENT" => environment}, "cordova compile #{platform} --#{build} --device")
+      extra_params = (platform === "android") ? '' : ios_build_config
+      system({"ENVIRONMENT" => environment}, "cordova compile #{platform} --#{build} --device #{extra_params}")
     end
     # Copy build artifacts
     if ENV["CI"]
@@ -158,7 +171,7 @@ namespace :azure do
       log("Environment: #{environment}. Skipping Azure upload")
       next
     end
-    raise(BuildError, "#{app_file} does not exist!") unless File.exists?(app_file)
+    raise(BuildError, "#{app_file} does not exist!") unless File.exist?(app_file)
     raise(BuildError, "AZURE_HOST not set.") unless env?("AZURE_HOST")
     raise(BuildError, "AZURE_SHARE not set.") unless env?("AZURE_SHARE")
     raise(BuildError, "AZURE_SAS_TOKEN not set.") unless env?("AZURE_SAS_TOKEN")
@@ -218,6 +231,25 @@ def platform
       raise(BuildError, "Unsupported build os: #{env_platform}")
     end
   end
+end
+
+def ios_build_config
+  signing_style = IOS_SIGNING_STYLE
+  team_id = ENV['IOS_DEVELOPMENT_TEAM_ID']
+
+  if(environment === 'production')
+    provisioning_profile = ENV['PROVISIONING_PROFILE_PROD']
+    code_signing = IOS_RELEASEMODE_BUILDCONF[:code_signing]
+    package_type = IOS_RELEASEMODE_BUILDCONF[:package_type]
+    icloud_container_environment = IOS_RELEASEMODE_BUILDCONF[:icloud_container_environment]
+  else
+    provisioning_profile = ENV['PROVISIONING_PROFILE_STAGING']
+    code_signing = IOS_DEBUGMODE_BUILDCONF[:code_signing]
+    package_type = IOS_DEBUGMODE_BUILDCONF[:package_type]
+    icloud_container_environment = IOS_DEBUGMODE_BUILDCONF[:icloud_container_environment]
+  end
+
+  " --codeSignIdentity=#{code_signing} --developmentTeam=#{team_id} --packageType=#{package_type} --provisioningProfile=\'#{provisioning_profile}\' --automaticProvisionin=#{signing_style} --icloud_container_environment=#{icloud_container_environment}"
 end
 
 def env?(env)
@@ -281,9 +313,9 @@ end
 # Expects CORDOVA_PATH/goodcity.keystore to exist
 # Requires ENV vars: GOODCITY_KEYSTORE_PASSWORD and GOODCITY_KEYSTORE_ALIAS
 def create_build_json_file
-  FileUtils.rm(BUILD_JSON_FILE) if File.exists?(BUILD_JSON_FILE)
+  FileUtils.rm(BUILD_JSON_FILE) if File.exist?(BUILD_JSON_FILE)
   return unless (environment == "production" and platform == "android")
-  raise(BuildError, "Keystore file not found: #{KEYSTORE_FILE}") unless File.exists?("#{KEYSTORE_FILE}")
+  raise(BuildError, "Keystore file not found: #{KEYSTORE_FILE}") unless File.exist?("#{KEYSTORE_FILE}")
   %w(GOODCITY_KEYSTORE_PASSWORD GOODCITY_KEYSTORE_ALIAS).each do |key|
     raise(BuildError, "#{key} environment variable not set.") unless env?(key)
   end

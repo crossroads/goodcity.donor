@@ -37,8 +37,8 @@ module.exports = function(environment) {
       "img-src": "'self' data: https://res.cloudinary.com filesystem: *",
       "style-src": "'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com",
       "font-src": "'self' data: https://maxcdn.bootstrapcdn.com",
-      "script-src": "'self' 'unsafe-eval' https://widget.uservoice.com https://by2.uservoice.com https://api.sandbox.braintreegateway.com https://client-analytics.sandbox.braintreegateway.com",
-      "frame-src": "'self' 'unsafe-eval' https://widget.uservoice.com https://assets.braintreegateway.com https://checkout.paypal.com"
+      "script-src": "'self' 'unsafe-inline' 'unsafe-eval' https://widget.uservoice.com https://by2.uservoice.com https://api.sandbox.braintreegateway.com https://client-analytics.sandbox.braintreegateway.com",
+      "frame-src": "'self' 'unsafe-inline' 'unsafe-eval' https://widget.uservoice.com https://assets.braintreegateway.com https://checkout.paypal.com"
     },
     APP: {
       // Cloudinary Keys
@@ -46,6 +46,7 @@ module.exports = function(environment) {
       APPLE_APP_ID: '1012253845',
       REVIEW_APP_NAME: 'GoodCity',
       CLOUD_NAME: 'ddoadcjjl',
+      ANDROID_APP_URL:'market://details?id=hk.goodcity.app',
       CLOUD_API_KEY: 926849638736153,
       CLOUD_URL: 'https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload',
       IMAGE_PATH: 'http://res.cloudinary.com/ddoadcjjl/image/upload/',
