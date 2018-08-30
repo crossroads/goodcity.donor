@@ -66,13 +66,13 @@
     </feature>
     <preference name="Orientation" value="portrait"/>
     <preference name="Fullscreen" value="true"/>
-    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <edit-config target="NSCameraUsageDescription" overwrite="true" file="*-Info.plist" mode="merge">
         <string>So you can photograph items for donation.</string>
     </edit-config>
-    <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+    <edit-config target="NSPhotoLibraryUsageDescription" overwrite="true" file="*-Info.plist" mode="merge">
         <string>Needs photo library access to get photos from there</string>
     </edit-config>
-    <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+    <edit-config target="NSPhotoLibraryAddUsageDescription" overwrite="true" file="*-Info.plist" mode="merge">
         <string>Needs photo library access to save photos</string>
     </edit-config>
   </platform>
