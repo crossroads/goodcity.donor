@@ -86,10 +86,10 @@ jobs:
             COVERAGE: true
       # - store_test_results:
       #     path: where-are-they
-      - persist_to_workspace:
-          root: coverage
-          paths:
-            - lcov*
+      # - persist_to_workspace:
+      #     root: coverage
+      #     paths:
+      #       - lcov*
 
   upload-coverage:
     <<: *defaults
