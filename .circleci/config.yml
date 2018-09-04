@@ -66,9 +66,9 @@ jobs:
       - run: yarn run bower install
       - save-cache: *save-bower-cache
 
-  test_cases:
+  tests:
     <<: *defaults
-     steps:
+    steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
       - restore-cache: *restore-bower-cache
