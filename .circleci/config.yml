@@ -95,6 +95,8 @@ jobs:
     <<: *defaults
     steps:
       - restore-cache: *restore-repo-cache
+      - restore-cache: *restore-yarn-cache
+      - restore-cache: *restore-bower-cache
       - attach_workspace:
           at: ~/code
       - run:
