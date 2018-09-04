@@ -138,7 +138,7 @@ jobs:
   android_build:
     <<: *defaults
     docker:
-      - image: circleci/android:api-25-node8-alpha
+      - image: circleci/android:api-26-node8-alpha
     environment:
       JVM_OPTS: -Xmx3200m
       KEYSTORE: goodcity.keystore
@@ -305,13 +305,13 @@ workflows:
           filters:
             branches:
               only: /^(master|live|GCW-2115-circleci-2.0)$/
-      # - android_build:
-      #     requires:
-      #       - ember_cordova_build
-      #     context: goodcity
-      #     filters:
-      #       branches:
-      #         only: /^(master|live|GCW-2115-circleci-2.0)$/
+      - android_build:
+          requires:
+            - ember_cordova_build
+          context: goodcity
+          filters:
+            branches:
+              only: /^(master|live|GCW-2115-circleci-2.0)$/
       # - android_deploy:
       #     requires:
       #       - android_build
