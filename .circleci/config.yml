@@ -94,6 +94,7 @@ jobs:
   upload-coverage:
     <<: *defaults
     steps:
+      - restore-cache: *restore-repo-cache
       - attach_workspace:
           at: ~/code
       - run:
