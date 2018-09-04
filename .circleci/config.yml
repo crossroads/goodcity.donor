@@ -68,7 +68,7 @@ jobs:
 
   tests:
     <<: *defaults
-     steps:
+    steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
       - restore-cache: *restore-bower-cache
@@ -87,7 +87,7 @@ jobs:
           paths:
             - coverage*/lcov.info
 
-   upload-coverage:
+  upload-coverage:
     <<: *defaults
     steps:
       - restore-cache: *restore-repo-cache
