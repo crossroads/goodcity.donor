@@ -66,9 +66,9 @@ jobs:
       - run: yarn run bower install
       - save-cache: *save-bower-cache
 
-  tests:
+  test_cases:
     <<: *defaults
-    steps:
+     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
       - restore-cache: *restore-bower-cache
@@ -81,29 +81,25 @@ jobs:
           command: dockerize -wait tcp://localhost:4200 -timeout 1m
       - run:
           name: Run Ember tests
-          command: yarn run ember test
-          environment:
-            COVERAGE: true
-      # - store_test_results:
-      #     path: where-are-they
-      # - persist_to_workspace:
-      #     root: coverage
-      #     paths:
-      #       - lcov*
+          command: COVERAGE=true yarn run ember test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - coverage*/lcov.info
 
-  upload-coverage:
+   upload-coverage:
     <<: *defaults
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
       - restore-cache: *restore-bower-cache
       - attach_workspace:
-          at: ~/code
+          at: ~/stock.goodcity
       - run:
           name: Upload coverage results to Code Climate
           command: |
-            yarn run ember coverage-merge
-            yarn run codeclimate-test-reporter < coverage/lcov.info
+            yarn run codeclimate-test-reporter < coverage*/lcov.info
+
   ember_cordova_build:
     <<: *defaults
     environment:
@@ -296,22 +292,23 @@ workflows:
       - tests:
           requires:
             - package_dependencies
-      # - upload-coverage:
-      #     requires:
-      #       - tests
+      - upload-coverage:
+          requires:
+            - package_dependencies
+            - tests
       - ember_cordova_build:
           requires:
             - package_dependencies #tests
           filters:
             branches:
               only: /^(master|live|GCW-2115-circleci-2.0)$/
-      - android_build:
-          requires:
-            - ember_cordova_build
-          context: goodcity
-          filters:
-            branches:
-              only: /^(master|live|GCW-2115-circleci-2.0)$/
+      # - android_build:
+      #     requires:
+      #       - ember_cordova_build
+      #     context: goodcity
+      #     filters:
+      #       branches:
+      #         only: /^(master|live|GCW-2115-circleci-2.0)$/
       # - android_deploy:
       #     requires:
       #       - android_build
