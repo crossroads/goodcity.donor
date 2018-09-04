@@ -74,11 +74,11 @@ jobs:
       - restore-cache: *restore-bower-cache
       - run:
           name: Start Ember test server
-          command: yarn run ember server --port 4203
+          command: yarn run ember server --port 4200
           background: true
       - run:
           name: Wait for Ember test server to start
-          command: dockerize -wait tcp://localhost:4203 -timeout 1m
+          command: dockerize -wait tcp://localhost:4200 -timeout 1m
       - run:
           name: Run Ember tests
           command: COVERAGE=true yarn run ember test
