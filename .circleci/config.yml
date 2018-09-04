@@ -296,15 +296,15 @@ workflows:
       - tests:
           requires:
             - package_dependencies
-      - upload-coverage:
-          requires:
-            - tests
-      # - ember_cordova_build:
+      # - upload-coverage:
       #     requires:
-      #       - package_dependencies #tests
-      #     filters:
-      #       branches:
-      #         only: /^(master|live|GCW-2115-circleci-2.0)$/
+      #       - tests
+      - ember_cordova_build:
+          requires:
+            - package_dependencies #tests
+          filters:
+            branches:
+              only: /^(master|live|GCW-2115-circleci-2.0)$/
       # - android_build:
       #     requires:
       #       - ember_cordova_build
