@@ -133,18 +133,17 @@ jobs:
 
   android_build:
     <<: *defaults
-    docker:
+     docker:
       - image: circleci/android:api-26-node8-alpha
     environment:
       JVM_OPTS: -Xmx3200m
       KEYSTORE: goodcity.keystore
-      GOODCITY_KEYSTORE_ALIAS: "GoodCity App"
+      # GOODCITY_KEYSTORE_ALIAS: "GoodCity App"
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
       - attach_workspace:
           at: ~/code
-      - run: mv dist-cordova/ cordova/www
       - run:
           name: Setup Environment variables
           command: |
@@ -155,8 +154,17 @@ jobs:
             echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
             echo 'export BUILD=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo --release; else echo --debug; fi)' >> $BASH_ENV
             echo 'export PATH=$PATH:$ANDROID_HOME/tools/gradle/bin' >> $BASH_ENV
-      - run: azure-filestore download -f "${KEYSTORE}" && mv "${KEYSTORE}" cordova/
-      - run: azure-filestore download -d google-play -f "${GOOGLE_PLAY_KEY_FILE}" && mv "${GOOGLE_PLAY_KEY_FILE}" fastlane/
+      - run: azure-filestore download -f ${KEYSTORE} && mv ${KEYSTORE} cordova/
+      - run: azure-filestore download -d google-play -f ${GOOGLE_PLAY_KEY_FILE} && mv ${GOOGLE_PLAY_KEY_FILE} fastlane/
+      - run:
+          name: Print Environment variables
+          command: |
+            echo APP_NAME=$APP_NAME
+            echo APP_ID=$APP_ID
+            echo APP_VERSION=$APP_VERSION
+            echo ENVIRONMENT=$ENVIRONMENT
+            echo PATH=$PATH
+            echo BUILD=$BUILD
       - run:
           name: Install Gradle 3.3
           command: |
@@ -165,7 +173,7 @@ jobs:
             mv $ANDROID_HOME/tools/gradle-3.3 $ANDROID_HOME/tools/gradle
       - run:
           name: Apply App settings
-          command: cordova-update-config --appname "${APP_NAME}" --appid "${APP_ID}" --appversion "${APP_VERSION}"
+          command: cordova-update-config --appname ${APP_NAME} --appid ${APP_ID} --appversion ${APP_VERSION}
           working_directory: cordova
       - run:
           name: Cordova Prepare
@@ -174,8 +182,9 @@ jobs:
       - run:
           name: Cordova Compile
           command: |
-            cordova compile android "${BUILD}" --device -- --keystore="${KEYSTORE}" --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" \
-              --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
+            echo KEYSTORE=$KEYSTORE
+            echo GOODCITY_KEYSTORE_ALIAS=$GOODCITY_KEYSTORE_ALIAS
+            cordova compile android "${BUILD}" --device -- --keystore="${KEYSTORE}" --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
           working_directory: cordova
       - store_artifacts:
           path: /home/circleci/code/cordova/platforms/android/build/outputs/apk/
@@ -304,6 +313,7 @@ workflows:
               only: /^(master|live|GCW-2115-circleci-2.0)$/
       - android_build:
           requires:
+            - tests
             - ember_cordova_build
           context: goodcity
           filters:
