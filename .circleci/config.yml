@@ -172,6 +172,10 @@ jobs:
             unzip -d $ANDROID_HOME/tools /tmp/gradle.zip
             mv $ANDROID_HOME/tools/gradle-3.3 $ANDROID_HOME/tools/gradle
       - run:
+          name: checking path
+          command: echo path=$PATH
+          working_directory: dist-cordova
+      - run:
           name: Apply App settings
           command: cordova-update-config --appname ${APP_NAME} --appid ${APP_ID} --appversion ${APP_VERSION}
           working_directory: dist-cordova
@@ -298,22 +302,23 @@ workflows:
       - package_dependencies:
           requires:
             - checkout_code
-      - tests:
-          requires:
-            - package_dependencies
-      - upload-coverage:
-          requires:
-            - package_dependencies
-            - tests
+      # - tests:
+      #     requires:
+      #       - package_dependencies
+      # - upload-coverage:
+      #     requires:
+      #       - package_dependencies
+      #       - tests
       - ember_cordova_build:
           requires:
-            - package_dependencies #tests
+            - package_dependencies
+            # - tests
           filters:
             branches:
               only: /^(master|live|GCW-2115-circleci-2.0)$/
       - android_build:
           requires:
-            - tests
+            # - tests
             - ember_cordova_build
           context: goodcity
           filters:
