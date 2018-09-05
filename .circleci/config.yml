@@ -301,10 +301,10 @@ workflows:
       - tests:
           requires:
             - package_dependencies
-      # - upload-coverage:
-      #     requires:
-      #       - package_dependencies
-      #       - tests
+      - upload-coverage:
+          requires:
+            - package_dependencies
+            - tests
       - ember_cordova_build:
           requires:
             - package_dependencies #tests
