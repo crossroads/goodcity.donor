@@ -174,7 +174,8 @@ jobs:
       - run:
           name: Cordova Compile
           command: |
-            cordova compile android "${BUILD}" --device -- --keystore="${KEYSTORE}" --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
+            cordova compile android "${BUILD}" --device -- --keystore="${KEYSTORE}" --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" \
+              --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
           working_directory: cordova
       - store_artifacts:
           path: /home/circleci/code/cordova/platforms/android/build/outputs/apk/
