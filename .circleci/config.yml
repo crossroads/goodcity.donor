@@ -94,7 +94,7 @@ jobs:
       - restore-cache: *restore-yarn-cache
       - restore-cache: *restore-bower-cache
       - attach_workspace:
-          at: ~/app.goodcity
+          at: ~/code
       - run:
           name: Upload coverage results to Code Climate
           command: |
