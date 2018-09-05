@@ -125,16 +125,16 @@ jobs:
             echo staging=$staging
             echo APP_VERSION=$APP_VERSION
       - run: yarn run ember build --environment=production
-      - run: mv dist/ cordova/dist
+      - run: mv dist/ dist-cordova
       - persist_to_workspace:
           root: .
           paths:
-            - cordova/dist
+            - dist-cordova/
 
   android_build:
     <<: *defaults
     docker:
-      - image: circleci/android:api-26-node8-alpha
+      - image: circleci/android:api-25-node8-alpha
     environment:
       JVM_OPTS: -Xmx3200m
       KEYSTORE: goodcity.keystore
@@ -172,20 +172,24 @@ jobs:
             unzip -d $ANDROID_HOME/tools /tmp/gradle.zip
             mv $ANDROID_HOME/tools/gradle-3.3 $ANDROID_HOME/tools/gradle
       - run:
+          name: checking path
+          command: echo path=$PATH
+          working_directory: dist-cordova
+      - run:
           name: Apply App settings
           command: cordova-update-config --appname ${APP_NAME} --appid ${APP_ID} --appversion ${APP_VERSION}
-          working_directory: cordova
+          working_directory: dist-cordova
       - run:
           name: Cordova Prepare
           command: cordova prepare android
-          working_directory: cordova
+          working_directory: dist-cordova
       - run:
           name: Cordova Compile
           command: |
             echo KEYSTORE=$KEYSTORE
             echo GOODCITY_KEYSTORE_ALIAS=$GOODCITY_KEYSTORE_ALIAS
             cordova compile android "${BUILD}" --device -- --keystore="${KEYSTORE}" --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
-          working_directory: cordova
+          working_directory: dist-cordova
       - store_artifacts:
           path: /home/circleci/code/cordova/platforms/android/build/outputs/apk/
 
