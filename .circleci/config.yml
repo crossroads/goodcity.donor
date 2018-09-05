@@ -138,7 +138,7 @@ jobs:
     environment:
       JVM_OPTS: -Xmx3200m
       KEYSTORE: goodcity.keystore
-      GOODCITY_KEYSTORE_ALIAS: "GoodCity App"
+      GOODCITY_KEYSTORE_ALIAS: "GoodCity Admin"
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
