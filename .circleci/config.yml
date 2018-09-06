@@ -133,12 +133,13 @@ jobs:
 
   android_build:
     <<: *defaults
+
     docker:
       - image: circleci/android:api-26-node8-alpha
     environment:
       JVM_OPTS: -Xmx3200m
       KEYSTORE: goodcity.keystore
-      GOODCITY_KEYSTORE_ALIAS: "GoodCity Admin"
+      # GOODCITY_KEYSTORE_ALIAS: "GoodCity Admin"
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
