@@ -3,7 +3,7 @@
 [![Circle CI](https://circleci.com/gh/crossroads/app.goodcity.svg?style=svg)](https://circleci.com/gh/crossroads/app.goodcity)
 [![Code Climate](https://codeclimate.com/github/crossroads/app.goodcity/badges/gpa.svg)](https://codeclimate.com/github/crossroads/app.goodcity)
 [![Issue Count](https://codeclimate.com/github/crossroads/app.goodcity/badges/issue_count.svg)](https://codeclimate.com/github/crossroads/app.goodcity)
-[![Test Coverage](https://codeclimate.com/github/crossroads/app.goodcity/badges/coverage.svg)](https://codeclimate.com/github/crossroads/app.goodcity)
+[![Test Coverage](https://codeclimate.com/github/crossroads/app.goodcity/badges/coverage.svg)](https://codeclimate.com/github/crossroads/app.goodcity) [![Greenkeeper badge](https://badges.greenkeeper.io/crossroads/app.goodcity.svg)](https://greenkeeper.io/)
 
 The GoodCity initiative is a new way to donate quality goods in Hong Kong. See www.goodcity.hk for more details.
 
