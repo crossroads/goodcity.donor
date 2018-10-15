@@ -51,7 +51,7 @@ test:
 
 deployment:
   staging:
-    branch: master
+    branch: GCW-2154-native-notification-not-working
     commands:
       - bundle exec cap staging deploy
       - bundle exec rake staging android app:build
