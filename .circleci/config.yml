@@ -144,14 +144,20 @@ jobs:
             unzip -d $ANDROID_HOME/tools /tmp/gradle.zip
             mv $ANDROID_HOME/tools/gradle-4.10.2 $ANDROID_HOME/tools/gradle
       - run:
+          name: Download Google-services file
+          command: |
+            yarn run azure-filestore download -d app/$ENVIRONMENT -f google-services.json
+            mv google-services.json ~/code/cordova
+          working_directory: ~/code
+      - run:
           name: Download Keystore File
           command: yarn run azure-filestore download -f $KEYSTORE
           working_directory: cordova
       - run:
           name: Download Google Play Store Key file
           command: |
-           yarn run azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE
-           mv $GOOGLE_PLAY_KEY_FILE ~/code/fastlane
+            yarn run azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE
+            mv $GOOGLE_PLAY_KEY_FILE ~/code/fastlane
           working_directory: ~/code
       - run:
           name: android build
