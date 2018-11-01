@@ -43,7 +43,6 @@ PLATFORMS = %w(android ios windows).freeze
 ENVIRONMENTS = %w(staging production).freeze
 TESTFAIRY_PLATFORMS=%w(android ios)
 SHARED_REPO = "https://github.com/crossroads/shared.goodcity.git"
-TESTFAIRY_PLUGIN_URL = "https://github.com/testfairy/testfairy-cordova-plugin"
 TESTFAIRY_PLUGIN_NAME = "com.testfairy.cordova-plugin"
 SPLUNKMINT_PLUGIN_URL = "https://github.com/crossroads/cordova-plugin-splunkmint.git"
 KEYSTORE_FILE = "#{CORDOVA_PATH}/goodcity.keystore"
@@ -104,7 +103,6 @@ namespace :cordova do
     end
     if platform == "ios"
       Dir.chdir(CORDOVA_PATH) do
-        sh %{ cordova plugin add #{TESTFAIRY_PLUGIN_URL} } if environment == "staging"
         sh %{ cordova plugin remove #{TESTFAIRY_PLUGIN_NAME}; true } if environment == "production"
       end
     end
