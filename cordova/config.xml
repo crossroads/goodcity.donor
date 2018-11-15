@@ -8,6 +8,7 @@
   <hook src="scripts/update_build_number.py" type="before_prepare" />
   <platform name="android">
     <hook type="after_prepare" src="scripts/copyAndroidAssets.js"/>
+    <resource-file src="google-services.json" target="google-services.json" />
     <preference name="LoadUrlTimeoutValue" value="120000"/>
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="5000"/>
@@ -66,15 +67,15 @@
     </feature>
     <preference name="Orientation" value="portrait"/>
     <preference name="Fullscreen" value="true"/>
-    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <config-file target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
         <string>So you can photograph items for donation.</string>
-    </edit-config>
-    <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+    </config-file>
+    <config-file target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
         <string>Needs photo library access to get photos from there</string>
-    </edit-config>
-    <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+    </config-file>
+    <config-file target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
         <string>Needs photo library access to save photos</string>
-    </edit-config>
+    </config-file>
   </platform>
   <access origin="*"/>
   <allow-intent href="https://maps.google.com/*"/>
@@ -86,19 +87,18 @@
   <engine name="ios" spec="https://github.com/apache/cordova-ios.git#4.5.5" />
   <engine name="android" spec="~6.3.0"/>
   <engine name="windows" spec="~4.3.1"/>
-  <plugin name="phonegap-plugin-push" spec="~1.9.2">
-    <variable name="SENDER_ID" value="XXXXXXX"/>
-  </plugin>
+  <plugin name="phonegap-plugin-push" spec="~2.1.2"/>
   <plugin name="cordova-plugin-statusbar" spec="~2.1.1"/>
   <plugin name="cordova-plugin-device" spec="~1.1.1"/>
   <plugin name="cordova-plugin-whitelist" spec="~1.2.1"/>
   <plugin name="cordova-plugin-inappbrowser" spec="~1.2.1"/>
   <plugin name="cordova-plugin-network-information" spec="~1.2.0"/>
+  <plugin name="cordova-plugin-camera" spec="~2.4.1" />
   <plugin name="cordova-plugin-actionsheet" spec="https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git"/>
   <plugin name="cordova-plugin-splashscreen" spec="~4.1.0"/>
   <plugin name="com.nrswolf.cordova.push-notifications-status" spec="https://github.com/nrswolf/cordova-plugin-push-notifications-status.git"/>
   <plugin name="cordova-plugin-ios-no-export-compliance" spec="https://github.com/mikaoelitiana/cordova-plugin-ios-no-export-compliance.git" />
-  <plugin name="com.phonegap.plugins.nativesettingsopener" spec="https://github.com/selahssea/Cordova-open-native-settings.git" />
+  <plugin name="com.phonegap.plugins.nativesettingsopener" spec="https://github.com/crossroads/Cordova-open-native-settings.git" />
   <plugin name="cordova-launch-review" spec="1.0.3" />
   <plugin name="cordova-plugin-apprate" spec="https://github.com/pushandplay/cordova-plugin-apprate.git"/>
   <plugin name="cordova-plugin-globalization" spec="https://github.com/apache/cordova-plugin-globalization.git"/>
