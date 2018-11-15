@@ -16,8 +16,7 @@ export default Ember.Controller.extend({
         .then(() => this.transitionToRoute('offer.offer_details'))
         .finally(() => {
           loadingView.destroy();
-          //Commented in-app rating feature temporarily
-          //this.get("appReview").promptReviewModal();
+          this.get("appReview").promptReviewModal();
         });
     },
 
