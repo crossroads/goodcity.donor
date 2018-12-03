@@ -275,9 +275,22 @@ jobs:
       - restore-cache: *restore-bundler-cache
       - run: bundle check --path=vendor/bundle || bundle install --deployment --jobs=4 --retry=3
       - save-cache: *save-bundler-cache
+      - run:
+          name: Setup Environment variables
+          command: |
+              echo 'export ASSET_HOST_URL=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo "https://app.goodcity.hk/assets"; else echo "https://app-staging.goodcity.hk/assets"; fi)' >> $BASH_ENV
+              echo 'export APP_VERSION=$(jq -r ".version" package.json)' >> $BASH_ENV
       - attach_workspace:
           at: ~/code
       - run: mv dist-www/ dist
+      - run:
+          name: Get source map url with grep
+          command: echo 'export SOURCE_MAP_WITH_VARIABLE_NAME=$(grep sourceMappingURL dist/assets/goodcity-*.js)' >> $BASH_ENV
+      - run: echo $SOURCE_MAP_WITH_VARIABLE_NAME
+      - run:
+          name: Remove unnecessary characters form source map
+          command: echo 'export SOURCE_MAP=$(eval echo $SOURCE_MAP_WITH_VARIABLE_NAME | cut -c22-100)' >> $BASH_ENV
+      - run: echo $SOURCE_MAP
       - run:
           name: Setup Environment
           command: echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
@@ -285,7 +298,7 @@ jobs:
       - run:
           name: Upload Source Map to Rollbar
           command: |
-            curl https://api.rollbar.com/api/1/sourcemap/download -F access_token="${ROLLBAR_ACCESS_TOKEN}" -F version="${APP_VERSION}" -F minified_url=https://app-staging.goodcity.hk/assets/goodcity.js
+            curl https://api.rollbar.com/api/1/sourcemap/download -F access_token="${ROLLBAR_KEY}" -F version="${APP_VERSION}" -F minified_url=$ASSET_HOST_URL/$SOURCE_MAP
 
 workflows:
     version: 2
