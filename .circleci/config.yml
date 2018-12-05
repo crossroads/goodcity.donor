@@ -55,6 +55,8 @@ jobs:
 
   tests:
     <<: *defaults
+    environment:
+      JOBS: 1
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
