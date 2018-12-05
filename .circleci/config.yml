@@ -346,5 +346,5 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(live)$/
 
