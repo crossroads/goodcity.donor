@@ -55,6 +55,10 @@ jobs:
 
   tests:
     <<: *defaults
+    docker:
+      - image: circleci/node:6-browsers
+    environment:
+      JOBS: 1
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-yarn-cache
@@ -191,10 +195,10 @@ jobs:
           name: Setup Environment variables
           command: |
             echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
-            echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
-            echo 'export PROVISIONING_PROFILE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo $PROD_PROVISIONING_PROFILE; else echo $STAGING_PROVISIONING_PROFILE; fi)' >> $BASH_ENV
-            echo 'export CERTIFICATE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo $PROD_CERT; else echo $STAGING_CERT; fi)' >> $BASH_ENV
             echo 'export STAGING=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo false; else echo true; fi)' >> $BASH_ENV
+            echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
+            echo 'export PROVISIONING_PROFILE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo 'GoodCity_App.mobileprovision'; else echo 'GoodCity_App_Staging.mobileprovision'; fi)' >> $BASH_ENV
+            echo 'export CERTIFICATE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo 'Goodcity_2019.p12'; else echo 'GoodCity_2018_Development.p12'; fi)' >> $BASH_ENV
       - run:
           command: |
               npm rebuild node-sass
@@ -224,13 +228,13 @@ jobs:
           working_directory: ~/code
       - run: pod setup
       - run:
-          name: install cordova-update-config globally
+          name: Install cordova-update-config globally
           command: npm i -g cordova-update-config
       - run:
-          name: install cordova globally
+          name: Install cordova globally
           command: npm i -g cordova@7.1.0
       - run:
-          name: create keychain and import certificates
+          name: Create keychain and import p12 certificate
           command: bundle exec fastlane ios prepare_certificates cert:$CERTIFICATE
           working_directory: ~/code
       - run:
@@ -240,7 +244,7 @@ jobs:
       - store_artifacts:
           path: cordova/platforms/ios/build/device
       - run:
-          name: release ios build
+          name: Release ios build
           command: bundle exec fastlane ios ${ENVIRONMENT}
           working_directory: ~/code
 
@@ -275,9 +279,22 @@ jobs:
       - restore-cache: *restore-bundler-cache
       - run: bundle check --path=vendor/bundle || bundle install --deployment --jobs=4 --retry=3
       - save-cache: *save-bundler-cache
+      - run:
+          name: Setup Environment variables
+          command: |
+              echo 'export ASSET_HOST_URL=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo "https://app.goodcity.hk/assets"; else echo "https://app-staging.goodcity.hk/assets"; fi)' >> $BASH_ENV
+              echo 'export APP_VERSION=$(jq -r ".version" package.json)' >> $BASH_ENV
       - attach_workspace:
           at: ~/code
       - run: mv dist-www/ dist
+      - run:
+          name: Get source map url with grep
+          command: echo 'export SOURCE_MAP_WITH_VARIABLE_NAME=$(grep sourceMappingURL dist/assets/goodcity-*.js)' >> $BASH_ENV
+      - run: echo $SOURCE_MAP_WITH_VARIABLE_NAME
+      - run:
+          name: Remove unnecessary characters form source map
+          command: echo 'export SOURCE_MAP=$(eval echo $SOURCE_MAP_WITH_VARIABLE_NAME | cut -c22-100)' >> $BASH_ENV
+      - run: echo $SOURCE_MAP
       - run:
           name: Setup Environment
           command: echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
@@ -285,7 +302,7 @@ jobs:
       - run:
           name: Upload Source Map to Rollbar
           command: |
-            curl https://api.rollbar.com/api/1/sourcemap/download -F access_token="${ROLLBAR_ACCESS_TOKEN}" -F version="${APP_VERSION}" -F minified_url=https://app-staging.goodcity.hk/assets/goodcity.js
+            curl https://api.rollbar.com/api/1/sourcemap/download -F access_token="${ROLLBAR_KEY}" -F version="${APP_VERSION}" -F minified_url=$ASSET_HOST_URL/$SOURCE_MAP
 
 workflows:
     version: 2
@@ -328,10 +345,10 @@ workflows:
             filters:
               branches:
                 only: /^(master|live)$/
-        # - ios_build_and_deploy:
-        #     requires:
-        #       - tests
-        #     filters:
-        #       branches:
-        #         only: /^(master|live)$/
+        - ios_build_and_deploy:
+            requires:
+              - tests
+            filters:
+              branches:
+                only: /^(live)$/
 
