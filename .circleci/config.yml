@@ -55,6 +55,8 @@ jobs:
 
   tests:
     <<: *defaults
+    docker:
+      - image: mark-adams/docker-chromium-xvfb
     environment:
       JOBS: 1
     steps:
