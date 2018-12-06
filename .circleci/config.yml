@@ -56,7 +56,7 @@ jobs:
   tests:
     <<: *defaults
     docker:
-      - image: markadams/chromium-xvfb
+      - image: markadams/chromium-xvfb-js
     environment:
       JOBS: 1
     steps:
