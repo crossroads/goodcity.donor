@@ -1,6 +1,6 @@
 {{#joyride-foundation currentController=this}}
 
-  <nav class="tab-bar offer_details_title {{unless model.nonSubmittedOffer 'non-draft'}}">
+  <nav class="tab-bar offer_details_title {{unless model.nonSubmittedOffer 'non-draft'}}" data-topbar>
     <section class="left-small">
       {{#if displayHomeLink}}
         {{#link-to 'offers.index' classNames="back"}}{{t "back"}}{{/link-to}}
