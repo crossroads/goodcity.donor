@@ -9,6 +9,9 @@
   <platform name="android">
     <hook type="after_prepare" src="scripts/copyAndroidAssets.js"/>
     <resource-file src="google-services.json" target="google-services.json" />
+    <preference name="android-minSdkVersion" value="21" />
+    <preference name="android-targetSdkVersion" value="26" />
+    <preference name="android-multiDexEnabled" value="true" />
     <preference name="LoadUrlTimeoutValue" value="120000"/>
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="5000"/>
