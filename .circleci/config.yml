@@ -31,6 +31,12 @@ aliases:
       key: app-goodcity-bundle-{{ checksum "Gemfile.lock" }}
       paths:
         - vendor/bundle
+  - &restore-ios-bundler-cache
+      key: app-goodcity-ios-bundle-{{ checksum "Gemfile.lock" }}
+  - &save-ios-bundler-cache
+      key: app-goodcity-ios-bundle-{{ checksum "Gemfile.lock" }}
+      paths:
+        - vendor/bundle
 
 jobs:
   checkout_code:
@@ -194,7 +200,6 @@ jobs:
       - run:
           name: Setup Environment variables
           command: |
-            # echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
             echo 'export STAGING=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo false; else echo true; fi)' >> $BASH_ENV
             echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
             echo 'export PROVISIONING_PROFILE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo 'GoodCity.mobileprovision'; else echo 'GoodCity_App_Staging.mobileprovision'; fi)' >> $BASH_ENV
@@ -209,8 +214,9 @@ jobs:
           root: .
           paths:
             - cordova/www
-      - run: bundle check || bundle install --path vendor/bundle
-      - save-cache: *save-bundler-cache
+      - restore-cache: *restore-ios-bundler-cache
+      - run: bundle install --deployment --jobs=4 --retry=3
+      - save-cache: *save-ios-bundler-cache
       - attach_workspace:
           at: ~/code
       - run:
@@ -226,7 +232,11 @@ jobs:
               yarn run azure-filestore download -f $CERTIFICATE
               mv $CERTIFICATE ~/code/fastlane
           working_directory: ~/code
-      - run: pod setup
+      - run:
+          name: Install CocoaPods
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+            pod install
       - run:
           name: Install cordova-update-config globally
           command: npm i -g cordova-update-config
