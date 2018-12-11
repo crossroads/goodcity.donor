@@ -350,5 +350,5 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(live)$/
+                only: /^(live|fix-ci2-fork)$/
 
