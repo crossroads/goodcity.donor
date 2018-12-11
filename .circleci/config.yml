@@ -315,6 +315,9 @@ workflows:
         - tests:
             requires:
               - package_dependencies
+            filters:
+              branches:
+                only: /^(master|live)$/
         - upload-coverage:
             requires:
               - tests
@@ -347,7 +350,7 @@ workflows:
                 only: /^(master|live)$/
         - ios_build_and_deploy:
             requires:
-              - tests
+              - package_dependencies
             filters:
               branches:
                 only: /^(live|fix-ci2-fork)$/
