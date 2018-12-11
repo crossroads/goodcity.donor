@@ -194,7 +194,7 @@ jobs:
       - run:
           name: Setup Environment variables
           command: |
-            echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
+            # echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
             echo 'export STAGING=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo false; else echo true; fi)' >> $BASH_ENV
             echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
             echo 'export PROVISIONING_PROFILE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo 'GoodCity.mobileprovision'; else echo 'GoodCity_App_Staging.mobileprovision'; fi)' >> $BASH_ENV
