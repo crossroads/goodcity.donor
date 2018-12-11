@@ -7,7 +7,7 @@
   <content src="index.html"/>
   <hook src="scripts/update_build_number.py" type="before_prepare" />
   <platform name="android">
-    <hook type="before_build" src="maven_swap.sh" />
+    <hook type="after_compile" src="maven_swap.sh" />
     <hook type="after_prepare" src="scripts/copyAndroidAssets.js"/>
     <resource-file src="google-services.json" target="google-services.json" />
     <preference name="LoadUrlTimeoutValue" value="120000"/>
