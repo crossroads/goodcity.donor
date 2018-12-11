@@ -16,6 +16,14 @@ aliases:
       paths:
         - node_modules
         - ~/.cache/yarn
+  - &restore-ios-yarn-cache
+      keys:
+        - app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
+  - &save-ios-yarn-cache
+      key: app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
+      paths:
+        - node_modules
+        - ~/.cache/yarn
   - &yarn
     |
       yarn install --non-interactive --cache-folder ~/.cache/yarn --frozen-lockfile
@@ -193,8 +201,10 @@ jobs:
 
     steps:
       - checkout
+      - restore-cache: *restore-ios-yarn-cache
       - run: *yarn
-      - save-cache: *save-yarn-cache
+      - save-cache: *save-ios-yarn-cache
+      - restore-cache: *restore-bower-cache
       - run: yarn run bower install
       - save-cache: *save-bower-cache
       - run:
@@ -232,11 +242,11 @@ jobs:
               yarn run azure-filestore download -f $CERTIFICATE
               mv $CERTIFICATE ~/code/fastlane
           working_directory: ~/code
-      - run:
-          name: Install CocoaPods
-          command: |
-            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-            pod install
+    #   - run:
+    #       name: Install CocoaPods
+    #       command: |
+    #         curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+    #         pod install
       - run:
           name: Install cordova-update-config globally
           command: npm i -g cordova-update-config
