@@ -67,15 +67,18 @@
     </feature>
     <preference name="Orientation" value="portrait"/>
     <preference name="Fullscreen" value="true"/>
-    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <preference name="CAMERA_USAGE_DESCRIPTION" default=" " />
+    <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
         <string>So you can photograph items for donation.</string>
-    </edit-config>
-    <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+    </config-file>
+    <preference name="PHOTOLIBRARY_USAGE_DESCRIPTION" default=" " />
+    <config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
         <string>Needs photo library access to get photos from there</string>
-    </edit-config>
-    <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+    </config-file>
+    <preference name="PHOTOLIBRARY_ADD_USAGE_DESCRIPTION" default=" " />
+    <config-file target="*-Info.plist" parent="NSPhotoLibraryAddUsageDescription">
         <string>Needs photo library access to save photos</string>
-    </edit-config>
+    </config-file>
   </platform>
   <access origin="*"/>
   <allow-intent href="https://maps.google.com/*"/>
