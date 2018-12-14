@@ -3,7 +3,7 @@
     {{outlet "appMenuList"}}
 
     {{#init-foundation}}
-      <nav class="tab-bar {{unless session.isLoggedIn 'sticky_title_bar'}}" data-topbar>
+      <nav class="tab-bar {{unless session.isLoggedIn 'sticky_title_bar'}}">
         <section class="left-small">
           {{#if session.isLoggedIn}}
             <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
