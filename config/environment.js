@@ -90,7 +90,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     // RESTAdapter Settings
-    ENV.VERSION = "1.0.0";
+    ENV.VERSION: "1.0.0";
     ENV.APP.API_HOST_URL = 'http://localhost:3000';
     ENV.APP.SOCKETIO_WEBSERVICE_URL = 'http://localhost:1337/goodcity';
 
@@ -112,7 +112,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
-    ENV.VERSION = "1.0.0";
+    ENV.VERSION: "1.0.0";
     ENV.cordova.enabled = false;
     // Testem prefers this...
     ENV.baseURL = '/';
@@ -130,7 +130,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // RESTAdapter Settings
-    ENV.VERSION = pkgJson.version;
+    ENV.VERSION: pkgJson.version;
     ENV.APP.API_HOST_URL = 'https://api.goodcity.hk';
     ENV.APP.SOCKETIO_WEBSERVICE_URL = 'https://socket.goodcity.hk:81/goodcity';
 
