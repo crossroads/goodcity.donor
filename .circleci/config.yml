@@ -161,6 +161,7 @@ jobs:
               echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
               echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
               echo 'export PATH=$PATH:$ANDROID_HOME/tools/gradle/bin' >> $BASH_ENV
+              $ANDROID_HOME/tools/bin/sdkmanager --licenses
       - run:
           name: Install Gradle 4.10.2
           command: |
