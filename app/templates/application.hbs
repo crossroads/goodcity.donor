@@ -1,0 +1,10 @@
+{{#if isMobileDevice}}
+  {{download-banner
+    iOSAppId="https://itunes.apple.com/in/app/goodcity.hk/id1012253845?mt=8"
+    androidAppId="hk.goodcity.app"
+    appName="GoodCity"
+    orgName="Crossroads"
+    onCancel=(action "closeBanner")
+  }}
+{{/if}}
+{{outlet}}
