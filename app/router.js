@@ -10,7 +10,6 @@ Router.map(function() {
   this.route('tour');
   this.route('register');
   this.route('faq');
-  this.route('feedback');
   this.route('support');
 
   this.route('offers', function () {

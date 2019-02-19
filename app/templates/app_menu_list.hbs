@@ -18,9 +18,6 @@
 
       <li>{{#link-to 'faq' (query-params questionAnchor=null)}}{{t "menu.faq"}}{{/link-to}}</li>
 
-      {{#unless (js-and (is-production) cordova.iOSDevice)}}
-        <li>{{#link-to 'feedback'}}{{t "menu.feedback"}}{{/link-to}}</li>
-      {{/unless}}
 
       {{#if isMobileApp}}
         <li>
