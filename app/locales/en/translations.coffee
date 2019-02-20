@@ -10,7 +10,6 @@ I18nTranslationsEn =
     "menu":
       "support_gc": "Support GoodCity!"
       "faq": "Frequently Asked Questions"
-      "feedback": "Feedback & Support"
       "rate": "Rate this app"
 
     "application":

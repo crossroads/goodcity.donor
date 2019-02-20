@@ -6,7 +6,6 @@
     "moment" : true,
     "airbrakeJs": true,
     "io": true,
-    "UserVoice": true,
     "braintree": true
   },
   "browser" : true,

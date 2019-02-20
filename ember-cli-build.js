@@ -65,7 +65,5 @@ module.exports = function(defaults) {
     destDir: '/img'
   });
 
-  app.import('vendor/uservoice/uservoice.js');
-
   return app.toTree();
 };
