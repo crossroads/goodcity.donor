@@ -10,7 +10,6 @@ I18nTranslationsZhTw =
     "menu":
       "support_gc": "支持好人好市！"
       "faq": "常見問題"
-      "feedback": "回饋與支援"
       "rate": "在iTunes上評分"
 
     "application":

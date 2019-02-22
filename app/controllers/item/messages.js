@@ -47,7 +47,7 @@ export default MessagesBaseController.extend({
         return;
       }
 
-      this.get("messageBox").confirm(this.get("i18n").t("delete_confirm"), () => {
+      this.get("messageBox").custom(this.get("i18n").t("delete_confirm"), this.get("i18n").t("not_now"), null, this.get("i18n").t("item.cancel"), () => {
         this.set("cancelByDonor", true);
         var loadingView = getOwner(controller).lookup('component:loading').append();
 
