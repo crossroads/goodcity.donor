@@ -45,7 +45,7 @@ module.exports = function(environment) {
       // Cloudinary Keys
       NAME: 'app.goodcity',
       TITLE: 'GoodCity',
-      BANNER_IMAGE: 'assets/images/donor.png',
+      BANNER_IMAGE: '/assets/images/donor.png',
       APPLE_APP_ID: '1012253845',
       REVIEW_APP_NAME: 'GoodCity',
       CLOUD_NAME: 'ddoadcjjl',
