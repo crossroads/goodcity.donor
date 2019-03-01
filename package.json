@@ -74,6 +74,7 @@
     "ember-resolver": "^2.0.3",
     "extend": "2.0.2",
     "loader.js": "4.0.0",
+    "minimatch": "3.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
     "slick-carousel": "^1.5.8"
