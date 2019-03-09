@@ -68,12 +68,12 @@
     "ember-welcome-page": "^3.2.0",
     "express": "^4.16.3",
     "glob": "^5.0.14",
-    "loader.js": "4.0.0",
-    "node-sass": "^4.9.3",
-    "xml2js": "^0.4.19",
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
-    "prettier": "1.15.3"
+    "loader.js": "4.0.0",
+    "node-sass": "^4.9.3",
+    "prettier": "1.15.3",
+    "xml2js": "^0.4.19"
   },
   "engines": {
     "node": ">= 6"
@@ -84,6 +84,7 @@
     "codeclimate-test-reporter": "^0.5.0",
     "cordova": "^7.1.0",
     "cordova-update-config": "^1.0.2",
+    "debug": "2.6.9",
     "deep-extend": "0.5.1",
     "ember-cli-test-loader": "^1.1.0",
     "ember-resolver": "^2.0.3",
