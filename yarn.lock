@@ -9866,9 +9866,9 @@ resolve-from@^3.0.0:
   integrity sha1-six699nWiBvItuZTM17rywoYh0g=
 
 resolve-package-path@^1.0.11:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/resolve-package-path/-/resolve-package-path-1.1.1.tgz#39db6201f7db8800207d8f82cc8005ee30c9200e"
-  integrity sha512-6vg7LnxKY3NhmlH/K/CfudgPDx7ah4RPgHjhMCcP3L1LPsoxOXeClUBFpF5c2FRlQScVQ4VL8GTbB5FjHQ3ISQ==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/resolve-package-path/-/resolve-package-path-1.2.4.tgz#814c5fcfb5f6e4151d95ec6e5653707c43706670"
+  integrity sha512-AOIfR/AauBM1w1Oq9swqGxUjL4PW7bMztN7UCQ4KWg9AR2t03bGb9faegZbE0meAOHlntAni/4kXkcsQ7dWLPQ==
   dependencies:
     path-root "^0.1.1"
     resolve "^1.10.0"
@@ -10244,7 +10244,7 @@ sha@~2.0.1:
 
 "shared-goodcity@git://github.com/crossroads/shared.goodcity.git#master":
   version "0.0.0"
-  resolved "git://github.com/crossroads/shared.goodcity.git#d69e915ddc132a0ff03febae57f1a2e475ce93d8"
+  resolved "git://github.com/crossroads/shared.goodcity.git#f129d81756db18e1907e6e55d82609a0fb8fb901"
   dependencies:
     ember-cli-babel "^5.1.6"
     ember-cli-coffeescript "^1.13.2"
