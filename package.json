@@ -1,6 +1,6 @@
 {
   "name": "goodcity",
-  "version": "0.16.6",
+  "version": "0.16.7",
   "description": "Small description for goodcity goes here",
   "license": "MIT",
   "author": "",
@@ -17,6 +17,17 @@
     "start": "EMBER_CLI_CORDOVA=0 ember serve",
     "build": "EMBER_CLI_CORDOVA=0 ember build",
     "test": "EMBER_CLI_CORDOVA=0 ember test --server"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "active-model-adapter": "2.2.0",
@@ -57,8 +68,11 @@
     "ember-welcome-page": "^3.2.0",
     "express": "^4.16.3",
     "glob": "^5.0.14",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "loader.js": "4.0.0",
     "node-sass": "^4.9.3",
+    "prettier": "1.15.3",
     "xml2js": "^0.4.19"
   },
   "engines": {
@@ -67,9 +81,11 @@
   "dependencies": {
     "azure-api": "git://github.com/crossroads/azure-api.git#master",
     "bower": "^1.8.4",
+    "cached-path-relative": "1.0.2",
     "codeclimate-test-reporter": "^0.5.0",
     "cordova": "^7.1.0",
     "cordova-update-config": "^1.0.2",
+    "debug": "2.6.9",
     "deep-extend": "0.5.1",
     "ember-cli-test-loader": "^1.1.0",
     "ember-resolver": "^2.0.3",
