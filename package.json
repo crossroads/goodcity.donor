@@ -86,7 +86,7 @@
     "cordova": "^7.1.0",
     "cordova-update-config": "^1.0.2",
     "debug": "2.6.9",
-    "deep-extend": "0.5.1",
+    "deep-extend": "^0.5.1",
     "ember-cli-test-loader": "^1.1.0",
     "ember-resolver": "^2.0.3",
     "extend": "2.0.2",
