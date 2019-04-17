@@ -1,14 +1,15 @@
-import Ember from 'ember';
-const { getOwner } = Ember;
+import Route from "@ember/routing/route";
+import { getOwner } from "@ember/application";
 
-export default Ember.Route.extend({
-
+export default Route.extend({
   beforeModel() {
-    if (this.session.get('isLoggedIn')) {
-      if(this.get('session.currentUser')) {
-        this.transitionTo('/offers');
+    if (this.session.get("isLoggedIn")) {
+      if (this.get("session.currentUser")) {
+        this.transitionTo("/offers");
       } else {
-        getOwner(this).lookup("route:application")._loadDataStore();
+        getOwner(this)
+          .lookup("route:application")
+          ._loadDataStore();
       }
     }
   }

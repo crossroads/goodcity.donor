@@ -1,15 +1,17 @@
-import Ember from 'ember';
+import Route from "@ember/routing/route";
 
-export default Ember.Route.extend({
-
+export default Route.extend({
   queryParams: {
     questionAnchor: null
   },
 
   setupController(controller, model) {
     this._super(controller, model);
-    if (this.queryParams.questionAnchor && this.queryParams.questionAnchor !== "undefined") {
-      controller.set('questionAnchor', this.queryParams.questionAnchor);
+    if (
+      this.queryParams.questionAnchor &&
+      this.queryParams.questionAnchor !== "undefined"
+    ) {
+      controller.set("questionAnchor", this.queryParams.questionAnchor);
     } else {
       this.queryParams.questionAnchor = null;
     }
@@ -18,13 +20,12 @@ export default Ember.Route.extend({
   renderTemplate() {
     this.render(); // default template
 
-    if(this.get('session.isLoggedIn')) {
-      this.render('appMenuList', {
-        into: 'faq',
-        outlet: 'appMenuList',
-        controller: 'application'
+    if (this.get("session.isLoggedIn")) {
+      this.render("appMenuList", {
+        into: "faq",
+        outlet: "appMenuList",
+        controller: "application"
       });
     }
   }
-
 });

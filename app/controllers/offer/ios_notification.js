@@ -1,18 +1,18 @@
-import Ember from 'ember';
+import { cancel, later } from "@ember/runloop";
+import { inject as service } from "@ember/service";
+import Controller from "@ember/controller";
 
-export default Ember.Controller.extend({
-
-  cordova: Ember.inject.service(),
+export default Controller.extend({
+  cordova: service(),
   displayUserPrompt: false,
   timer: null,
   _currentFunction: null,
 
   pollingFunction() {
-
     var onEnabled = () => {
       this.set("displayUserPrompt", false);
       this.stop();
-      this.transitionToRoute('offer.submit');
+      this.transitionToRoute("offer.submit");
     };
 
     var onDisabled = () => {
@@ -23,25 +23,28 @@ export default Ember.Controller.extend({
   },
 
   start(context, pollingFunction) {
-    this.set('_currentFunction', this._schedule(context, pollingFunction));
+    this.set("_currentFunction", this._schedule(context, pollingFunction));
   },
 
   stop() {
-    Ember.run.cancel(this.get('_currentFunction'));
+    cancel(this.get("_currentFunction"));
   },
 
   _schedule(context, func) {
-    return Ember.run.later(this, function() {
-      this.set('_currentFunction', this._schedule(context, func));
-      func.apply(context);
-    }, 1000);
+    return later(
+      this,
+      function() {
+        this.set("_currentFunction", this._schedule(context, func));
+        func.apply(context);
+      },
+      1000
+    );
   },
 
   actions: {
-
     sendPushNotification() {
       this.get("cordova").initiatePushNotifications();
-      this.start(this,this.pollingFunction);
+      this.start(this, this.pollingFunction);
     },
 
     closeDialog() {
@@ -49,13 +52,14 @@ export default Ember.Controller.extend({
     },
 
     openSettings() {
-      window.cordova.plugins.settings.open(function(){
-        console.log("opened settings");
-      },
-      function(){
-        console.log("error opened settings");
-      });
+      window.cordova.plugins.settings.open(
+        function() {
+          console.log("opened settings");
+        },
+        function() {
+          console.log("error opened settings");
+        }
+      );
     }
-
   }
 });

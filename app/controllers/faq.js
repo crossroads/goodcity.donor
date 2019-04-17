@@ -1,17 +1,21 @@
-import Ember from 'ember';
+import $ from "jquery";
+import Controller from "@ember/controller";
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   questionAnchor: null,
 
   actions: {
     displayQuestion() {
       var question = this.get("questionAnchor");
-      if(question) {
-        var scrollOffset = Ember.$("#" + question).offset().top;
+      if (question) {
+        var scrollOffset = $("#" + question).offset().top;
 
-        Ember.$('html, body').animate({
-          scrollTop: scrollOffset - 70
-        }, 'fast');
+        $("html, body").animate(
+          {
+            scrollTop: scrollOffset - 70
+          },
+          "fast"
+        );
       }
       return false;
     }

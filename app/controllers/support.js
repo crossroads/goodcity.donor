@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { notEmpty, alias } from "@ember/object/computed";
+import Controller from "@ember/controller";
 
-export default Ember.Controller.extend({
-  hasDonationDetail: Ember.computed.notEmpty("session.currentUser.donationAmount"),
+export default Controller.extend({
+  hasDonationDetail: notEmpty("session.currentUser.donationAmount"),
 
-  donationAmount: Ember.computed.alias("session.currentUser.donationAmount"),
-  donationDate: Ember.computed.alias("session.currentUser.donationDate")
+  donationAmount: alias("session.currentUser.donationAmount"),
+  donationDate: alias("session.currentUser.donationDate")
 });
