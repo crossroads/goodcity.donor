@@ -100,6 +100,7 @@
     "minimatch": "^3.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
-    "slick-carousel": "^1.5.8"
+    "slick-carousel": "^1.5.8",
+    "ws": "^3.3.1"
   }
 }
