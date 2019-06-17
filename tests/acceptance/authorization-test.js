@@ -33,11 +33,6 @@ testSkip("Rediect to login if not logged-in", function() {
   visit("/offers");
 
   andThen(function() {
-    equal(Ember.$.trim(Ember.$("#messageBoxText").text()), t("must_login").toString());
-    okClick();
-  });
-
-  andThen(function() {
     equal(currentURL(), '/login');
   });
 });
