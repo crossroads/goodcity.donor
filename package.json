@@ -16,7 +16,9 @@
   "scripts": {
     "start": "EMBER_CLI_CORDOVA=0 ember serve",
     "build": "EMBER_CLI_CORDOVA=0 ember build",
-    "test": "EMBER_CLI_CORDOVA=0 ember test --server"
+    "test": "EMBER_CLI_CORDOVA=0 ember test --server",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -102,6 +104,8 @@
     "phantomjs-prebuilt": "^2.1.14",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
     "slick-carousel": "^1.5.8",
-    "ws": "^3.3.1"
-  }
+    "ws": "^3.3.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }

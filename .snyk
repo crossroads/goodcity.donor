@@ -1,0 +1,28 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - shared-goodcity > ember-smart-banner > ember-cli-htmlbars > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - shared-goodcity > ember-cli-coffeescript > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - ember-cli-test-loader > ember-cli-babel > broccoli-babel-transpiler > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - ember-resolver > ember-cli-babel > broccoli-babel-transpiler > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - azure-api > azure-storage > request > form-data > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - cordova > cordova-lib > npm > request > form-data > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - shared-goodcity > ember-cli-babel > broccoli-babel-transpiler > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - shared-goodcity > ember-cli-coffeescript > broccoli-coffee > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - shared-goodcity > ember-smart-banner > ember-cli-babel > broccoli-babel-transpiler > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
+    - shared-goodcity > ember-smart-banner > ember-getowner-polyfill > ember-cli-babel > broccoli-babel-transpiler > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T07:55:21.163Z'
