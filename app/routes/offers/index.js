@@ -2,6 +2,10 @@ import AuthorizeRoute from "./../authorize";
 
 export default AuthorizeRoute.extend({
   model() {
+    let cachedRecords = this.store.peekAll("offer");
+    if (cachedRecords.get("length")) {
+      return Ember.RSVP.resolve(cachedRecords);
+    }
     return this.store.findAll("offer");
   },
 
