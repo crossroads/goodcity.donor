@@ -187,7 +187,7 @@ end
 def mobile_provisioning_file
   prefix = ['~', 'Library', 'MobileDevice', 'Provisioning\ Profiles']
   file = if production_env?
-      "GoodCity.mobileprovision"
+      "GoodCityDonor.mobileprovision"
     else
       "GoodCity_App_Staging.mobileprovision"
     end
