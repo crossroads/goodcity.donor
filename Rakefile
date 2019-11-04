@@ -109,7 +109,8 @@ namespace :cordova do
       else
         sh %{ cordova plugin add phonegap-plugin-push@1.9.2 --variable SENDER_ID="XXXXXXX" }
       end
-      build = (environment == "staging" && platform == 'android') ? "debug" : "release"
+      # build = (environment == "staging" && platform == 'android') ? "debug" : "release"
+      build = "release"
       extra_params = (platform === "android") ? '' : ios_build_config
       system({"ENVIRONMENT" => environment}, "cordova compile #{platform} --#{build} --device #{extra_params}")
     end
@@ -235,7 +236,8 @@ def app_file
   when /ios/
     "#{CORDOVA_PATH}/platforms/ios/build/device/#{app_name}.ipa"
   when /android/
-    build = is_staging ? "debug" : "release"
+    build = "release"
+    # build = is_staging ? "debug" : "release"
     "#{CORDOVA_PATH}/platforms/android/build/outputs/apk/android-#{build}.apk"
   when /windows/
     raise(BuildError, "TODO: Need to get Windows app path")
