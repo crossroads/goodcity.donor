@@ -185,8 +185,8 @@ jobs:
             yarn run azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE
             mv $GOOGLE_PLAY_KEY_FILE ~/code/fastlane
           working_directory: ~/code
-      - run: yes | sdkmanager --licenses || exit 1
-      - run: yes | sdkmanager --update || exit 1
+      - run: yes | sdkmanager --licenses || exit 0
+      - run: yes | sdkmanager --update || exit 0
       - run:
           name: android build
           command: bundle exec rake ${ENVIRONMENT} android app:build
@@ -372,7 +372,7 @@ workflows:
               - ember_cordova_build
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(GCW-2854-upgrade-android-28|live)$/
         - ios_build_and_deploy:
             requires:
               - tests

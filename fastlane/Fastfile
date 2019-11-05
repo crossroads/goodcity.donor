@@ -64,8 +64,8 @@ end
 platform :android do
 
   before_all do
-    apk_file_path = Dir["/home/circleci/code/cordova/platforms/android/app/build/outputs/apk/*/*.apk"].first
-    ENV["SUPPLY_APK"] = ENV["TESTFAIRY_IPA_PATH"] = apk_file_path
+    # apk_file_path = Dir["/home/circleci/code/cordova/platforms/android/app/build/outputs/apk/*/*.apk"].first
+    ENV["SUPPLY_APK"] = ENV["TESTFAIRY_IPA_PATH"] = DIR[ENV["APK_FILE_PATH"]].first
     raise_if_no_env_var("GOOGLE_PLAY_KEY_FILE")
     ENV["SUPPLY_JSON_KEY"] = File.join(Dir.pwd, ENV["GOOGLE_PLAY_KEY_FILE"])
     raise "Google Play private key file not found! (#{ENV["SUPPLY_JSON_KEY"]})" unless File.exist?(ENV["SUPPLY_JSON_KEY"])
