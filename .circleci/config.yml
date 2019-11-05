@@ -185,12 +185,14 @@ jobs:
             yarn run azure-filestore download -d google-play -f $GOOGLE_PLAY_KEY_FILE
             mv $GOOGLE_PLAY_KEY_FILE ~/code/fastlane
           working_directory: ~/code
+      - run: yes | sdkmanager --licenses || exit 0
+      - run: yes | sdkmanager --update || exit 0
       - run:
           name: android build
           command: bundle exec rake ${ENVIRONMENT} android app:build
           working_directory: ~/code/cordova
       - store_artifacts:
-          path: cordova/platforms/android/build/outputs/apk/
+          path: cordova/platforms/android/app/build/outputs/apk/
       - run:
           name: release android build
           command: bundle exec fastlane android ${ENVIRONMENT}
@@ -376,5 +378,5 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(live|master)$/
+                only: /^(master|live)$/
 
