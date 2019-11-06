@@ -189,7 +189,7 @@ def mobile_provisioning_file
   file = if production_env?
       "GoodCityDonor.mobileprovision"
     else
-      "GoodCity_App_Staging.mobileprovision"
+      "GoodCityAppStaging.mobileprovision"
     end
   File.join(prefix, file)
 end
