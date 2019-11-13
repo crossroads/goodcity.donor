@@ -1,6 +1,6 @@
 {
   "name": "goodcity",
-  "version": "0.17.1",
+  "version": "0.17.2",
   "description": "Small description for goodcity goes here",
   "license": "MIT",
   "author": "",
@@ -97,7 +97,8 @@
     "hoek": "4.2.1",
     "js-yaml": "^3.13.1",
     "loader.js": "4.0.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
+    "lodash.merge": "^4.6.2",
     "minimatch": "^3.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
