@@ -222,9 +222,9 @@ DEPENDENCIES
   capistrano (= 3.4.0)
   cocoapods
   fastlane
-  nokogiri
+  nokogiri (>= 1.10.4)
   plist
   rake
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
