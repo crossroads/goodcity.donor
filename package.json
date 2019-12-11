@@ -1,6 +1,6 @@
 {
   "name": "goodcity",
-  "version": "0.17.3",
+  "version": "0.17.5",
   "description": "Small description for goodcity goes here",
   "license": "MIT",
   "author": "",
@@ -101,7 +101,7 @@
     "lodash.merge": "^4.6.2",
     "minimatch": "^3.0.2",
     "phantomjs-prebuilt": "^2.1.14",
-    "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#1e32da1007fa6fb1bea5e2667a9ef32ad1b59441",
+    "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
     "slick-carousel": "^1.5.8",
     "ws": "^3.3.1"
   }
