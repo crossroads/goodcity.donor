@@ -1,20 +1,23 @@
-import Ember from "ember";
+import { inject as service } from "@ember/service";
+import { computed, observer } from "@ember/object";
+import { inject as controller } from "@ember/controller";
+import { empty, or } from "@ember/object/computed";
+import { getOwner } from "@ember/application";
 import MessagesBaseController from "shared-goodcity/controllers/messages_base";
-const { getOwner } = Ember;
 
 export default MessagesBaseController.extend({
   item: null,
-  noMessage: Ember.computed.empty("messages"),
-  offerDetailsController: Ember.inject.controller("offer/offer_details"),
+  noMessage: empty("messages"),
+  offerDetailsController: controller("offer/offer_details"),
 
-  displayChatNote: Ember.computed('noMessage', 'disabled', function(){
+  displayChatNote: computed("noMessage", "disabled", function() {
     return this.get("noMessage") && !this.get("disabled");
   }),
 
-  messageBox: Ember.inject.service(),
-  i18n: Ember.inject.service(),
+  messageBox: service(),
+  i18n: service(),
 
-  cancelByDonor: Ember.computed('item', {
+  cancelByDonor: computed("item", {
     get() {
       return false;
     },
@@ -23,14 +26,16 @@ export default MessagesBaseController.extend({
     }
   }),
 
-  isItemVanished: Ember.computed.or('item.isDeleted', 'item.isDeleting'),
+  isItemVanished: or("item.isDeleted", "item.isDeleting"),
 
-  showDeleteError: Ember.observer('item', 'isItemVanished', function(){
+  showDeleteError: observer("item", "isItemVanished", function() {
     var currentPath = window.location.href;
 
-    if(this.get("isItemVanished") && !this.get("cancelByDonor")) {
-      if(currentPath.indexOf(`items/${this.get("item.id")}`) >= 0) {
-        this.get("messageBox").alert(this.get("i18n").t("404_error"), () => this.transitionToRoute("offers"));
+    if (this.get("isItemVanished") && !this.get("cancelByDonor")) {
+      if (currentPath.indexOf(`items/${this.get("item.id")}`) >= 0) {
+        this.get("messageBox").alert(this.get("i18n").t("404_error"), () =>
+          this.transitionToRoute("offers")
+        );
       }
     }
   }),
@@ -38,31 +43,49 @@ export default MessagesBaseController.extend({
   actions: {
     removeItem(item) {
       var controller = this;
-      var offer = item.get('offer');
+      var offer = item.get("offer");
 
       if (offer.get("state") !== "draft" && offer.get("items.length") <= 1) {
-        this.get("messageBox").custom(this.get("i18n").t("item.cancel_last_item_confirm"), this.get("i18n").t("not_now"), null, this.get("i18n").t("item.cancel"),() => {
-          this.get("offerDetailsController").send("cancelOffer", offer, true);
-        });
+        this.get("messageBox").custom(
+          this.get("i18n").t("item.cancel_last_item_confirm"),
+          this.get("i18n").t("not_now"),
+          null,
+          this.get("i18n").t("item.cancel"),
+          () => {
+            this.get("offerDetailsController").send("cancelOffer", offer, true);
+          }
+        );
         return;
       }
 
-      this.get("messageBox").custom(this.get("i18n").t("delete_confirm"), this.get("i18n").t("not_now"), null, this.get("i18n").t("item.cancel"), () => {
-        this.set("cancelByDonor", true);
-        var loadingView = getOwner(controller).lookup('component:loading').append();
+      this.get("messageBox").custom(
+        this.get("i18n").t("delete_confirm"),
+        this.get("i18n").t("not_now"),
+        null,
+        this.get("i18n").t("item.cancel"),
+        () => {
+          this.set("cancelByDonor", true);
+          var loadingView = getOwner(controller)
+            .lookup("component:loading")
+            .append();
 
-        offer.get('items').removeObject(item);
+          offer.get("items").removeObject(item);
 
-        item.destroyRecord().then(function(){
-          if(offer.get('itemCount') === 0) {
-            controller.transitionToRoute("offer");
-          } else {
-            controller.transitionToRoute("offer.offer_details");
-          }
-        })
-        .finally(() => {loadingView.destroy(); this.set("cancelByDonor", false);});
-      });
+          item
+            .destroyRecord()
+            .then(function() {
+              if (offer.get("itemCount") === 0) {
+                controller.transitionToRoute("offer");
+              } else {
+                controller.transitionToRoute("offer.offer_details");
+              }
+            })
+            .finally(() => {
+              loadingView.destroy();
+              this.set("cancelByDonor", false);
+            });
+        }
+      );
     }
   }
-
 });

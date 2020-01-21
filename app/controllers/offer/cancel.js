@@ -1,17 +1,18 @@
-import Ember from 'ember';
-import config from '../../config/environment';
+import { alias } from "@ember/object/computed";
+import Controller, { inject as controller } from "@ember/controller";
+import config from "../../config/environment";
 
-export default Ember.Controller.extend({
-  offerController: Ember.inject.controller('offer/offer_details'),
+export default Controller.extend({
+  offerController: controller("offer/offer_details"),
 
-  canCancel: Ember.computed.alias('model.delivery.gogovanOrder.isCancelled'),
-  driverContact: Ember.computed.alias('model.delivery.gogovanOrder.driverMobile'),
+  canCancel: alias("model.delivery.gogovanOrder.isCancelled"),
+  driverContact: alias("model.delivery.gogovanOrder.driverMobile"),
   gogovanContact: config.APP.GOGOVAN_CONTACT,
 
   actions: {
     cancelOffer() {
-      if(this.get('canCancel')){
-        this.get('offerController').send('cancelOffer', this.get('model'));
+      if (this.get("canCancel")) {
+        this.get("offerController").send("cancelOffer", this.get("model"));
       }
     }
   }

@@ -1,10 +1,12 @@
-import Ember from 'ember';
+import { computed } from "@ember/object";
+import { sort } from "@ember/object/computed";
+import Controller from "@ember/controller";
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   sortProperties: ["latestUpdatedTime:desc"],
-  arrangedContent: Ember.computed.sort("offersWithItems", "sortProperties"),
+  arrangedContent: sort("offersWithItems", "sortProperties"),
 
-  offersWithItems: Ember.computed('model.@each.itemCount', function(){
-    return this.get('model').rejectBy('itemCount', 0);
+  offersWithItems: computed("model.@each.itemCount", function() {
+    return this.get("model").rejectBy("itemCount", 0);
   })
 });

@@ -1,9 +1,9 @@
-import Ember from 'ember';
-import transportDetails from 'shared-goodcity/controllers/offer/transport_details';
-import config from '../../config/environment';
+import { computed } from "@ember/object";
+import transportDetails from "shared-goodcity/controllers/offer/transport_details";
+import config from "../../config/environment";
 
 export default transportDetails.extend({
-  crossroadsContact: Ember.computed(function(){
+  crossroadsContact: computed(function() {
     return config.APP.CROSSROADS_CONTACT;
   })
 });

@@ -1,12 +1,11 @@
-import { test, moduleFor } from 'ember-qunit';
-import startApp from '../helpers/start-app';
-import TestHelper from 'ember-data-factory-guy/factory-guy-test-helper';
-import Ember from 'ember';
+import { run } from "@ember/runloop";
+import { test, moduleFor } from "ember-qunit";
+import startApp from "../helpers/start-app";
+import TestHelper from "ember-data-factory-guy/factory-guy-test-helper";
 
 var App, ctrl;
 
-moduleFor('controller:support', 'support controller', {
-
+moduleFor("controller:support", "support controller", {
   beforeEach: function() {
     ctrl = this.subject();
     App = startApp();
@@ -14,11 +13,13 @@ moduleFor('controller:support', 'support controller', {
   },
 
   afterEach: function() {
-    Em.run(function() { TestHelper.teardown(); });
-    Ember.run(App, 'destroy');
+    Em.run(function() {
+      TestHelper.teardown();
+    });
+    run(App, "destroy");
   }
 });
 
-test('check hasDonationDetail', function(assert){
-  assert.equal(ctrl.get('hasDonationDetail'), false);
+test("check hasDonationDetail", function(assert) {
+  assert.equal(ctrl.get("hasDonationDetail"), false);
 });
