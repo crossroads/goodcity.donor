@@ -103,6 +103,7 @@
     "phantomjs-prebuilt": "^2.1.14",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
     "slick-carousel": "^1.5.8",
+    "tunnel-agent": "^0.6.0",
     "ws": "^3.3.1"
   }
 }
