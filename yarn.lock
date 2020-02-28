@@ -6995,10 +6995,10 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-loader.js@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/loader.js/-/loader.js-4.0.0.tgz#f06c075e7ba73e16d50b96bdf729536824c1b32c"
-  integrity sha1-8GwHXnunPhbVC5a99ylTaCTBsyw=
+loader.js@4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/loader.js/-/loader.js-4.7.0.tgz#a1a52902001c83631efde9688b8ab3799325ef1f"
+  integrity sha512-9M2KvGT6duzGMgkOcTkWb+PR/Q2Oe54df/tLgHGVmFpAmtqJ553xJh6N63iFYI2yjo2PeJXbS5skHi/QpJq4vA==
 
 locate-path@^3.0.0:
   version "3.0.0"
