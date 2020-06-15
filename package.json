@@ -36,6 +36,7 @@
     "connect-restreamer": "^1.0.3",
     "cors": "^2.8.4",
     "ember-ajax": "^3.1.0",
+    "ember-browserify": "^1.2.2",
     "ember-cli": "2.11.0",
     "ember-cli-app-version": "^3.1.0",
     "ember-cli-babel": "5.2.4",
@@ -107,6 +108,7 @@
     "set-value": "^2.0.1",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
     "slick-carousel": "^1.5.8",
+    "tributejs": "^5.1.3",
     "ws": "^3.3.1"
   }
 }
