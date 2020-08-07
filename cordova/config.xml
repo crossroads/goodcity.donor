@@ -81,7 +81,9 @@
     </config-file>
   </platform>
   <access origin="*"/>
+  <allow-navigation href="https://connect.facebook.net/*" />
   <allow-intent href="https://maps.google.com/*"/>
+  <allow-intent href="https://connect.facebook.net/*"/>
   <allow-intent href="https://www.crossroads.org.hk/*"/>
   <allow-intent href="http://www.globalhand.org/*"/>
   <allow-intent href="http://crossroads.uservoice.com/*"/>
