@@ -379,7 +379,7 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|GCW-3255-package-json-version-donor-app)$/
         - android_build_and_deploy:
             requires:
               - ember_cordova_build
