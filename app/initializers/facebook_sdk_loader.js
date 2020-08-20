@@ -3,14 +3,15 @@ export default {
   initialize: function() {
     if (!window.hasOwnProperty("cordova")) {
       window.fbAsyncInit = function() {
+        /* jshint ignore:start */
         FB.init({
           appId: "315911462935779",
           cookie: true,
           xfbml: true,
           version: "v7.0"
         });
-
         FB.AppEvents.logPageView();
+        /* jshint ignore:end */
       };
       (function(d, s, id) {
         var js,
