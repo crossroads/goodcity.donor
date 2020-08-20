@@ -12,6 +12,7 @@
     <preference name="LoadUrlTimeoutValue" value="120000"/>
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="5000"/>
+    <preference name="android-minSdkVersion" value="22" />
     <preference name="Orientation" value="portrait"/>
     <icon src="res/android/drawable-ldpi/icon.png" density="ldpi"/>
     <icon src="res/android/drawable-mdpi/icon.png" density="mdpi"/>
@@ -90,7 +91,7 @@
   <allow-intent href="https://crossroads.uservoice.com/*"/>
   <allow-intent href="https://checkout.paypal.com/*"/>
   <engine name="ios" spec="~5.0.0" />
-  <engine name="android" spec="~8.0.0"/>
+  <engine name="android" spec="9.0.0"/>
   <engine name="windows" spec="~4.3.1"/>
   <plugin name="cordova-plugin-statusbar" spec="~2.1.1"/>
   <plugin name="cordova-plugin-device" spec="~1.1.1"/>
@@ -108,4 +109,8 @@
   <plugin name="cordova-plugin-globalization" spec="https://github.com/apache/cordova-plugin-globalization.git"/>
   <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser.git"/>
   <plugin name="cordova-plugin-dialogs" spec="https://github.com/apache/cordova-plugin-dialogs.git"/>
+  <plugin name="cordova-plugin-facebook4" spec="^6.4.0">
+    <variable name="APP_ID" value="315911462935779" />
+    <variable name="APP_NAME" value="goodcity" />
+  </plugin>
 </widget>
