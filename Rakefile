@@ -108,6 +108,7 @@ namespace :cordova do
         sh %{ cordova plugin add phonegap-plugin-push@2.1.2 }
       else
         sh %{ cordova plugin add phonegap-plugin-push@1.9.2 --variable SENDER_ID="XXXXXXX" }
+        sh %{ cordova plugin add cordova-plugin-facebook4@6.4.0 --variable APP_ID="315911462935779" --variable APP_NAME="goodcity" }
         sh %{ cd platforms/ios; pod dependencies }
       end
       build = (environment == "staging" && platform == 'android') ? "debug" : "release"
