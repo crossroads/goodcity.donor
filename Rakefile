@@ -107,6 +107,7 @@ namespace :cordova do
       if platform == 'android'
         sh %{ cordova plugin add phonegap-plugin-push@2.1.2 }
       else
+        sh %{ pod repo update }
         sh %{ cordova plugin add phonegap-plugin-push@1.9.2 --variable SENDER_ID="XXXXXXX" }
       end
       build = (environment == "staging" && platform == 'android') ? "debug" : "release"
