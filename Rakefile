@@ -107,7 +107,7 @@ namespace :cordova do
       if platform == 'android'
         sh %{ cordova plugin add phonegap-plugin-push@2.1.2 }
       else
-        sh %{ cd platforms/ios; pod update }
+        sh %{ cd platforms/ios; pod install }
       end
       build = (environment == "staging" && platform == 'android') ? "debug" : "release"
       extra_params = (platform === "android") ? '' : ios_build_config
