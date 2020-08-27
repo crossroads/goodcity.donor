@@ -268,7 +268,6 @@ jobs:
           command: |
             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
             pod setup
-            pod install
       - run:
           name: Install cordova-update-config globally
           command: npm i -g cordova-update-config
