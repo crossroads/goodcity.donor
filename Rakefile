@@ -96,7 +96,7 @@ namespace :cordova do
       Dir.chdir(CORDOVA_PATH) do
         sh %{ cordova plugin add #{TESTFAIRY_PLUGIN_URL} } if environment == "staging"
         sh %{ cordova plugin remove #{TESTFAIRY_PLUGIN_NAME}; true } if environment == "production"
-        sh %{ cd platforms/ios; pod install }
+        sh %{ cd platforms/ios; pod update; pod install }
       end
     end
   end
