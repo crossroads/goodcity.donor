@@ -96,7 +96,6 @@ namespace :cordova do
       Dir.chdir(CORDOVA_PATH) do
         sh %{ cordova plugin add #{TESTFAIRY_PLUGIN_URL} } if environment == "staging"
         sh %{ cordova plugin remove #{TESTFAIRY_PLUGIN_NAME}; true } if environment == "production"
-        sh %{ cd platforms/ios; pod update; pod install }
       end
     end
   end
@@ -108,7 +107,7 @@ namespace :cordova do
       if platform == 'android'
         sh %{ cordova plugin add phonegap-plugin-push@2.1.2 }
       else
-        # sh %{ cd platforms/ios; pod install }
+        sh %{ cordova plugin add phonegap-plugin-push@1.9.2 --variable SENDER_ID="XXXXXXX" }
       end
       build = (environment == "staging" && platform == 'android') ? "debug" : "release"
       extra_params = (platform === "android") ? '' : ios_build_config
