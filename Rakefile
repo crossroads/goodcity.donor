@@ -261,8 +261,8 @@ def app_id
 end
 
 def app_version
-  package_json_file = File.open(File.join(File.expand_path('../',  __FILE__), 'package.json'), 'r')
-  version_number = JSON.load(package_json_file)['version']
+  package_json = File.open(File.join(File.expand_path('../',  __FILE__), 'package.json'), 'r').read
+  version_number = JSON.parse(package_json)['version']
   if is_staging
     "#{version_number}.#{ENV['CIRCLE_BUILD_NUM']||ENV['BUILD_BUILDNUMBER']}"
   else
