@@ -94,7 +94,7 @@
     "ember-resolver": "^2.0.3",
     "extend": "^2.0.2",
     "fstream": "^1.0.12",
-    "handlebars": "^4.0.14",
+    "handlebars": "^4.4.5",
     "hoek": "4.2.1",
     "js-yaml": "^3.13.1",
     "loader.js": "4.0.0",
