@@ -222,6 +222,7 @@ jobs:
       - run:
           name: verify node version
           command: node --version
+      - run: npm install node-sass@4.12.0
       - restore-cache: *restore-ios-yarn-cache
       - run: npm install
       - save-cache: *save-ios-yarn-cache
