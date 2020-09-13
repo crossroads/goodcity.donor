@@ -222,7 +222,7 @@ jobs:
       - run:
           name: verify node version
           command: node --version
-      - run: npm rebuild node-sass
+      - run: npm install node-sass
       - restore-cache: *restore-ios-yarn-cache
       - run: *yarn
       - save-cache: *save-ios-yarn-cache
