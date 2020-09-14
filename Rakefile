@@ -79,8 +79,6 @@ namespace :cordova do
 
   desc "Cordova prepare {platform}"
   task :prepare do
-    log("Adding platform for  #{platform}")
-    sh %{ cordova platform add #{platform}}
     create_build_json_file
     sh %{ ln -s "#{ROOT_PATH}/dist" "#{CORDOVA_PATH}/www" } unless File.exist?("#{CORDOVA_PATH}/www")
     build_details.map{|key, value| log("#{key.upcase}: #{value}")}
