@@ -105,9 +105,10 @@
   <plugin name="cordova-plugin-ios-no-export-compliance" spec="https://github.com/mikaoelitiana/cordova-plugin-ios-no-export-compliance.git" />
   <plugin name="com.phonegap.plugins.nativesettingsopener" spec="https://github.com/crossroads/Cordova-open-native-settings.git" />
   <plugin name="cordova-launch-review" spec="1.0.3" />
-  <plugin name="cordova-plugin-apprate" spec="https://github.com/crossroads/cordova-plugin-apprate.git"/>
+  <plugin name="cordova-plugin-apprate" spec="1.5.0"/>
   <plugin name="cordova-plugin-globalization" spec="https://github.com/apache/cordova-plugin-globalization.git"/>
   <plugin name="cordova-plugin-inappbrowser" spec="4.0.0"/>
+  <plugin name="cordova-plugin-dialogs" spec="https://github.com/apache/cordova-plugin-dialogs.git"/>
   <plugin name="cordova-plugin-facebook4" spec="5.0.0">
     <variable name="APP_ID" value="315911462935779" />
     <variable name="APP_NAME" value="goodcity" />
