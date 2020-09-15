@@ -82,6 +82,8 @@
     </config-file>
   </platform>
   <access origin="*"/>
+  <preference name="scheme" value="app" />
+  <preference name="hostname" value="localhost" />
   <allow-navigation href="https://connect.facebook.net/*" />
   <allow-intent href="https://maps.google.com/*"/>
   <allow-intent href="https://connect.facebook.net/*"/>
