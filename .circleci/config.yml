@@ -314,7 +314,7 @@ jobs:
   www_deploy:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.5.5
+      - image: circleci/ruby:2.6.0-node
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-bundler-cache
@@ -367,29 +367,29 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|bundler-fail-for-web)$/
         - www_deploy:
             requires:
               - www_build
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|bundler-fail-for-web)$/
         - ember_cordova_build:
             requires:
               - tests
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|bundler-fail-for-web)$/
         - android_build_and_deploy:
             requires:
               - ember_cordova_build
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|bundler-fail-for-web)$/
         - ios_build_and_deploy:
             requires:
               - tests
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|bundler-fail-for-web)$/
 
