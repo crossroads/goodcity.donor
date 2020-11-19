@@ -386,7 +386,7 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|GCW-3202-fix-error-registering-apple-device)$/
         - android_build_and_deploy:
             requires:
               - ember_cordova_build
@@ -398,5 +398,5 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(master|live)$/
+                only: /^(master|live|GCW-3202-fix-error-registering-apple-device)$/
 
