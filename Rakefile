@@ -108,7 +108,7 @@ namespace :cordova do
         sh %{ cordova plugin add phonegap-plugin-push@2.1.2 }
       else
         sh %{ cordova plugin add @havesource/cordova-plugin-push }
-        sh %{ cd "#{CORDOVA_PATH}/platforms/ios"; pod setup }
+        sh %{ cd "#{CORDOVA_PATH}/platforms/ios"; pod install }
       end
       build = (environment == "staging" && platform == 'android') ? "debug" : "release"
       extra_params = (platform === "android") ? '' : ios_build_config
