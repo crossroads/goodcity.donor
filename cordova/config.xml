@@ -82,6 +82,8 @@
     </config-file>
   </platform>
   <access origin="*"/>
+  <preference name="scheme" value="app" />
+  <preference name="hostname" value="localhost" />
   <allow-navigation href="https://connect.facebook.net/*" />
   <allow-intent href="https://maps.google.com/*"/>
   <allow-intent href="https://connect.facebook.net/*"/>
@@ -90,13 +92,12 @@
   <allow-intent href="http://crossroads.uservoice.com/*"/>
   <allow-intent href="https://crossroads.uservoice.com/*"/>
   <allow-intent href="https://checkout.paypal.com/*"/>
-  <engine name="ios" spec="~5.0.0" />
+  <engine name="ios" spec="6.1.1" />
   <engine name="android" spec="9.0.0"/>
   <engine name="windows" spec="~4.3.1"/>
   <plugin name="cordova-plugin-statusbar" spec="~2.1.1"/>
   <plugin name="cordova-plugin-device" spec="~1.1.1"/>
   <plugin name="cordova-plugin-whitelist" spec="~1.2.1"/>
-  <plugin name="cordova-plugin-inappbrowser" spec="~1.2.1"/>
   <plugin name="cordova-plugin-network-information" spec="~1.2.0"/>
   <plugin name="cordova-plugin-camera" spec="~2.4.1" />
   <plugin name="cordova-plugin-actionsheet" spec="https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git"/>
