@@ -185,6 +185,7 @@ I18nTranslationsEn =
       "accepted_status": "This item has been accepted."
       "rejected_status": "This item has been rejected."
       "cancel_last_item_confirm": "Cancelling the last item will cancel the offer, do you wish to proceed?"
+      "cancelled_status": "The offer this item belongs to has been cancelled by {{firstName}} {{lastName}} on"
 
       "messages":
         "info_text1": "If we have questions when reviewing this item we will chat with you here."

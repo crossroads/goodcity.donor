@@ -185,6 +185,7 @@ I18nTranslationsZhTw =
       "accepted_status": "此項物品已被接納"
       "rejected_status": "此項物品不被接納"
       "cancel_last_item_confirm": "取消最後一項物品即會取消此項捐獻，您是否確定？"
+      "cancelled_status": "這項捐贈已被 {{lastName}} {{firstName}} 取消。"
 
       "messages":
         "info_text1": "審查物品時，如果有任何問題，我們會在下面的對話框向您查詢"
