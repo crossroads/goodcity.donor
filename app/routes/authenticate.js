@@ -12,18 +12,5 @@ export default Ember.Route.extend({
           ._loadDataStore();
       }
     }
-
-    let previousRoutes = this.router.router.currentHandlerInfos;
-    let previousRoute = previousRoutes && previousRoutes.pop().name;
-    if (previousRoute) {
-      this.session.set("backLinkPath", previousRoute);
-    } else {
-      this.session.set("backLinkPath", "login");
-    }
-  },
-
-  setupController(controller, model) {
-    this._super(controller, model);
-    controller.set("backLinkPath", this.session.get("backLinkPath"));
   }
 });
