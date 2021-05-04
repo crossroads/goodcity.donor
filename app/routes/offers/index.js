@@ -9,6 +9,13 @@ export default AuthorizeRoute.extend({
     return this.store.findAll("offer");
   },
 
+  afterModel(model) {
+    this.store.query("message", {
+      messageable_type: "Offer",
+      messageable_id: model.getEach("id")
+    });
+  },
+
   redirect(my_offers) {
     var route = this;
     switch (my_offers.get("length")) {
