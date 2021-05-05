@@ -398,5 +398,5 @@ workflows:
               - tests
             filters:
               branches:
-                only: /^(master|live|Upgrade-xcode)$/
+                only: /^(master|live)$/
 
