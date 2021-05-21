@@ -1,4 +1,5 @@
 import AuthorizeRoute from "./../authorize";
+import Ember from "ember";
 
 export default AuthorizeRoute.extend({
   model() {
@@ -9,15 +10,16 @@ export default AuthorizeRoute.extend({
   },
 
   afterModel(my_offer) {
-    this.store.query("message", {
-      messageable_type: "Offer",
-      messageable_id: my_offer.get("id")
-    });
-
-    this.store.query("message", {
-      messageable_type: "Item",
-      messageable_id: my_offer.get("items").getEach("id")
-    });
+    Ember.RSVP.Promise.all([
+      this.store.query("message", {
+        messageable_type: "Offer",
+        messageable_id: my_offer.get("id")
+      }),
+      this.store.query("message", {
+        messageable_type: "Item",
+        messageable_id: my_offer.get("items").getEach("id")
+      })
+    ]);
 
     if (!my_offer) {
       this.transitionTo("offers");
