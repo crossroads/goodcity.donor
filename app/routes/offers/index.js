@@ -6,7 +6,15 @@ export default AuthorizeRoute.extend({
     if (cachedRecords.get("length")) {
       return cachedRecords;
     }
-    return this.store.findAll("offer");
+
+    return this.get("store").query("offer", { exclude_messages: "true" });
+  },
+
+  afterModel(model) {
+    this.store.query("message", {
+      messageable_type: "Offer",
+      messageable_id: model.getEach("id")
+    });
   },
 
   redirect(my_offers) {
