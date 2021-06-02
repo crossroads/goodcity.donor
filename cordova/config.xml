@@ -84,9 +84,7 @@
   <access origin="*"/>
   <preference name="scheme" value="app" />
   <preference name="hostname" value="localhost" />
-  <allow-navigation href="https://connect.facebook.net/*" />
   <allow-intent href="https://maps.google.com/*"/>
-  <allow-intent href="https://connect.facebook.net/*"/>
   <allow-intent href="https://www.crossroads.org.hk/*"/>
   <allow-intent href="http://www.globalhand.org/*"/>
   <allow-intent href="http://crossroads.uservoice.com/*"/>
@@ -110,8 +108,4 @@
   <plugin name="cordova-plugin-globalization" spec="https://github.com/apache/cordova-plugin-globalization.git"/>
   <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser.git"/>
   <plugin name="cordova-plugin-dialogs" spec="https://github.com/apache/cordova-plugin-dialogs.git"/>
-  <plugin name="cordova-plugin-facebook4" spec="5.0.0">
-    <variable name="APP_ID" value="315911462935779" />
-    <variable name="APP_NAME" value="goodcity" />
-  </plugin>
 </widget>
