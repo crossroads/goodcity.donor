@@ -101,7 +101,9 @@ export default ItemBaseController.extend({
       var loadingView = getOwner(this)
         .lookup("component:loading")
         .append();
-      offer.deleteRecord();
+
+      offer = this.get("store").peekRecord("offer", offer.get("id"));
+      this.get("store").deleteRecord(offer);
       offer
         .save()
         .then(() => {

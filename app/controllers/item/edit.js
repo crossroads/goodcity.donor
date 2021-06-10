@@ -21,12 +21,11 @@ export default Controller.extend({
     }
   ),
 
-  formData: computed("model", {
+  formData: computed("model.{donorConditionId,donorDescription}", {
     get: function() {
-      var item = this.get("model");
       return {
-        donorConditionId: item.get("donorConditionId"),
-        donorDescription: item.get("donorDescription")
+        donorConditionId: this.get("model.donorConditionId"),
+        donorDescription: this.get("model.donorDescription")
       };
     },
     set: function(key, value) {

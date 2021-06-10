@@ -107,7 +107,8 @@ namespace :cordova do
       if platform == 'android'
         sh %{ cordova plugin add phonegap-plugin-push@2.1.2 }
       else
-        sh %{ cordova plugin add phonegap-plugin-push@1.9.2 --variable SENDER_ID="XXXXXXX" }
+        sh %{ cordova plugin add phonegap-plugin-push@2.3.0 --variable SENDER_ID="XXXXXXX" }
+        sh %{ cd "#{CORDOVA_PATH}/platforms/ios"; pod setup }
       end
       build = (environment == "staging" && platform == 'android') ? "debug" : "release"
       extra_params = (platform === "android") ? '' : ios_build_config
@@ -261,13 +262,12 @@ def app_id
 end
 
 def app_version
-  if ENV["CI"]
-    is_staging ? "#{ENV['APP_VERSION']}.#{ENV['CIRCLE_BUILD_NUM']||ENV['BUILD_BUILDNUMBER']}" : ENV['APP_VERSION']
-  elsif @ver
-    @ver
+  package_json = File.open(File.join(File.expand_path('../',  __FILE__), 'package.json'), 'r').read
+  version_number = JSON.parse(package_json)['version']
+  if is_staging
+    "#{version_number}.#{ENV['CIRCLE_BUILD_NUM']||ENV['BUILD_BUILDNUMBER']}"
   else
-    print "Enter GoodCity app version: "
-    @ver = STDIN.gets.strip
+    version_number
   end
 end
 

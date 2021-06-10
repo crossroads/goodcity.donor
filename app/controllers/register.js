@@ -35,6 +35,7 @@ export default Controller.extend({
       new AjaxPromise("/auth/signup", "POST", null, { user_auth: user_auth })
         .then(data => {
           this.set("session.otpAuthKey", data.otp_auth_key);
+          this.set("session.backLinkPath", "register");
           this.setProperties({
             mobilePhone: null,
             firstName: null,

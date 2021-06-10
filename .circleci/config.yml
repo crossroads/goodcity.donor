@@ -4,7 +4,7 @@ aliases:
 
   - defaults: &defaults
       docker:
-        - image: circleci/node:10.14.2
+        - image: circleci/node:12.18.3
       working_directory: ~/code
   - &restore-repo-cache
       key: app-goodcity-repo-{{ .Environment.CIRCLE_SHA1 }}
@@ -76,7 +76,7 @@ jobs:
   tests:
     <<: *defaults
     docker:
-      - image: circleci/node:10.14.2-browsers
+      - image: circleci/node:12.18.3-browsers
     environment:
       JOBS: 1
     steps:
@@ -141,7 +141,7 @@ jobs:
   android_build_and_deploy:
     <<: *defaults
     docker:
-      - image: circleci/android:api-26-node8-alpha
+      - image: circleci/android:api-29-node@sha256:f57cbd442b1d90d01a672e87fa9c516a71312376641d70aee67736e78cb9645f
     environment:
       JVM_OPTS: -Xmx3200m
       KEYSTORE: goodcity.keystore
@@ -200,7 +200,7 @@ jobs:
 
   ios_build_and_deploy:
     macos:
-      xcode: "10.1.0"
+      xcode: "12.0.1"
     working_directory: ~/code
     shell: /bin/bash --login -eo pipefail
     environment:
@@ -209,6 +209,19 @@ jobs:
 
     steps:
       - checkout
+      - run:
+          name: install node@12.18.3
+          command: |
+              set +e
+              touch $BASH_ENV
+              curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+              echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+              echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+              echo nvm install 12.18.3 >> $BASH_ENV
+              echo nvm alias default 12.18.3 >> $BASH_ENV
+      - run:
+          name: verify node version
+          command: node --version
       - restore-cache: *restore-ios-yarn-cache
       - run: *yarn
       - save-cache: *save-ios-yarn-cache
@@ -221,7 +234,7 @@ jobs:
             echo 'export STAGING=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo false; else echo true; fi)' >> $BASH_ENV
             echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
             echo 'export PROVISIONING_PROFILE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo 'GoodCityDonor.mobileprovision'; else echo 'GoodCityAppStaging.mobileprovision'; fi)' >> $BASH_ENV
-            echo 'export CERTIFICATE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo 'Goodcity_2020.p12'; else echo 'GoodCity_2020_Development.p12'; fi)' >> $BASH_ENV
+            echo 'export CERTIFICATE=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo 'hk.goodcity.p12'; else echo 'hk.goodcity.dev.p12'; fi)' >> $BASH_ENV
       - run:
           command: |
               npm rebuild node-sass
@@ -245,6 +258,12 @@ jobs:
               mv $PROVISIONING_PROFILE ~/Library/MobileDevice/Provisioning\ Profiles
           working_directory: ~/code
       - run:
+          name: Download AppStore API KEY file
+          command: |
+            APPSTORE_CONNECT_API_KEY_FILENAME="AuthKey_${APPSTORE_CONNECT_API_KEY_ID}.p8"
+            yarn run azure-filestore download -d ios -f $APPSTORE_CONNECT_API_KEY_FILENAME
+            mv $APPSTORE_CONNECT_API_KEY_FILENAME ~/code/fastlane
+      - run:
           name: Download P12 certificate
           command: |
               yarn run azure-filestore download -f $CERTIFICATE
@@ -260,7 +279,7 @@ jobs:
           command: npm i -g cordova-update-config
       - run:
           name: Install cordova globally
-          command: npm i -g cordova@7.1.0
+          command: npm i -g cordova@9.0.0
       - run:
           name: Create keychain and import p12 certificate
           command: bundle exec fastlane ios prepare_certificates cert:$CERTIFICATE
@@ -301,10 +320,11 @@ jobs:
   www_deploy:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.5.1-node
+      - image: cimg/ruby:2.7.3
     steps:
       - restore-cache: *restore-repo-cache
       - restore-cache: *restore-bundler-cache
+      - run: gem install bundler:2.0.2
       - run: bundle check --path=vendor/bundle || bundle install --deployment --jobs=4 --retry=3
       - save-cache: *save-bundler-cache
       - run:

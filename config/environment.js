@@ -100,16 +100,17 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     // RESTAdapter Settings
-    ENV.APP.API_HOST_URL = "http://localhost:3000";
+    ENV.APP.API_HOST_URL = "http://localhost:4000";
     ENV.APP.SOCKETIO_WEBSERVICE_URL = "http://localhost:1337/goodcity";
 
     ENV.contentSecurityPolicy["connect-src"] = [
       "http://localhost:4200",
-      "http://localhost:3000",
+      "http://localhost:4000",
       "http://localhost:1337",
       "ws://localhost:1337",
       "wss://localhost:1337",
-      "https://api.cloudinary.com"
+      "https://api.cloudinary.com",
+      "https://api.rollbar.com"
     ].join(" ");
     //Only added for development env. to fix issue related to BLOB: object
     ENV.contentSecurityPolicy["img-src"] = [
@@ -148,7 +149,8 @@ module.exports = function(environment) {
       "ws://socket.goodcity.hk:81",
       "wss://socket.goodcity.hk:81",
       "https://api.cloudinary.com",
-      "https://errbit.crossroads.org.hk"
+      "https://errbit.crossroads.org.hk",
+      "https://api.rollbar.com"
     ].join(" ");
 
     ENV.googleAnalytics = {
@@ -169,7 +171,8 @@ module.exports = function(environment) {
       "ws://socket-staging.goodcity.hk:81",
       "wss://socket-staging.goodcity.hk:81",
       "https://api.cloudinary.com",
-      "https://errbit.crossroads.org.hk"
+      "https://errbit.crossroads.org.hk",
+      "https://api.rollbar.com"
     ].join(" ");
 
     ENV.googleAnalytics = {

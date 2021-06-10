@@ -28,3 +28,6 @@ cordova/plugins/*
 cordova/.secret_keys
 *.mobileprovision
 *.keystore
+*.p8
+*.p12
+
