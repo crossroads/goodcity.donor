@@ -104,7 +104,7 @@
     "minimatch": "^3.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "set-value": "^2.0.1",
-    "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#GCW-2538-ember-upgrade-of-shared.goodcity-to-2.16",
+    "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#ember-upgrade",
     "slick-carousel": "^1.5.8",
     "ws": "^3.3.1"
   }
