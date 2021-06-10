@@ -142,10 +142,6 @@ export default ItemBaseController.extend({
       if (!this.get("model.preventNewItem")) {
         this.send("addItem");
       }
-    },
-
-    handleBrokenImage() {
-      this.get("model.reviewedBy").set("hasImage", null);
     }
   }
 });

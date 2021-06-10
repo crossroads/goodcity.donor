@@ -35,13 +35,7 @@ export default Addressable.extend({
     return roles;
   }),
 
-  roleIds: Ember.computed("userRoles.[]", function() {
-    return this.get("userRoles").getEach("roleId");
-  }),
-
   i18n: Ember.inject.service(),
-
-  isSupervisor: Ember.computed.equal("permission.name", "Supervisor"),
 
   nameInitial: Ember.computed("firstName", function() {
     return this.get("firstName")

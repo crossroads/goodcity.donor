@@ -82,5 +82,9 @@ module.exports = function(defaults) {
     destDir: "/img"
   });
 
+  // if (app.env === "development" || app.env === "production") {
+  app.import("vendor/stripe/stripe.js");
+  // }
+
   return app.toTree();
 };
