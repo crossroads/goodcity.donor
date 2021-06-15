@@ -1,4 +1,6 @@
 /* jshint node: true */
+"use strict";
+
 const pkgJson = require("../package.json");
 
 module.exports = function(environment) {
@@ -132,6 +134,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = "#ember-testing";
+    ENV.APP.autoboot = false;
 
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = "http://localhost:4200";

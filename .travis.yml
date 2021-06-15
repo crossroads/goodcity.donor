@@ -9,6 +9,11 @@ cache:
   directories:
     - node_modules
 
+env:
+  global:
+    # See https://git.io/vdao3 for details.
+    - JOBS=1
+
 before_install:
   - npm config set spin false
   - npm install -g bower
@@ -21,9 +26,5 @@ install:
   - bower install
 
 script:
-  - ember server &
-  - sleep 5
-  - npm test
-
-notifications:
-  flowdock: 7810528ead9733543fd77e874400b1c1
+  - yarn lint:js
+  - yarn test

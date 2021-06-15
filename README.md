@@ -7,9 +7,23 @@
 
 The GoodCity initiative is a new way to donate quality goods in Hong Kong. See www.goodcity.hk for more details.
 
+## Prerequisites
+
+You will need the following things properly installed on your computer.
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/)
+- [Ember CLI](https://ember-cli.com/)
+- [Google Chrome](https://google.com/chrome/)
+
 ## Installation
 
 Install and configure nodejs https://github.com/creationix/nvm#install-script
+
+- `git clone <repository-url>` this repository
+- `cd goodcity`
+- `yarn install`
 
 ```shell
 yarn add bower ember-cli phantomjs-prebuilt
@@ -25,18 +39,22 @@ ember install
 
 ## Running
 
-* `yarn start`
-* Visit your app at http://localhost:4200.
+- `ember serve`
+- Visit your app at [http://localhost:4200](http://localhost:4200).
+- Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+
+- `yarn start`
+- Visit your app at http://localhost:4200.
 
 ## Running Tests
 
-* `ember test`
-* `ember test --server`
+- `ember test`
+- `ember test --server`
 
 ## Building
 
-* `yarn build`
-* `EMBER_CLI_CORDOVA=0 ember build --environment=production`
+- `yarn build`
+- `EMBER_CLI_CORDOVA=0 ember build --environment=production`
 
 Deployment will be automatic from Circle CI. To deploy to the live site, simply push to the live branch.
 
@@ -47,17 +65,25 @@ If you wish to run the deployment manually, use the following commands. However,
 
 Note you will need to have your SSH key installed on the destination servers before deployment will work.
 
+### Linting
+
+- `yarn lint:js`
+- `yarn lint:js --fix`
+
 ## Upgrading Ember CLI
+
 Documentation has moved to https://github.com/crossroads/shared.goodcity/blob/master/docs/upgrading-ember.md
 
 ## Cordova
+
 CircleCI will automatically build apps for `master` and `live` branches. However, if you wish to do this manually you can use the following commands.
 
-* Switch your admin.goodcity and shared.goodcity folders to the correct branch (usually `master` or `live`)
-* Run `rake app:build` or `rake production android app:build` (see `Rakefile` for full command options)
-* Run `rake testfairy:upload` if you wish to push the app to Testfairy.
+- Switch your admin.goodcity and shared.goodcity folders to the correct branch (usually `master` or `live`)
+- Run `rake app:build` or `rake production android app:build` (see `Rakefile` for full command options)
+- Run `rake testfairy:upload` if you wish to push the app to Testfairy.
 
 Note: this is the same command as run on CircleCI. If you don't specify a platform, it will choose based on your current operating system. It will assume `staging` environment unless you specific otherwise.
 
 ## Development Notes
+
 Documentation has moved to https://github.com/crossroads/shared.goodcity/blob/master/docs/development-notes.md

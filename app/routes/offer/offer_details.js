@@ -1,5 +1,5 @@
+import { Promise } from "rsvp";
 import AuthorizeRoute from "./../authorize";
-import Ember from "ember";
 
 export default AuthorizeRoute.extend({
   model() {
@@ -10,7 +10,7 @@ export default AuthorizeRoute.extend({
   },
 
   afterModel(my_offer) {
-    Ember.RSVP.Promise.all([
+    Promise.all([
       this.store.query("message", {
         messageable_type: "Offer",
         messageable_id: my_offer.get("id")
