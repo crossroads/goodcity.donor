@@ -107,6 +107,6 @@
     "set-value": "^2.0.1",
     "shared-goodcity": "git://github.com/crossroads/shared.goodcity.git#master",
     "slick-carousel": "^1.5.8",
-    "ws": "^3.3.1"
+    "ws": "^5.2.3"
   }
 }
