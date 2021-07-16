@@ -111,6 +111,7 @@ module.exports = function(environment) {
       "http://localhost:1337",
       "ws://localhost:1337",
       "wss://localhost:1337",
+      "ws://localhost:7020/livereload",
       "https://api.cloudinary.com",
       "https://api.rollbar.com"
     ].join(" ");
