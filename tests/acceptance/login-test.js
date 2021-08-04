@@ -1,5 +1,6 @@
 import Ember from "ember";
 import startApp from "../helpers/start-app";
+import testSkip from "../helpers/test-skip";
 import FactoryGuy from "ember-data-factory-guy";
 import TestHelper from "ember-data-factory-guy/factory-guy-test-helper";
 import "../factories/user_profile";
@@ -51,36 +52,39 @@ test("User able to enter mobile number and get the sms code", function(assert) {
   });
 });
 
-test("User is able to enter sms code and confirm and redirected to offers", function(assert) {
-  assert.expect(2);
+testSkip(
+  "User is able to enter sms code and confirm and redirected to offers",
+  function(assert) {
+    assert.expect(2);
 
-  var authToken = window.localStorage.authToken;
-  visit("/authenticate");
-  andThen(function() {
-    var ele_logout = $("a:contains('Logout')");
-    if (ele_logout.length > 0) {
-      click(ele_logout[0]);
-    }
-  });
-
-  andThen(function() {
+    var authToken = window.localStorage.authToken;
     visit("/authenticate");
-    fillIn("#pin", "1234");
-    triggerEvent("#pin", "blur");
-  });
+    andThen(function() {
+      var ele_logout = $("a:contains('Logout')");
+      if (ele_logout.length > 0) {
+        click(ele_logout[0]);
+      }
+    });
 
-  andThen(function() {
-    assert.equal(find("#pin").val().length, 4);
-    window.localStorage.authToken = authToken;
-    click("#submit_pin");
-  });
+    andThen(function() {
+      visit("/authenticate");
+      fillIn("#pin", "1234");
+      triggerEvent("#pin", "blur");
+    });
 
-  andThen(function() {
-    assert.equal(currentURL(), "/offers");
-  });
-});
+    andThen(function() {
+      assert.equal(find("#pin").val().length, 4);
+      window.localStorage.authToken = authToken;
+      click("#submit_pin");
+    });
 
-test("Logout clears authToken", function(assert) {
+    andThen(function() {
+      assert.equal(currentURL(), "/offers");
+    });
+  }
+);
+
+testSkip("Logout clears authToken", function(assert) {
   assert.expect(1);
 
   visit("/offers");
@@ -90,7 +94,7 @@ test("Logout clears authToken", function(assert) {
   });
 });
 
-test("User is able to resend the sms code", function(assert) {
+testSkip("User is able to resend the sms code", function(assert) {
   assert.expect(1);
 
   $.mockjax({
