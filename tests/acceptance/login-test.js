@@ -6,7 +6,7 @@ import TestHelper from "ember-data-factory-guy/factory-guy-test-helper";
 import "../factories/user_profile";
 import { module, test } from "qunit";
 
-var App, hk_user, non_hk_user, timer;
+var App, hk_user, non_hk_user;
 
 module("Acceptance: Login", {
   beforeEach: function() {
@@ -14,7 +14,7 @@ module("Acceptance: Login", {
     TestHelper.setup();
     hk_user = FactoryGuy.make("with_hk_mobile");
     non_hk_user = FactoryGuy.make("with_non_hk_mobile");
-    App.__container__.lookup("controller:authenicate").set("timer", "60");
+    // App.__container__.lookup("controller:authenicate").set("timer", "60");
     App.__container__.lookup("controller:subscriptions").pusher = {
       get: function() {
         return {};

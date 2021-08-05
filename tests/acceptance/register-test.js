@@ -7,13 +7,13 @@ import "../factories/district";
 import { module, test } from "qunit";
 import testSkip from "../helpers/test-skip";
 
-var App, hk_user, timer;
+var App, hk_user;
 
 module("Acceptance: Register", {
   beforeEach: function() {
     App = startApp();
     App.__container__.lookup("service:session").set("authToken", null);
-    App.__container__.lookup("controller:authenicate").set("timer", 60);
+    // App.__container__.lookup("controller:authenicate").set("timer", 60);
     hk_user = FactoryGuy.make("with_hk_mobile");
   },
   afterEach: function() {
