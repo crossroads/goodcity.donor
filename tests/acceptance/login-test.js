@@ -1,21 +1,20 @@
 import Ember from "ember";
 import startApp from "../helpers/start-app";
-import testSkip from "../helpers/test-skip";
 import FactoryGuy from "ember-data-factory-guy";
+import testSkip from "../helpers/test-skip";
 import TestHelper from "ember-data-factory-guy/factory-guy-test-helper";
 import "../factories/user_profile";
 import { module, test } from "qunit";
 
-var App, hk_user, non_hk_user;
+var App, hk_user, non_hk_user, timer;
 
 module("Acceptance: Login", {
   beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-
     hk_user = FactoryGuy.make("with_hk_mobile");
     non_hk_user = FactoryGuy.make("with_non_hk_mobile");
-
+    App.__container__.lookup("controller:authenicate").set("timer", "60");
     App.__container__.lookup("controller:subscriptions").pusher = {
       get: function() {
         return {};
@@ -83,41 +82,3 @@ testSkip(
     });
   }
 );
-
-testSkip("Logout clears authToken", function(assert) {
-  assert.expect(1);
-
-  visit("/offers");
-  click("a:contains('Logout')");
-  andThen(function() {
-    assert.equal(typeof window.localStorage.authToken, "undefined");
-  });
-});
-
-testSkip("User is able to resend the sms code", function(assert) {
-  assert.expect(1);
-
-  $.mockjax({
-    url: "/api/v1/auth/send_pi*",
-    responseText: {
-      otp_auth_key: "/JqONEgEjrZefDV3ZIQsNA=="
-    }
-  });
-
-  visit("/authenticate");
-  andThen(function() {
-    var ele_logout = $("a:contains('Logout')");
-    if (ele_logout.length > 0) {
-      click(ele_logout[0]);
-    }
-  });
-
-  andThen(function() {
-    visit("/authenticate");
-    click("#resend-pin");
-  });
-
-  andThen(function() {
-    assert.equal(window.localStorage.otpAuthKey, '"/JqONEgEjrZefDV3ZIQsNA=="');
-  });
-});
