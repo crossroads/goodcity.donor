@@ -6,7 +6,11 @@
       <nav class="tab-bar {{unless session.isLoggedIn 'sticky_title_bar'}}">
         <section class="left-small">
           {{#if session.isLoggedIn}}
-            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            <a class="left-off-canvas-toggle menu-icon" href="#">
+              <span>
+                <i aria-hidden="true" class="fa fa-bars"></i>
+              </span>
+            </a>
           {{else}}
             {{link-to (t "back") 'tour' classNames='back'}}
           {{/if}}
