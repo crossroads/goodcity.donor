@@ -50,9 +50,7 @@ testSkip("Rediect to login if not logged-in", function() {
   });
 });
 
-testSkip("On login page redirect to home-page if already logged-in", function(
-  assert
-) {
+test("On login page redirect to home-page if already logged-in", function(assert) {
   assert.expect(1);
 
   visit("/login");

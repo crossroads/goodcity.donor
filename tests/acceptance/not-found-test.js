@@ -12,7 +12,6 @@ module("Display not found error", {
     offer = FactoryGuy.make("offer");
     var i18n = App.__container__.lookup("service:i18n");
     t = i18n.t.bind(i18n);
-    App.__container__.lookup("controller:authenicate").set("timer", "60");
     App.__container__.lookup("service:logger").error = () => {};
   },
   afterEach: function() {
@@ -44,7 +43,7 @@ testSkip("Display error popup for invalid item", function() {
   });
 });
 
-testSkip("Display not-found page for invalid url", function() {
+test("Display not-found page for invalid url", function() {
   $(".reveal-modal").remove();
   visit("/invalid_url");
   andThen(function() {

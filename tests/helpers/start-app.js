@@ -51,9 +51,6 @@ export default function startApp(attrs, permissionId) {
     QUnit.assert.equal(message, "");
 
   //needed by application controller init
-  application.__container__
-    .lookup("controller:authenticate")
-    .set("timer", "60");
   application.__container__.lookup(
     "controller:subscriptions"
   ).actions.wire = function() {};

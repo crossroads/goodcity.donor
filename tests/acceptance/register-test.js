@@ -5,7 +5,6 @@ import "../factories/user";
 import "../factories/territory";
 import "../factories/district";
 import { module, test } from "qunit";
-import testSkip from "../helpers/test-skip";
 
 var App, hk_user;
 
@@ -13,7 +12,6 @@ module("Acceptance: Register", {
   beforeEach: function() {
     App = startApp();
     App.__container__.lookup("service:session").set("authToken", null);
-    // App.__container__.lookup("controller:authenicate").set("timer", 60);
     hk_user = FactoryGuy.make("with_hk_mobile");
   },
   afterEach: function() {
@@ -59,19 +57,30 @@ test("All required registration details are filled", function(assert) {
   });
 });
 
-testSkip(
-  "mobile number length should be 8 digit (excluding country code)",
-  function(assert) {
-    assert.expect(1);
+test("mobile number length should be 8 digit (excluding country code)", function(assert) {
+  assert.expect(1);
 
-    visit("/register");
-    fillIn("#mobile", hk_user.get("mobile"));
-    triggerEvent("#mobile", "blur");
-    fillIn("#first_name", hk_user.get("firstName"));
-    fillIn("#last_name", hk_user.get("lastName"));
+  visit("/register");
+  fillIn("#mobile", hk_user.get("mobile"));
+  triggerEvent("#mobile", "blur");
+  fillIn("#first_name", hk_user.get("firstName"));
+  fillIn("#last_name", hk_user.get("lastName"));
 
-    andThen(function() {
-      assert.equal(find("#mobile").val().length, 8);
-    });
-  }
-);
+  andThen(function() {
+    assert.equal(find("#mobile").val().length, 8);
+  });
+});
+
+test("mobile number length should be 8 digit (excluding country code)", function(assert) {
+  assert.expect(1);
+
+  visit("/register");
+  fillIn("#mobile", hk_user.get("mobile"));
+  triggerEvent("#mobile", "blur");
+  fillIn("#first_name", hk_user.get("firstName"));
+  fillIn("#last_name", hk_user.get("lastName"));
+
+  andThen(function() {
+    assert.equal(find("#mobile").val().length, 8);
+  });
+});
