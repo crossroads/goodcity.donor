@@ -1,18 +1,18 @@
-import Ember from 'ember';
-import startApp from '../helpers/start-app';
+import Ember from "ember";
+import startApp from "../helpers/start-app";
 import testSkip from "../helpers/test-skip";
-import { module, test } from 'qunit';
+import { module, test } from "qunit";
 
 var App, t;
 
-module('Authorization', {
+module("Authorization", {
   beforeEach: function() {
     App = startApp();
-    var i18n = App.__container__.lookup('service:i18n');
+    var i18n = App.__container__.lookup("service:i18n");
     t = i18n.t.bind(i18n);
   },
   afterEach: function() {
-    Ember.run(App, 'destroy');
+    Ember.run(App, "destroy");
   }
 });
 
@@ -23,17 +23,30 @@ testSkip("Rediect to login if not logged-in", function() {
   var okClick;
   var messageBox = lookup("service:messageBox");
   var oldCustom = messageBox.custom;
-  messageBox.custom = (message, btn1Text, btn1Callback, btn2Text, btn2Callback) => {
+  messageBox.custom = (
+    message,
+    btn1Text,
+    btn1Callback,
+    btn2Text,
+    btn2Callback
+  ) => {
     okClick = btn1Callback;
-    oldCustom.call(messageBox, message, btn1Text, btn1Callback, btn2Text, btn2Callback);
+    oldCustom.call(
+      messageBox,
+      message,
+      btn1Text,
+      btn1Callback,
+      btn2Text,
+      btn2Callback
+    );
   };
 
-  lookup('service:session').set('authToken', null);
+  lookup("service:session").set("authToken", null);
 
   visit("/offers");
 
   andThen(function() {
-    equal(currentURL(), '/login');
+    equal(currentURL(), "/login");
   });
 });
 
@@ -43,7 +56,7 @@ test("On login page redirect to home-page if already logged-in", function(assert
   visit("/login");
 
   andThen(function() {
-    assert.equal(currentURL(), '/offers');
+    assert.equal(currentURL(), "/offers");
   });
 });
 
@@ -53,6 +66,6 @@ test("On register page redirect to home-page if already logged-in", function(ass
   visit("/register");
 
   andThen(function() {
-    assert.equal(currentURL(), '/offers');
+    assert.equal(currentURL(), "/offers");
   });
 });

@@ -58,7 +58,12 @@
 
     <div class="row">
       <div class="small-10 small-offset-1 columns">
-        <button id="registerUser" type="submit" class="button expand">{{t "register.register"}}</button>
+        <button disabled={{authenticateUserController.pinAlreadySent}} id="registerUser" type="submit" class="button expand">{{t "register.register"}}</button>
+        <div class="otp-resend-pin">
+          {{#if authenticateUserController.pinAlreadySent}}
+            {{t "_resend.please_wait" timer=authenticateUserController.timer}}
+          {{/if}}
+        </div>
       </div>
     </div>
   </section>
