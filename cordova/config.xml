@@ -110,6 +110,6 @@
   <plugin name="cordova-launch-review" spec="1.0.3" />
   <plugin name="cordova-plugin-apprate" spec="https://github.com/crossroads/cordova-plugin-apprate.git"/>
   <plugin name="cordova-plugin-globalization" spec="https://github.com/apache/cordova-plugin-globalization.git"/>
-  <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser.git"/>
+  <plugin name="cordova-plugin-inappbrowser" spec="3.1.0"/>
   <plugin name="cordova-plugin-dialogs" spec="https://github.com/apache/cordova-plugin-dialogs.git"/>
 </widget>
