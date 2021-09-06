@@ -101,13 +101,12 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     // RESTAdapter Settings
-    ENV.APP.API_HOST_URL = "http://localhost:4000";
+    ENV.APP.API_HOST_URL = "http://localhost:3000";
     ENV.APP.SOCKETIO_WEBSERVICE_URL = "http://localhost:1337/goodcity";
 
     ENV.contentSecurityPolicy["connect-src"] = [
       "http://localhost:4200",
-      "http://50b5-2405-204-88-88f-8554-8098-2259-55c6.ngrok.io",
-      "http://localhost:4000",
+      "http://localhost:3000",
       "http://localhost:1337",
       "ws://localhost:1337",
       "wss://localhost:1337",
