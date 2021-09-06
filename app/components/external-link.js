@@ -4,7 +4,6 @@ import config from "../config/environment";
 export default Ember.Component.extend({
   tagName: "a",
   href: "#",
-  cordova: Ember.inject.service(),
 
   click() {
     if (config.cordova.enabled) {
