@@ -8,10 +8,12 @@ export default Ember.Component.extend({
 
   click() {
     if (config.cordova.enabled) {
+      /* jshint ignore:start */
       cordova.InAppBrowser.open(
         "https://www.crossroads.org.hk/home/donate-funds/",
         "_system"
       );
+      /* jshint ignore:end */
     } else {
       window.open(this.decodeLink(), "_system");
     }
