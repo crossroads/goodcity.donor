@@ -11,10 +11,8 @@ module("Acceptance: Login", {
   beforeEach: function() {
     App = startApp();
     TestHelper.setup();
-
     hk_user = FactoryGuy.make("with_hk_mobile");
     non_hk_user = FactoryGuy.make("with_non_hk_mobile");
-
     App.__container__.lookup("controller:subscriptions").pusher = {
       get: function() {
         return {};
@@ -99,7 +97,6 @@ test("User is able to resend the sms code", function(assert) {
       otp_auth_key: "/JqONEgEjrZefDV3ZIQsNA=="
     }
   });
-
   visit("/authenticate");
   andThen(function() {
     var ele_logout = $("a:contains('Logout')");
@@ -107,12 +104,10 @@ test("User is able to resend the sms code", function(assert) {
       click(ele_logout[0]);
     }
   });
-
   andThen(function() {
     visit("/authenticate");
     click("#resend-pin");
   });
-
   andThen(function() {
     assert.equal(window.localStorage.otpAuthKey, '"/JqONEgEjrZefDV3ZIQsNA=="');
   });

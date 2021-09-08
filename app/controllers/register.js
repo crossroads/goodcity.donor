@@ -5,6 +5,7 @@ import { translationMacro as t } from "ember-i18n";
 const { getOwner } = Ember;
 
 export default Ember.Controller.extend({
+  authenticateUserController: Ember.inject.controller("authenticate"),
   messageBox: Ember.inject.service(),
   i18n: Ember.inject.service(),
   phoneNumberPlaceholder: t("register.phone_number"),
@@ -40,6 +41,8 @@ export default Ember.Controller.extend({
             firstName: null,
             lastName: null
           });
+          this.get("authenticateUserController").set("pinAlreadySent", true);
+          this.get("authenticateUserController").timerFunction();
           this.transitionToRoute("/authenticate");
         })
         .catch(xhr => {
