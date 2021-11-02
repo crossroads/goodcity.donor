@@ -331,7 +331,7 @@ jobs:
     steps:
       - restore_cache: *restore-repo-cache
       - restore_cache: *restore-bundler-cache
-      - run: gem install bundler:2.0.2
+      - run: gem install bundler:2.2.27
       - run: bundle check --path=vendor/bundle || bundle install --deployment --jobs=4 --retry=3
       - save_cache: *save-bundler-cache
       - run:
@@ -355,8 +355,7 @@ jobs:
           command: echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
       - azure-cli/install
       - azure-cli/login-with-service-principal
-      - run: STAGE=$ENVIRONMENT bundle exec fastlane web deploy  # New azure deployment
-      - run: bundle exec cap $ENVIRONMENT deploy:upload  # Old capistrano deployment
+      - run: STAGE=$ENVIRONMENT bundle exec fastlane web deploy
       - run:
           name: Upload Source Map to Rollbar
           command: |
