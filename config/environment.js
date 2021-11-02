@@ -150,7 +150,6 @@ module.exports = function(environment) {
       "ws://socket.goodcity.hk:81",
       "wss://socket.goodcity.hk:81",
       "https://api.cloudinary.com",
-      "https://errbit.crossroads.org.hk",
       "https://api.rollbar.com"
     ].join(" ");
 
@@ -172,7 +171,6 @@ module.exports = function(environment) {
       "ws://socket-staging.goodcity.hk:81",
       "wss://socket-staging.goodcity.hk:81",
       "https://api.cloudinary.com",
-      "https://errbit.crossroads.org.hk",
       "https://api.rollbar.com"
     ].join(" ");
 
