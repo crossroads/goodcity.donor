@@ -163,13 +163,13 @@ module.exports = function(environment) {
     ENV.staging = true;
     ENV.APP.API_HOST_URL = "https://api-staging.goodcity.hk";
     ENV.APP.SOCKETIO_WEBSERVICE_URL =
-      "https://socket-staging.goodcity.hk:81/goodcity";
+      "https://socket-staging.goodcity.hk/goodcity";
     ENV.contentSecurityPolicy["connect-src"] = [
       "https://app-staging.goodcity.hk",
       "https://api-staging.goodcity.hk",
-      "https://socket-staging.goodcity.hk:81",
-      "ws://socket-staging.goodcity.hk:81",
-      "wss://socket-staging.goodcity.hk:81",
+      "https://socket-staging.goodcity.hk",
+      "ws://socket-staging.goodcity.hk",
+      "wss://socket-staging.goodcity.hk",
       "https://api.cloudinary.com",
       "https://api.rollbar.com"
     ].join(" ");
