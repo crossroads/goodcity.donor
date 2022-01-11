@@ -84,12 +84,11 @@
   <access origin="*"/>
   <preference name="scheme" value="app" />
   <preference name="hostname" value="localhost" />
+  <allow-intent href="https://www.goodcity.hk/*"/>
   <allow-intent href="https://maps.google.com/*"/>
   <allow-intent href="https://www.crossroads.org.hk/*"/>
   <allow-intent href="http://www.globalhand.org/*"/>
-  <allow-intent href="http://crossroads.uservoice.com/*"/>
-  <allow-intent href="https://crossroads.uservoice.com/*"/>
-  <allow-intent href="https://checkout.paypal.com/*"/>
+  <allow-intent href="https://www.globalhand.org/*"/>
   <allow-intent href="https://crossroads-foundation.formstack.com/*"/>
   <engine name="ios" spec="6.1.1" />
   <engine name="android" spec="9.0.0"/>
