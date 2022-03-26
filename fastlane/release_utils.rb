@@ -106,7 +106,7 @@ module ReleaseUtils
     end
 
     def upload(storage:, local_folder:, remote_folder: '$web')
-      Shell.xsh %{ az storage blob upload-batch -s '#{local_folder}' -d '#{remote_folder}' --account-name #{storage} }
+      Shell.xsh %{ az storage blob upload-batch -s '#{local_folder}' -d '#{remote_folder}' --account-name #{storage} --overwrite }
     end
 
     def clean_folder(storage:, folder:, container: '$web')
