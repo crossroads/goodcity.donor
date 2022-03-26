@@ -1,4 +1,5 @@
 import MessagesBaseRoute from "shared-goodcity/routes/messages_base";
+import Ember from "ember";
 
 export default MessagesBaseRoute.extend({
   model() {
