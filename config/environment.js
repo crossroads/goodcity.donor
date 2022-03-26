@@ -81,8 +81,7 @@ module.exports = function(environment) {
     cordova: {
       enabled: process.env.EMBER_CLI_CORDOVA !== "0",
       rebuildOnChange: false,
-      emulate: false,
-      FcmSenderId: "161361907015"
+      emulate: false
     },
     coffeeOptions: {
       blueprints: false
@@ -155,7 +154,6 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: "UA-62978462-1"
     };
-    ENV.cordova.FcmSenderId = "919797298115";
   }
 
   if ((process.env.staging || process.env.STAGING) === "true") {
@@ -176,7 +174,6 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: "UA-62978462-4"
     };
-    ENV.cordova.FcmSenderId = "161361907015";
 
     // VSO build
     if (process.env.BUILD_BUILDNUMBER) {

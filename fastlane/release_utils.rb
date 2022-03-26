@@ -120,7 +120,7 @@ module ReleaseUtils
 
     def upload(app:, stage:, storage: ReleaseUtils.get_env_var('AZURE_GOODCITY_STORAGE_NAME'))
       dist_folder = File.join(ReleaseUtils.root_folder, 'dist')
-      Shell.info %{ Pushing web build to the #{stage} folder }
+      Shell.info %{ Pushing web build to the #{stage} folder to #{storage} $web/#{app}-#{stage}-goodcity }
       Azure.upload(storage: storage, local_folder: dist_folder, remote_folder: "$web/#{app}-#{stage}-goodcity")
       Azure.clean_folder(storage: storage, container: '$web', folder: "#{app}-#{stage}-goodcity")
     end

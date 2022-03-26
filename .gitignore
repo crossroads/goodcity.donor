@@ -26,6 +26,9 @@ cordova/platforms
 .DS_Store
 cordova/plugins/*
 cordova/.secret_keys
+cordova/google-services.json
+cordova/ul_web_hooks
+cordova/node_modules
 *.mobileprovision
 *.keystore
 *.p8
