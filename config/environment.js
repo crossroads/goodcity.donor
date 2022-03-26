@@ -69,8 +69,7 @@ module.exports = function(environment) {
         "permission",
         "timeslot",
         "gogovan_transport",
-        "crossroads_transport",
-        "version"
+        "crossroads_transport"
       ],
       SHA: process.env.APP_SHA || "00000000",
       SHARED_SHA: process.env.APP_SHARED_SHA || "00000000",
