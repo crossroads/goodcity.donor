@@ -7,6 +7,10 @@ export default MessagesBaseRoute.extend({
       this.store.query("message", {
         messageable_type: "Offer",
         messageable_id: this.modelFor("offer").get("id")
+      }),
+      this.store.query("version", {
+        for_offer: "true",
+        item_id: this.modelFor("offer").get("id")
       })
     ]);
   }
