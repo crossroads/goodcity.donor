@@ -137,7 +137,7 @@ jobs:
           paths:
             - dist-www/
 
-  www-deploy:
+  www_deploy:
     <<: *defaults
     docker:
       - image: cimg/ruby:2.7.3
