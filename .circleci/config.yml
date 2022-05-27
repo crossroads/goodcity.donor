@@ -145,7 +145,7 @@ jobs:
       - restore_cache: *restore-repo-cache
       - restore_cache: *restore-bundler-cache
       - run: bundle config set --local deployment 'true' && (bundle check || bundle install --jobs=2 --retry=3)
-      - save_cache: *save-bundle-cache
+      - save_cache: *save-bundler-cache
       - attach_workspace:
           at: ~/code
       - run: mv dist-www/ dist
