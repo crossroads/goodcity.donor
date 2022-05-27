@@ -3651,9 +3651,9 @@ ember-cli-content-security-policy@1.0.0:
     body-parser "^1.17.0"
     chalk "^2.0.0"
 
-"ember-cli-cordova@git://github.com/poetic/ember-cli-cordova.git":
+"ember-cli-cordova@https://github.com/poetic/ember-cli-cordova.git":
   version "0.1.0-beta-2"
-  resolved "git://github.com/poetic/ember-cli-cordova.git#c78241c566028b362ee0b212889e37ce0622f6d5"
+  resolved "https://github.com/poetic/ember-cli-cordova.git#c78241c566028b362ee0b212889e37ce0622f6d5"
   dependencies:
     broccoli-funnel "^0.2.3"
     broccoli-merge-trees "^1.1.0"
