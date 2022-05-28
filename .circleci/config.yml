@@ -58,6 +58,7 @@ aliases:
 
 orbs:
   azure-cli: circleci/azure-cli@1.2.0
+  browser-tools: circleci/browser-tools@1.2.3
 
 jobs:
   checkout_code:
@@ -86,6 +87,8 @@ jobs:
     environment:
       JOBS: 1
     steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - restore_cache: *restore-repo-cache
       - restore_cache: *restore-yarn-cache
       - restore_cache: *restore-bower-cache
@@ -317,19 +320,19 @@ workflows:
             - package_dependencies
           filters:
             branches:
-              only: /^(master|live)$/
+              only: /^(master|live|GCW-3746-cordova-upgrades)$/
       - android_build_and_deploy:
           requires:
             - tests
             - ember_cordova_build
           filters:
             branches:
-              only: /^(master|live)$/
+              only: /^(master|live|GCW-3746-cordova-upgrades)$/
       - ios_build_and_deploy:
           requires:
             - tests
             - ember_cordova_build
           filters:
             branches:
-              only: /^(master|live)$/
+              only: /^(master|live|GCW-3746-cordova-upgrades)$/
 
