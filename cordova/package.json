@@ -25,7 +25,7 @@
     "cordova-plugin-statusbar": "^3.0.0",
     "cordova-plugin-twiliovoicesdk": "^6.0.3",
     "es6-promise-plugin": "^4.2.2",
-    "nativesettingsopener": "git+https://github.com/crossroads/Cordova-open-native-settings.git",
+    "nativesettingsopener": "github:crossroads/Cordova-open-native-settings",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "phonegap-plugin-media-stream": "git+https://github.com/Kacoze/phonegap-plugin-media-stream.git"
   },
