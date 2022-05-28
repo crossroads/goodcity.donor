@@ -2,6 +2,7 @@
 const pkgJson = require("../package.json");
 
 module.exports = function(environment) {
+  environment = process.env.ENVIRONMENT || environment || "development";
   var ENV = {
     modulePrefix: "goodcity",
     environment: environment,
@@ -61,7 +62,7 @@ module.exports = function(environment) {
       // RESTAdapter Settings
       NAMESPACE: "api/v1",
       OTP_RESEND_TIME: 60,
-      CONTACT_EMAIL: "info@goodcity.hk",
+      CONTACT_EMAIL: "contact@goodcity.hk",
 
       PRELOAD_TYPES: ["territory"],
       PRELOAD_AUTHORIZED_TYPES: [
@@ -137,6 +138,8 @@ module.exports = function(environment) {
   }
 
   if (environment === "production") {
+    if (!process.env.ENVIRONMENT)
+      throw "Please pass an appropriate ENVIRONMENT=(staging|production) param.";
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = "https://api.goodcity.hk";
     ENV.APP.SOCKETIO_WEBSERVICE_URL = "https://socket.goodcity.hk:81/goodcity";
@@ -156,7 +159,7 @@ module.exports = function(environment) {
     };
   }
 
-  if ((process.env.staging || process.env.STAGING) === "true") {
+  if (environment === "staging") {
     ENV.staging = true;
     ENV.APP.API_HOST_URL = "https://api-staging.goodcity.hk";
     ENV.APP.SOCKETIO_WEBSERVICE_URL =
@@ -174,13 +177,6 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: "UA-62978462-4"
     };
-
-    // VSO build
-    if (process.env.BUILD_BUILDNUMBER) {
-      ENV.APP.VERSION =
-        process.env.VERSION + "." + process.env.BUILD_BUILDNUMBER;
-      ENV.APP.APP_SHA = process.env.BUILD_SOURCEVERSION;
-    }
   } else {
     ENV.staging = false;
   }
