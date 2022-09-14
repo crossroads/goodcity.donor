@@ -4,7 +4,7 @@
   "displayName": "S. GoodCity",
   "dependencies": {},
   "devDependencies": {
-    "@havesource/cordova-plugin-push": "^3.0.0",
+    "@havesource/cordova-plugin-push": "^3.0.1",
     "com.nrswolf.cordova.push-notifications-status": "git+https://github.com/nrswolf/cordova-plugin-push-notifications-status.git",
     "cordova-android": "^10.1.2",
     "cordova-android-support-gradle-release": "^3.0.1",
@@ -18,15 +18,12 @@
     "cordova-plugin-camera": "^6.0.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-dialogs": "^2.0.2",
-    "cordova-plugin-globalization": "^1.11.0",
     "cordova-plugin-inappbrowser": "^5.0.0",
     "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-splashscreen": "^6.0.0",
     "cordova-plugin-statusbar": "^3.0.0",
-    "cordova-plugin-twiliovoicesdk": "^6.0.3",
-    "es6-promise-plugin": "^4.2.2",
-    "phonegap-plugin-barcodescanner": "^8.1.0"
+    "es6-promise-plugin": "^4.2.2"
   },
   "cordova": {
     "platforms": [
@@ -34,11 +31,6 @@
       "android"
     ],
     "plugins": {
-      "cordova-plugin-twiliovoicesdk": {
-        "INCOMING_CALL_APP_NAME": "GoodCity.HK",
-        "MASK_INCOMING_PHONE_NUMBER": "true",
-        "ENABLE_CALL_KIT": "false"
-      },
       "cordova-plugin-android-permissions": {},
       "cordova-plugin-camera": {
         "ANDROIDX_CORE_VERSION": "1.6.+"
@@ -49,9 +41,6 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "es6-promise-plugin": {},
-      "phonegap-plugin-barcodescanner": {
-        "ANDROID_SUPPORT_V4_VERSION": "30"
-      },
       "@havesource/cordova-plugin-push": {
         "ANDROIDX_CORE_VERSION": "1.6.+",
         "FCM_VERSION": "18.+"
@@ -65,8 +54,7 @@
       "cordova-plugin-apprate": {},
       "cordova-plugin-dialogs": {},
       "cordova-open-native-settings": {},
-      "cordova-plugin-actionsheet": {},
-      "cordova-plugin-globalization": {}
+      "cordova-plugin-actionsheet": {}
     }
   }
 }
