@@ -6,19 +6,19 @@
   "devDependencies": {
     "@havesource/cordova-plugin-push": "^3.0.0",
     "com.nrswolf.cordova.push-notifications-status": "git+https://github.com/nrswolf/cordova-plugin-push-notifications-status.git",
-    "cordova-android": "^10.1.1",
+    "cordova-android": "^10.1.2",
     "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-ios": "^6.2.0",
     "cordova-launch-review": "^1.0.3",
     "cordova-open-native-settings": "^1.5.5",
-    "cordova-plugin-actionsheet": "git+https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git",
+    "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-android-permissions": "^1.1.2",
     "cordova-plugin-androidx-adapter": "^1.1.3",
     "cordova-plugin-apprate": "git+https://github.com/crossroads/cordova-plugin-apprate.git",
     "cordova-plugin-camera": "^6.0.0",
     "cordova-plugin-device": "^2.0.3",
-    "cordova-plugin-dialogs": "git+https://github.com/apache/cordova-plugin-dialogs.git",
-    "cordova-plugin-globalization": "git+https://github.com/apache/cordova-plugin-globalization.git",
+    "cordova-plugin-dialogs": "^2.0.2",
+    "cordova-plugin-globalization": "^1.11.0",
     "cordova-plugin-inappbrowser": "^5.0.0",
     "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-network-information": "^3.0.0",
@@ -26,8 +26,7 @@
     "cordova-plugin-statusbar": "^3.0.0",
     "cordova-plugin-twiliovoicesdk": "^6.0.3",
     "es6-promise-plugin": "^4.2.2",
-    "phonegap-plugin-barcodescanner": "^8.1.0",
-    "phonegap-plugin-media-stream": "git+https://github.com/Kacoze/phonegap-plugin-media-stream.git"
+    "phonegap-plugin-barcodescanner": "^8.1.0"
   },
   "cordova": {
     "platforms": [
@@ -58,17 +57,16 @@
         "FCM_VERSION": "18.+"
       },
       "cordova-plugin-androidx-adapter": {},
-      "phonegap-plugin-media-stream": {},
-      "cordova-plugin-actionsheet": {},
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "30"
       },
       "com.nrswolf.cordova.push-notifications-status": {},
       "cordova-launch-review": {},
       "cordova-plugin-apprate": {},
-      "cordova-plugin-globalization": {},
       "cordova-plugin-dialogs": {},
-      "cordova-open-native-settings": {}
+      "cordova-open-native-settings": {},
+      "cordova-plugin-actionsheet": {},
+      "cordova-plugin-globalization": {}
     }
   }
 }

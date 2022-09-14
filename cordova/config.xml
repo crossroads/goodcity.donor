@@ -8,6 +8,8 @@
   <access origin="*"/>
   <preference name="scheme" value="app" />
   <preference name="hostname" value="localhost" />
+  <allow-navigation href="http://localhost/*" />
+  <allow-navigation href="https://localhost/*" />
   <preference name="StatusBarOverlaysWebView" value="false" />
   <preference name="StatusBarBackgroundColor" value="#000000" />
   <preference name="StatusBarStyle" value="lightcontent" />
@@ -17,6 +19,10 @@
   <allow-intent href="http://www.globalhand.org/*"/>
   <allow-intent href="https://www.globalhand.org/*"/>
   <allow-intent href="https://crossroads-foundation.formstack.com/*"/>
+  <!-- Allow tel: links to open the dialer -->
+  <allow-intent href="tel:*" />
+  <!-- Allow geo: links to open maps -->
+  <allow-intent href="geo:*" />
   <platform name="android">
     <resource-file src="google-services.json" target="/app/google-services.json" />
     <resource-file src="res/android/notification.png" target="app/src/main/res/drawable/notification.png" />
@@ -79,13 +85,13 @@
         <false/>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-        <string>So you can photograph items for donation.</string>
+        <string>To enable you to photograph items for donation.</string>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-        <string>Needs photo library access to get photos from there</string>
+        <string>Access photo library to upload donation photos.</string>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
-        <string>Needs photo library access to save photos</string>
+        <string>Needs photo library access to save donation photos.</string>
     </edit-config>
   </platform>
 </widget>
