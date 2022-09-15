@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "EMBER_CLI_CORDOVA=0 ember serve",
+    "start:staging": "EMBER_CLI_CORDOVA=0 ENVIRONMENT=staging ember serve --port 4200",
     "build": "EMBER_CLI_CORDOVA=0 ember build",
     "test": "EMBER_CLI_CORDOVA=0 ember test --server"
   },
