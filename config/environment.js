@@ -110,7 +110,8 @@ module.exports = function(environment) {
       "ws://localhost:1337",
       "wss://localhost:1337",
       "https://api.cloudinary.com",
-      "https://api.rollbar.com"
+      "https://api.rollbar.com",
+      "https://www.google-analytics.com"
     ].join(" ");
     //Only added for development env. to fix issue related to BLOB: object
     ENV.contentSecurityPolicy["img-src"] = [
@@ -151,7 +152,8 @@ module.exports = function(environment) {
       "ws://socket.goodcity.hk:81",
       "wss://socket.goodcity.hk:81",
       "https://api.cloudinary.com",
-      "https://api.rollbar.com"
+      "https://api.rollbar.com",
+      "https://www.google-analytics.com"
     ].join(" ");
 
     ENV.googleAnalytics = {
@@ -171,7 +173,8 @@ module.exports = function(environment) {
       "ws://socket-staging.goodcity.hk",
       "wss://socket-staging.goodcity.hk",
       "https://api.cloudinary.com",
-      "https://api.rollbar.com"
+      "https://api.rollbar.com",
+      "https://www.google-analytics.com"
     ].join(" ");
 
     ENV.googleAnalytics = {
