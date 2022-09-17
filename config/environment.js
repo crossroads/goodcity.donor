@@ -2,6 +2,7 @@
 const pkgJson = require("../package.json");
 
 module.exports = function(environment) {
+  environment = process.env.ENVIRONMENT || environment || "development";
   var ENV = {
     modulePrefix: "goodcity",
     environment: environment,
@@ -61,7 +62,7 @@ module.exports = function(environment) {
       // RESTAdapter Settings
       NAMESPACE: "api/v1",
       OTP_RESEND_TIME: 60,
-      CONTACT_EMAIL: "info@goodcity.hk",
+      CONTACT_EMAIL: "contact@goodcity.hk",
 
       PRELOAD_TYPES: ["territory"],
       PRELOAD_AUTHORIZED_TYPES: [
@@ -69,8 +70,7 @@ module.exports = function(environment) {
         "permission",
         "timeslot",
         "gogovan_transport",
-        "crossroads_transport",
-        "version"
+        "crossroads_transport"
       ],
       SHA: process.env.APP_SHA || "00000000",
       SHARED_SHA: process.env.APP_SHARED_SHA || "00000000",
@@ -82,8 +82,7 @@ module.exports = function(environment) {
     cordova: {
       enabled: process.env.EMBER_CLI_CORDOVA !== "0",
       rebuildOnChange: false,
-      emulate: false,
-      FcmSenderId: "161361907015"
+      emulate: false
     },
     coffeeOptions: {
       blueprints: false
@@ -111,7 +110,8 @@ module.exports = function(environment) {
       "ws://localhost:1337",
       "wss://localhost:1337",
       "https://api.cloudinary.com",
-      "https://api.rollbar.com"
+      "https://api.rollbar.com",
+      "https://www.google-analytics.com"
     ].join(" ");
     //Only added for development env. to fix issue related to BLOB: object
     ENV.contentSecurityPolicy["img-src"] = [
@@ -139,6 +139,8 @@ module.exports = function(environment) {
   }
 
   if (environment === "production") {
+    if (!process.env.ENVIRONMENT)
+      throw "Please pass an appropriate ENVIRONMENT=(staging|production) param.";
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = "https://api.goodcity.hk";
     ENV.APP.SOCKETIO_WEBSERVICE_URL = "https://socket.goodcity.hk:81/goodcity";
@@ -150,43 +152,34 @@ module.exports = function(environment) {
       "ws://socket.goodcity.hk:81",
       "wss://socket.goodcity.hk:81",
       "https://api.cloudinary.com",
-      "https://errbit.crossroads.org.hk",
-      "https://api.rollbar.com"
+      "https://api.rollbar.com",
+      "https://www.google-analytics.com"
     ].join(" ");
 
     ENV.googleAnalytics = {
       webPropertyId: "UA-62978462-1"
     };
-    ENV.cordova.FcmSenderId = "919797298115";
   }
 
-  if ((process.env.staging || process.env.STAGING) === "true") {
+  if (environment === "staging") {
     ENV.staging = true;
     ENV.APP.API_HOST_URL = "https://api-staging.goodcity.hk";
     ENV.APP.SOCKETIO_WEBSERVICE_URL =
-      "https://socket-staging.goodcity.hk:81/goodcity";
+      "https://socket-staging.goodcity.hk/goodcity";
     ENV.contentSecurityPolicy["connect-src"] = [
       "https://app-staging.goodcity.hk",
       "https://api-staging.goodcity.hk",
-      "https://socket-staging.goodcity.hk:81",
-      "ws://socket-staging.goodcity.hk:81",
-      "wss://socket-staging.goodcity.hk:81",
+      "https://socket-staging.goodcity.hk",
+      "ws://socket-staging.goodcity.hk",
+      "wss://socket-staging.goodcity.hk",
       "https://api.cloudinary.com",
-      "https://errbit.crossroads.org.hk",
-      "https://api.rollbar.com"
+      "https://api.rollbar.com",
+      "https://www.google-analytics.com"
     ].join(" ");
 
     ENV.googleAnalytics = {
       webPropertyId: "UA-62978462-4"
     };
-    ENV.cordova.FcmSenderId = "161361907015";
-
-    // VSO build
-    if (process.env.BUILD_BUILDNUMBER) {
-      ENV.APP.VERSION =
-        process.env.VERSION + "." + process.env.BUILD_BUILDNUMBER;
-      ENV.APP.APP_SHA = process.env.BUILD_SOURCEVERSION;
-    }
   } else {
     ENV.staging = false;
   }

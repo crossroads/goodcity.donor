@@ -11,6 +11,7 @@ moduleForModel("offer", "Offer Model", {
     "model:donor_condition",
     "model:delivery",
     "model:user",
+    "model:district",
     "model:schedule",
     "model:rejection_reason",
     "model:contact",
