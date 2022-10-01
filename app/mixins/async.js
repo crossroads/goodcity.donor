@@ -4,7 +4,8 @@ const { getOwner } = Ember;
 
 const getString = (obj, path) => {
   const keys = path.split(".");
-  let val = undefined;
+  let val;
+  
   while (keys.length) {
     val = obj[keys.shift()];
   }
