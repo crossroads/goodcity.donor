@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AsyncMixin from "../mixins/async"
+import AsyncMixin from "../mixins/async";
 import AjaxPromise from "../utils/ajax-promise";
 
 export default Ember.Controller.extend(AsyncMixin, {
@@ -36,7 +36,7 @@ export default Ember.Controller.extend(AsyncMixin, {
 
   actions: {
     startEditing() {
-      this.set('isEditing', true)
+      this.set('isEditing', true);
     },
 
     cancelEdit() {
@@ -44,7 +44,7 @@ export default Ember.Controller.extend(AsyncMixin, {
       this.set('isEditing', false);
     },
 
-    async saveEdit() {
+    saveEdit() {
       const fields = this.get("fields");
       const user = this.get("user");
 
@@ -56,11 +56,11 @@ export default Ember.Controller.extend(AsyncMixin, {
         }
       }
 
-      await this.runTask(() => {
+      return this.runTask(() => {
         return user.save()
           .then(() => {
-            this.set('isEditing', false)
-          })
+            this.set('isEditing', false);
+          });
       }, this.ERROR_STRATEGIES.MODAL);
     },
 
@@ -73,8 +73,8 @@ export default Ember.Controller.extend(AsyncMixin, {
             .then(() => {
               this.get("application").send("logMeOut");
             })
-        )
-      })
+        );
+      });
     }
   }
 });

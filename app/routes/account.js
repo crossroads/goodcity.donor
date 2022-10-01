@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AuthorizeRoute from './authorize'
+import AuthorizeRoute from './authorize';
 
 export default AuthorizeRoute.extend({
   session: Ember.inject.service(),
@@ -12,7 +12,7 @@ export default AuthorizeRoute.extend({
 
     if (!/^\+852/.test(mobile)) {
       //  @tofix hack, we should really be keeping the country code in order to save the records
-      user.set("mobile", "+852" + mobile)
+      user.set("mobile", "+852" + mobile);
     }
   },
 

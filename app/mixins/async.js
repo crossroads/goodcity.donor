@@ -161,7 +161,7 @@ export default Ember.Mixin.create({
    * @param {Promise|Function} task the job to run
    * @param {number} [opts|errorStrategy] an indicator of how to handle the error
    */
-  async runTask(task, opts = {}) {
+  runTask(task, opts = {}) {
     if (typeof opts === "number") {
       opts = { errorStrategy: opts };
     }
@@ -169,13 +169,14 @@ export default Ember.Mixin.create({
     const { errorStrategy, showSpinner = true } = opts;
 
     this.__incrementTaskCount(showSpinner ? 1 : 0);
-    try {
-      return await this.__run(task);
-    } catch (err) {
-      return this.__handleError(err, errorStrategy);
-    } finally {
-      this.__incrementTaskCount(showSpinner ? -1 : 0);
-    }
+
+    return Ember.RSVP.Promise.resolve(this.__run(task))
+      .catch((err) => {
+        return this.__handleError(err, errorStrategy);
+      })
+      .finally(() => {
+        this.__incrementTaskCount(showSpinner ? -1 : 0);
+      });
   },
 
   showLoadingSpinner() {
