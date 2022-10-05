@@ -6,6 +6,8 @@ I18nTranslationsEn =
     "socket_offline_error": "Attempting to connect..."
     "QuotaExceededError": "Site may not work in Safari's <b>private mode.</b> Please try</br><ul><li><a href='https://itunes.apple.com/in/app/goodcity.hk/id1012253845?mt=8' style='color: black!important; background-color: #dee4eb !important;'>Downloading the iOS App</a></li><li>Using regular (not private) mode in Safari</li><li>Using Chrome's private browsing mode</li></ul>"
     "not_now": "Not Now"
+    "unexpected_error": "Unexpected Error"
+    "confirm": "Confirm"
 
     "menu":
       "support_gc": "Support GoodCity!"
@@ -15,6 +17,7 @@ I18nTranslationsEn =
     "application":
       "app_menu" : "App Menu"
       "my_offers" : "My Offers"
+      "my_account" : "My Account"
 
     "support":
       "title": "Thank you!"
@@ -190,6 +193,20 @@ I18nTranslationsEn =
       "messages":
         "info_text1": "If we have questions when reviewing this item we will chat with you here."
         "info_text2": "If you want to add a comment to this item for our reviewers, type it below."
+
+    "account":
+      "edit": "Edit"
+      "delete_account": "Delete Account"
+      "discard_changes": "Discard Changes"
+      "save_changes": "Save Changes"
+      "confirm_deletion": "Are you sure about that ?"
+      "user_fields":
+        "title": "Title"
+        "firstName": "Given Name"
+        "lastName": "Family Name"
+        "mobile": "Mobile Phone"
+        "email": "Email"
+        "district": "District"
 
     "faqs":
       "title": "FAQs"

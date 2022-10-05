@@ -6,6 +6,8 @@ I18nTranslationsZhTw =
     "socket_offline_error": "正在嘗試連線…"
     "QuotaExceededError": "如使用Safari <b>私密瀏覽</b>，或不能瀏覽本網站。請嘗試</br><ul><li><a href='https://itunes.apple.com/in/app/goodcity.hk/id1012253845?mt=8' style='color: black!important; background-color: #dee4eb !important;'>下載iOS應用程式</a></li><li>使用Safari一般（非私密瀏覽）模式</li><li>使用Chrome私密瀏覽模式</li></ul>"
     "not_now": "暫不決定"
+    "unexpected_error": "Unexpected Error"
+    "confirm": "Confirm"
 
     "menu":
       "support_gc": "支持好人好市！"
@@ -15,6 +17,7 @@ I18nTranslationsZhTw =
     "application":
       "app_menu" : "目錄"
       "my_offers" : "我的捐獻"
+      "my_offers" : "My Account"
 
     "support":
       "title": "非常感謝！"
@@ -190,6 +193,20 @@ I18nTranslationsZhTw =
       "messages":
         "info_text1": "審查物品時，如果有任何問題，我們會在下面的對話框向您查詢"
         "info_text2": "如您希望加添任何對捐獻物品的描述，請在此留言"
+
+    "account":
+      "edit": "Edit"
+      "delete_account": "Delete Account"
+      "discard_changes": "Discard Changes"
+      "save_changes": "Save Changes"
+      "confirm_deletion": "Are you sure about that ?"
+      "user_fields":
+        "title": "Title"
+        "firstName": "Given Name"
+        "lastName": "Family Name"
+        "mobile": "Mobile Phone"
+        "email": "Email"
+        "district": "District"
 
     "faqs":
       "title": "常見問題"
