@@ -69,10 +69,11 @@ export default Ember.Controller.extend(AsyncMixin, {
         const userId = this.get("user.id");
 
         this.runTask(() => 
-          new AjaxPromise(`/users/${userId}/delete`, "PUT", null)
+          new AjaxPromise(`/users/${userId}`, "DELETE", null)
             .then(() => {
               this.get("application").send("logMeOut");
-            })
+            }),
+           this.ERROR_STRATEGIES.MODAL
         );
       });
     }

@@ -4,7 +4,7 @@ import AuthorizeRoute from './authorize';
 export default AuthorizeRoute.extend({
   session: Ember.inject.service(),
 
-  setupController(controller) {
+  setupController(controller, model) {
     controller.set('isEditing', false);
 
     const user = this.get('session').get("loggedInUser");

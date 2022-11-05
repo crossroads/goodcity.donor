@@ -1,8 +1,6 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#if displayHomeLink}}
-      {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
-    {{/if}}
+    {{#link-to 'offers.index' (query-params noRedirect="true") replace=true classNames="back" }}{{t "application.my_offers"}}{{/link-to}}
   </section>
 
   <section class="middle tab-bar-section">

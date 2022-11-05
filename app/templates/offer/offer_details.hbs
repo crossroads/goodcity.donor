@@ -2,9 +2,7 @@
 
   <nav class="tab-bar offer_details_title {{unless model.nonSubmittedOffer 'non-draft'}}">
     <section class="left-small">
-      {{#if displayHomeLink}}
-        {{#link-to 'offers.index' classNames="back"}}{{t "back"}}{{/link-to}}
-      {{/if}}
+      {{#link-to 'offers.index' (query-params noRedirect="true") classNames="back" }}{{t "back"}}{{/link-to}}
     </section>
 
     <section class="middle tab-bar-section">
