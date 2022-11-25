@@ -1,13 +1,14 @@
-import Ember from 'ember';
-import AuthorizeRoute from './authorize';
+import Ember from "ember";
+import AuthorizeRoute from "./authorize";
 
 export default AuthorizeRoute.extend({
   session: Ember.inject.service(),
 
   setupController(controller, model) {
-    controller.set('isEditing', false);
+    this._super(controller, model);
+    controller.set("isEditing", false);
 
-    const user = this.get('session').get("loggedInUser");
+    const user = this.get("session").get("loggedInUser");
     const mobile = user.get("mobile");
 
     if (!/^\+852/.test(mobile)) {
@@ -19,11 +20,11 @@ export default AuthorizeRoute.extend({
   renderTemplate() {
     this.render(); // default template
 
-    if(this.get('session.isLoggedIn')) {
-      this.render('appMenuList', {
-        into: 'account',
-        outlet: 'appMenuList',
-        controller: 'application'
+    if (this.get("session.isLoggedIn")) {
+      this.render("appMenuList", {
+        into: "account",
+        outlet: "appMenuList",
+        controller: "application"
       });
     }
   }
