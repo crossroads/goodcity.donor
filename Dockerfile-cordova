@@ -1,14 +1,15 @@
-FROM cimg/android:2021.10.2-node
+FROM cimg/android:2022.09-node
 
 WORKDIR /home/circleci/project
 USER circleci
 
 RUN sudo apt-get update \
-  && sudo apt remove openjdk-11-* \
-  && sudo apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common openjdk-8-jdk python \
-  && npm install cordova@10
+  #&& sudo apt remove openjdk-11-* \
+  #&& sudo apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common openjdk-8-jdk python \
+  && sudo apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common python \
+  && npm install cordova@11
 ENV PATH=$PATH:/home/circleci/project/node_modules/cordova/bin/
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV ENVIRONMENT=staging
 
 RUN cordova telemetry off
