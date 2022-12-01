@@ -57,14 +57,6 @@ export default ItemBaseController.extend({
     return this.store.peekAll("offer");
   }),
 
-  displayHomeLink: Ember.computed("offers.@each.state", function() {
-    return (
-      this.get("offers")
-        .rejectBy("state", "draft")
-        .get("length") > 0
-    );
-  }),
-
   actions: {
     addItem() {
       var message;

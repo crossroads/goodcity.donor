@@ -1,6 +1,10 @@
 import AuthorizeRoute from "./../authorize";
 
 export default AuthorizeRoute.extend({
+  queryParams: {
+    noRedirect: false
+  },
+
   model() {
     let cachedRecords = this.store.peekAll("offer");
     if (cachedRecords.get("length")) {
@@ -17,7 +21,11 @@ export default AuthorizeRoute.extend({
     });
   },
 
-  redirect(my_offers) {
+  redirect(my_offers, transition) {
+    if ([true, "true"].contains(transition.queryParams.noRedirect)) {
+      return;
+    }
+
     var route = this;
     switch (my_offers.get("length")) {
       case 0:

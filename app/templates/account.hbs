@@ -1,0 +1,61 @@
+<div class="off-canvas-wrap account-page" data-offcanvas>
+  <div class="inner-wrap">
+    {{outlet "appMenuList"}}
+
+    {{#init-foundation}}
+      <nav class="tab-bar {{unless session.isLoggedIn 'sticky_title_bar'}}">
+        <section class="left-small">
+          {{#if session.isLoggedIn}}
+            <a class="left-off-canvas-toggle menu-icon" href="#">
+              <span>
+                <i aria-hidden="true" class="fa fa-bars"></i>
+              </span>
+            </a>
+          {{else}}
+            {{link-to (t "back") 'tour' classNames='back'}}
+          {{/if}}
+        </section>
+
+        <section class="middle tab-bar-section">
+          <h1 class="title">{{t "application.my_account"}}</h1>
+        </section>
+      </nav>
+    {{/init-foundation}}
+
+    <div class="account-content">
+      {{!-- FORM --}}
+      <div class="account-form">
+        {{#each fields as |field|}}
+          <div class="row field-row">
+            <div class="columns small-6">{{ t (concat "account.user_fields." field.key) }}</div>
+            <div class="columns small-6 field-value">
+              {{#if (js-and isEditing field.editable)}}
+                {{input type="text" value=(mut (get user field.key)) name=field.key id=field.key required='true' pattern=".+"}}
+              {{else}}
+                <span>{{ get user field.key }}</span>
+              {{/if}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+
+      {{!-- BUTTONS --}}
+      <div class="flex justify-around padded text-center">
+        <div class="grow">
+          {{#if isEditing}}
+            <a {{action "cancelEdit"}} class="button light">{{t "account.discard_changes"}}</a>
+          {{else}}
+            <a {{action "startEditing"}} class="button expand">{{t "account.edit"}}</a>
+          {{/if}}
+        </div>
+        <div class="grow">
+          {{#if isEditing}}
+            <a {{action "saveEdit"}} class="button expand">{{t "account.save_changes"}}</a>
+          {{else}}
+            <a {{action "tryDeleteAccount"}} class="button light no-border">{{t "account.delete_account"}}</a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
