@@ -76,7 +76,7 @@
         <icon height="256" src="res/ios/Icon-256.png" width="256" />
         <icon height="512" src="res/ios/Icon-512.png" width="512" />
         <icon height="1024" src="res/ios/Icon-1024.png" width="1024" />
-        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
+        <splash src="res/ios/splash-screen@2x~universal~anyany.png" />
         <edit-config file="*-Info.plist" mode="add" target="ITSAppUsesNonExemptEncryption">
             <false />
         </edit-config>
