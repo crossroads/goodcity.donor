@@ -1,6 +1,6 @@
 {
   "name": "goodcity",
-  "version": "0.21.1",
+  "version": "0.21.2",
   "description": "Your quality donated items can help people in need.",
   "license": "MIT",
   "author": "",
@@ -84,8 +84,6 @@
     "cached-path-relative": "^1.0.2",
     "clean-css": "^4.1.11",
     "codeclimate-test-reporter": "^0.5.0",
-    "cordova": "^11.0.0",
-    "cordova-update-config": "^1.0.2",
     "cryptiles": "^4.1.2",
     "debug": "2.6.9",
     "deep-extend": "^0.5.1",
