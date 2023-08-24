@@ -57,8 +57,8 @@ aliases:
 # -----------------------------
 
 orbs:
-  azure-cli: circleci/azure-cli@1.2.0
-  browser-tools: circleci/browser-tools@1.2.3
+  azure-cli: circleci/azure-cli@1.2.2
+  browser-tools: circleci/browser-tools@1.4.3
 
 jobs:
   checkout_code:
@@ -193,7 +193,7 @@ jobs:
   android_build_and_deploy:
     <<: *defaults
     docker:
-      - image: cimg/android:2022.04-browsers
+      - image: cimg/android:2023.08-browsers
     environment:
       JVM_OPTS: -Xmx3200m
       CIRCLE_ARTIFACTS: /home/circleci/code/cordova/platforms/android/build/outputs/apk
@@ -219,7 +219,7 @@ jobs:
       - run:
           name: Build android app
           command: |
-            npm install cordova@11.0.0
+            npm install cordova@12
             node rename_package.js
             cordova platform add android
             if [ "$ENVIRONMENT" == "production" ]; then
@@ -239,7 +239,7 @@ jobs:
 
   ios_build_and_deploy:
     macos:
-      xcode: "13.2.1"
+      xcode: "13.4.1"
     resource_class: macos.x86.medium.gen2
     working_directory: ~/code
     shell: /bin/bash --login -eo pipefail
@@ -268,7 +268,7 @@ jobs:
       - run:
           name: Build iOS app
           command: |
-            npm install cordova@11.0.0
+            npm install cordova@12
             node rename_package.js
             cordova platform add ios
             UUID=`openssl smime -inform der -verify -noverify -in "/Users/distiller/Library/MobileDevice/Provisioning Profiles/app-${ENVIRONMENT}.mobileprovision" | grep -A 1 UUID | sed "s@.*<string>\(.*\)</string>.*@\1@" | tail -n 1`

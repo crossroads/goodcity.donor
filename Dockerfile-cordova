@@ -1,9 +1,10 @@
-FROM cimg/android:2022.04-browsers
+# Node 18, API:27-34
+FROM cimg/android:2023.08-browsers
 
 WORKDIR /home/circleci/project
 USER circleci
 
-RUN npm install cordova@11
+RUN npm install cordova@12
 ENV PATH=$PATH:/home/circleci/project/node_modules/cordova/bin/
 ENV ENVIRONMENT=staging
 RUN cordova telemetry off
