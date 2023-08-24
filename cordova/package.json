@@ -49,7 +49,10 @@
       "cordova-open-native-settings": {},
       "cordova-plugin-actionsheet": {},
       "cordova-plugin-android-permissions": {},
-      "cordova-plugin-device": {}
+      "cordova-plugin-device": {},
+      "cordova-android-support-gradle-release": {
+        "ANDROID_SUPPORT_VERSION": "27.+"
+      }
     }
   }
 }
