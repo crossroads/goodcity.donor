@@ -102,6 +102,21 @@ cordova platform add android@12
 # now open Android Studio and build or run gradle in the docker env
 ```
 
+## Upgrading Cordova
+
+First you will need to review the Cordova blog for changes in new versions of cordova-<platform> and plugins. Then
+
+````shell
+cd cordova
+nvm use 18
+rm -rf node_modules/ platforms/ plugins/
+yarn
+npm install cordova@12
+cordova platform remove android
+cordova platform add android@12
+cordova platform remove ios
+cordova platform add ios@7
+
 ## Android Studio
 
 If you want to run the app on a debug mobile device, you can use Android Studio to run the gradle builds and push to your development phone.
@@ -122,7 +137,7 @@ docker build -f Dockerfile-cordova -t app.goodcity.hk:latest .
 EMBER_CLI_CORDOVA=1 ENVIRONMENT=staging yarn run ember build --environment=production
 cd cordova/
 ENVIRONMENT=staging node rename_package.js
-```
+````
 
 Once you have built the Ember project, run the docker build container with mounted folders and run the cordova commands to build for Android.
 
