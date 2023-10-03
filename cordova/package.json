@@ -31,10 +31,6 @@
       "ios"
     ],
     "plugins": {
-      "@havesource/cordova-plugin-push": {
-        "ANDROIDX_CORE_VERSION": "1.6.+",
-        "FCM_VERSION": "23.+"
-      },
       "com.nrswolf.cordova.push-notifications-status": {},
       "cordova-plugin-apprate": {},
       "cordova-plugin-dialogs": {},
@@ -53,6 +49,10 @@
       "cordova-launch-review": {},
       "cordova-plugin-camera": {
         "ANDROIDX_CORE_VERSION": "1.6.+"
+      },
+      "@havesource/cordova-plugin-push": {
+        "ANDROIDX_CORE_VERSION": "1.6.+",
+        "FCM_VERSION": "23.+"
       }
     }
   }
