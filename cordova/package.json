@@ -16,7 +16,7 @@
     "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-android-permissions": "^1.1.5",
     "cordova-plugin-apprate": "github:crossroads/cordova-plugin-apprate",
-    "cordova-plugin-camera": "^6.0.0",
+    "cordova-plugin-camera": "^7.0.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-inappbrowser": "^5.0.0",
@@ -31,10 +31,6 @@
       "ios"
     ],
     "plugins": {
-      "@havesource/cordova-plugin-push": {
-        "ANDROIDX_CORE_VERSION": "1.6.+",
-        "FCM_VERSION": "23.+"
-      },
       "com.nrswolf.cordova.push-notifications-status": {},
       "cordova-plugin-apprate": {},
       "cordova-plugin-dialogs": {},
@@ -45,15 +41,19 @@
       "cordova-open-native-settings": {},
       "cordova-plugin-actionsheet": {},
       "cordova-plugin-android-permissions": {},
-      "cordova-plugin-camera": {
-        "ANDROIDX_CORE_VERSION": "1.6.+"
-      },
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-nativestorage": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-statusbar": {},
       "es6-promise-plugin": {},
-      "cordova-launch-review": {}
+      "cordova-launch-review": {},
+      "cordova-plugin-camera": {
+        "ANDROIDX_CORE_VERSION": "1.6.+"
+      },
+      "@havesource/cordova-plugin-push": {
+        "ANDROIDX_CORE_VERSION": "1.6.+",
+        "FCM_VERSION": "23.+"
+      }
     }
   }
 }
