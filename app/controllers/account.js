@@ -1,15 +1,13 @@
 import Ember from "ember";
 import AsyncMixin from "../mixins/async";
-import AjaxPromise from "../utils/ajax-promise";
 
 export default Ember.Controller.extend(AsyncMixin, {
   messageBox: Ember.inject.service(),
-  session: Ember.inject.service(),
   application: Ember.inject.controller(),
 
   isEditing: false,
 
-  user: Ember.computed.alias("session.loggedInUser"),
+  user: Ember.computed.alias("model.user"),
 
   fields: [
     {

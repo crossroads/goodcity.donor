@@ -17,6 +17,12 @@ export default AuthorizeRoute.extend({
     }
   },
 
+  model() {
+    return Ember.RSVP.hash({
+      user: this.store.peekRecord("user", this.session.get("currentUser.id"))
+    });
+  },
+
   renderTemplate() {
     this.render(); // default template
 

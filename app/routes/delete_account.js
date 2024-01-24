@@ -1,3 +1,4 @@
+import Ember from "ember";
 import AuthorizeRoute from "./authorize";
 
 export default AuthorizeRoute.extend({
@@ -24,7 +25,7 @@ export default AuthorizeRoute.extend({
   // load offers into store to ensure our 'can delete' calculations work
   beforeModel() {
     let cachedRecords = this.store.peekAll("offer");
-    if (cachedRecords.get("length") == 0) {
+    if (cachedRecords.get("length") === 0) {
       this.get("store").query("offer", { exclude_messages: "true" });
     }
   }
