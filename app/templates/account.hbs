@@ -27,8 +27,8 @@
       <div class="account-form">
         {{#each fields as |field|}}
           <div class="row field-row">
-            <div class="columns small-6">{{ t (concat "account.user_fields." field.key) }}</div>
-            <div class="columns small-6 field-value">
+            <div class="small-4 small-offset-1 columns">{{ t (concat "account.user_fields." field.key) }}</div>
+            <div class="small-7 columns field-value">
               {{#if (js-and isEditing field.editable)}}
                 {{input type="text" value=(mut (get user field.key)) name=field.key id=field.key required='true' pattern=".+"}}
               {{else}}
@@ -40,21 +40,22 @@
       </div>
 
       {{!-- BUTTONS --}}
-      <div class="flex justify-around padded text-center">
-        <div class="grow">
+      <div class="row">
+        <div class="small-4 small-offset-1 columns">
           {{#if isEditing}}
-            <a {{action "cancelEdit"}} class="button light">{{t "account.discard_changes"}}</a>
+            <button {{action "cancelEdit"}} class="button secondary">{{t "account.discard_changes"}}</button>
           {{else}}
-            <a {{action "startEditing"}} class="button expand">{{t "account.edit"}}</a>
+            <button {{action "startEditing"}} class="button">{{t "account.edit"}}</button>
           {{/if}}
         </div>
-        <div class="grow">
+        <div class="small-7 columns">
           {{#if isEditing}}
-            <a {{action "saveEdit"}} class="button expand">{{t "account.save_changes"}}</a>
+            <button {{action "saveEdit"}} class="button">{{t "account.save_changes"}}</button>
           {{else}}
-            <a {{action "tryDeleteAccount"}} class="button light no-border">{{t "account.delete_account"}}</a>
+            <button {{action "gotoDeleteAccount"}} class="button secondary">{{t "account.delete_account"}}</button>
           {{/if}}
         </div>
+        
       </div>
     </div>
   </div>

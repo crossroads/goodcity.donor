@@ -17,7 +17,7 @@ I18nTranslationsZhTw =
     "application":
       "app_menu" : "目錄"
       "my_offers" : "我的捐獻"
-      "my_offers" : "My Account"
+      "my_account" : "My Account"
 
     "support":
       "title": "非常感謝！"
@@ -197,9 +197,8 @@ I18nTranslationsZhTw =
     "account":
       "edit": "Edit"
       "delete_account": "Delete Account"
-      "discard_changes": "Discard Changes"
+      "discard_changes": "Cancel"
       "save_changes": "Save Changes"
-      "confirm_deletion": "Are you sure about that ?"
       "user_fields":
         "title": "Title"
         "firstName": "Given Name"
@@ -207,6 +206,22 @@ I18nTranslationsZhTw =
         "mobile": "Mobile Phone"
         "email": "Email"
         "district": "District"
+
+    "delete_account":
+      "title": "Delete My Account"
+      "section1": "If you delete your account you will no longer be able to log in to GoodCity.HK."
+      "section2": "If you wish to use this service again in the future, you will need to create a new account."
+      "section3": "Please note that some of your details may be retained to adhere with our compliance and auditing requirements."
+      "section4": "All information will be treated in accordance with our policies:"
+      "section5": "If you press the button below, you will be immediately logged out from the GoodCity.HK service."
+      "yes_delete": "Yes, delete my account"
+      "cancel": "Cancel"
+      "goback": "Go Back"
+      "view_offers": "View offers"
+      "sorry1": "Sorry, it is not possible to delete your account while you have an offer in progress."
+      "sorry2": "Please close your offer or wait for it to be received."
+      "sorry3": "If you would like more assistance, please message us from within the offer."
+      "crf_privacy_policy": "Crossroads Foundation Privacy Policy"
 
     "faqs":
       "title": "常見問題"

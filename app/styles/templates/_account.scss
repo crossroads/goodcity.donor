@@ -1,50 +1,6 @@
 .account-page {
 
-  .flex {
-    display: flex;
-
-    &.justify-around {
-      justify-content: space-around;
-    }
-
-    &.padded {
-      padding: 1rem;
-
-      >* {
-        margin: 1rem;
-      }
-    }
-
-    .grow {
-      flex-grow: 1
-    }
-  }
-
-
-  .text-center {
-    text-align: center;
-
-    * {
-      text-align: center;
-    }
-  }
-
-  .button {
-    width: 10rem;
-
-    &.light {
-      background-color: transparent;
-      border-color: white;
-
-      &.no-border {
-        text-decoration: underline;
-        border: none;
-      }
-    }
-  }
-
   .account-form {
-    padding-left: 3rem;
     padding-top: 1rem;
 
     .field-row {
@@ -53,7 +9,7 @@
       .field-value {
         font-weight: bolder;
         color: white;
-        height: 3rem;
+        height: 2rem;
         line-height: 1rem;
         padding: 0.5rem;
       }
@@ -67,7 +23,7 @@
         padding-top: 0px;
         padding-bottom: 0px;
         margin: 0;
-        height: 3em;
+        height: 2em;
       }
     }
   }

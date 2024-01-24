@@ -1,0 +1,56 @@
+<div class="off-canvas-wrap delete_account" data-offcanvas>
+  <div class="inner-wrap">
+    {{outlet "appMenuList"}}
+
+    {{#init-foundation}}
+      <nav class="tab-bar submitted_page">
+        <section class="left-small">
+          <a class="left-off-canvas-toggle menu-icon" href="#"><i class="fa fa-angle-left"></i></a>
+        </section>
+
+        <section class="middle tab-bar-section">
+          <h1 class="title">
+            {{t "delete_account.title"}}
+          </h1>
+        </section>
+
+        <section class="right-small">
+        </section>
+
+      </nav>
+    {{/init-foundation}}
+
+    <section class="main-section">
+      <div class="row">
+        <div class="small-12 columns item-content">
+          <div class="small-10 small-offset-1 columns">
+            {{#if canDeleteAccount}}
+              <p>{{t "delete_account.section1"}}</p>
+              <p>{{t "delete_account.section2"}}</p>
+              <p>{{t "delete_account.section3"}}</p>
+              <p>{{t "delete_account.section4"}}
+                {{#link-to 'terms_and_conditions'}}{{t "menu.terms"}}{{/link-to}},
+                {{#link-to 'pics'}}{{t "menu.policy"}}{{/link-to}},
+                {{#external-link linkUrl="https://www.crossroads.org.hk/home/contact/privacy/"}}
+                  {{t "delete_account.crf_privacy_policy"}} <i class="fa fa-external-link"></i>
+                {{/external-link}}
+              </p>
+              <p>{{t "delete_account.section5"}}</p>
+              <button {{action "confirmDeleteAccount" }}>{{t "delete_account.yes_delete"}}</button>
+              <button {{action "cancelAccountDeletion" }} class="secondary right">{{t "delete_account.cancel"}}</button>
+            {{else}}
+              <p>{{t "delete_account.sorry1"}}</p>
+              <p>{{t "delete_account.sorry2"}}</p>
+              <p>{{t "delete_account.sorry3"}}</p>
+              <button {{action "viewOffers"}} class="secondary">{{t "delete_account.view_offers"}}</button>
+              <button {{action "cancelAccountDeletion" }} class="secondary right">{{t "delete_account.goback"}}</button>
+            {{/if}}
+          </div>
+          <div class="small-1 columns"></div>
+        </div>
+      </div>
+    </section>
+    <a class="exit-off-canvas modify-off-canvas"></a>
+
+  </div>
+</div>
