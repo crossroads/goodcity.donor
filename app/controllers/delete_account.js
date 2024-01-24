@@ -33,9 +33,9 @@ export default Ember.Controller.extend(AsyncMixin, {
     },
 
     confirmDeleteAccount() {
-      this.runTask(async () => {
+      this.runTask(() => {
         const userId = this.get("user.id");
-        const data = await new AjaxPromise(
+        const data = new AjaxPromise(
           `/users/${userId}`,
           "DELETE",
           this.get("session.authToken")
