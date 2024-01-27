@@ -195,33 +195,33 @@ I18nTranslationsZhTw =
         "info_text2": "如您希望加添任何對捐獻物品的描述，請在此留言"
 
     "account":
-      "edit": "Edit"
-      "delete_account": "Delete Account"
-      "discard_changes": "Cancel"
-      "save_changes": "Save Changes"
+      "edit": "編輯"
+      "delete_account": "刪除賬戶"
+      "discard_changes": "取消"
+      "save_changes": "保存改動"
       "user_fields":
-        "title": "Title"
-        "firstName": "Given Name"
-        "lastName": "Family Name"
-        "mobile": "Mobile Phone"
-        "email": "Email"
-        "district": "District"
+        "title": "稱謂"
+        "firstName": "名"
+        "lastName": "姓"
+        "mobile": "手提電話"
+        "email": "電郵"
+        "district": "地區 "
 
     "delete_account":
-      "title": "Delete My Account"
-      "section1": "If you delete your account you will no longer be able to log in to GoodCity.HK."
-      "section2": "If you wish to use this service again in the future, you will need to create a new account."
-      "section3": "Please note that some of your details may be retained to adhere with our compliance and auditing requirements."
-      "section4": "All information will be treated in accordance with our policies:"
-      "section5": "If you press the button below, you will be immediately logged out from the GoodCity.HK service."
-      "yes_delete": "Yes, delete my account"
-      "cancel": "Cancel"
-      "goback": "Go Back"
-      "view_offers": "View offers"
-      "sorry1": "Sorry, it is not possible to delete your account while you have an offer in progress."
-      "sorry2": "Please close your offer or wait for it to be received."
-      "sorry3": "If you would like more assistance, please message us from within the offer."
-      "crf_privacy_policy": "Crossroads Foundation Privacy Policy"
+      "title": "刪除賬戶 "
+      "section1": "刪除你的賬戶後，你將無法再登入GoodCity.HK"
+      "section2": "如若將來你想再使用服務，歡迎你重新建立新賬戶。 "
+      "section3": "請注意你的部分資料可能會被保留，以符合的合規和審計要求。"
+      "section4": "所有資料將按照我們的政策處理。"
+      "section5": "如若按下面的按鈕，你將會立即登出GoodCity.HK的服務。"
+      "yes_delete": "是的，請刪除我的賬戶"
+      "cancel": "取消 "
+      "goback": "返回"
+      "view_offers": "瀏覽捐贈的物資 "
+      "sorry1": "抱歉！在捐贈物資的過程中，你恕未能刪除你的賬戶。 "
+      "sorry2": "當收妥你的物資，你的捐贈申請就算完成。"
+      "sorry3": "如需更多幫助，請在捐贈物資過程中聯絡我們。"
+      "crf_privacy_policy": "國際十字路會私隱政策 "
 
     "faqs":
       "title": "常見問題"
@@ -285,12 +285,5 @@ I18nTranslationsZhTw =
           "hk": "香港的地理位置非常獨特，非常適合處理慈善物資捐獻，是全世界最有效率的地方，因為：人口密度高，相對富裕，智能電話極普及，慈善工作井然有序，公民意識亦逐漸成型。"
 
           "crossroads": "十字路會自1995年開始於香港處理各界捐贈的物資，至今發展出各種網上服務（如business.un.org）。這讓我們成為一個獨特的機構，擔當着十字路口的角色，聯繫捐贈物資的供求。"
-
-    # The following are for the I18n example template and can be removed soon.
-    "i18nexample.items.heading": "物品"
-    "i18nexample.item.title.one": "一件物品"
-    "i18nexample.item.title.other": "物品數量為 {{count}} 件"
-    "i18nexample.item.new.title": "新物品"
-    "i18nexample.i18n.pluralisation": "Pluralisation"
 
 `export default I18nTranslationsZhTw`
