@@ -1,5 +1,9 @@
 # Donor App
 
+## v0.23.0
+
+- Added delete user functionality
+
 ## v0.22.0
 
 2023-08-31

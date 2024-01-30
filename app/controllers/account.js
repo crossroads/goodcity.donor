@@ -1,21 +1,15 @@
-import Ember from 'ember';
+import Ember from "ember";
 import AsyncMixin from "../mixins/async";
-import AjaxPromise from "../utils/ajax-promise";
 
 export default Ember.Controller.extend(AsyncMixin, {
   messageBox: Ember.inject.service(),
-  session: Ember.inject.service(),
   application: Ember.inject.controller(),
 
   isEditing: false,
 
-  user: Ember.computed.alias('session.loggedInUser'),
+  user: Ember.computed.alias("model.user"),
 
   fields: [
-    {
-      key: "title",
-      editable: true
-    },
     {
       key: "firstName",
       editable: true
@@ -27,21 +21,17 @@ export default Ember.Controller.extend(AsyncMixin, {
     {
       key: "mobile",
       editable: false
-    },
-    {
-      key: "email",
-      editable: false
     }
   ],
 
   actions: {
     startEditing() {
-      this.set('isEditing', true);
+      this.set("isEditing", true);
     },
 
     cancelEdit() {
       this.get("user").rollbackAttributes();
-      this.set('isEditing', false);
+      this.set("isEditing", false);
     },
 
     saveEdit() {
@@ -57,25 +47,14 @@ export default Ember.Controller.extend(AsyncMixin, {
       }
 
       return this.runTask(() => {
-        return user.save()
-          .then(() => {
-            this.set('isEditing', false);
-          });
+        return user.save().then(() => {
+          this.set("isEditing", false);
+        });
       }, this.ERROR_STRATEGIES.MODAL);
     },
 
-    tryDeleteAccount() {
-      this.modalConfirm("account.confirm_deletion", "confirm", () => {
-        const userId = this.get("user.id");
-
-        this.runTask(() => 
-          new AjaxPromise(`/users/${userId}`, "DELETE", null)
-            .then(() => {
-              this.get("application").send("logMeOut");
-            }),
-           this.ERROR_STRATEGIES.MODAL
-        );
-      });
+    gotoDeleteAccount() {
+      this.transitionToRoute("delete_account");
     }
   }
 });
