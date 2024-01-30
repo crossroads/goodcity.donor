@@ -1,5 +1,9 @@
 # Donor App
 
+## v0.23.1
+
+- Updated shared.goodcity library with better camera upload resolution restrictions
+
 ## v0.23.0
 
 - Added delete user functionality
