@@ -17,7 +17,7 @@ I18nTranslationsZhTw =
     "application":
       "app_menu" : "目錄"
       "my_offers" : "我的捐獻"
-      "my_account" : "My Account"
+      "my_account" : "管理賬戶"
 
     "support":
       "title": "非常感謝！"
