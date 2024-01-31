@@ -1,5 +1,14 @@
 # Donor App
 
+## v0.23.2
+
+- Update with shared.goodcity to fix bug in chinese date selector
+- Increased visibility of validation errors
+
+## v0.23.1
+
+- Updated shared.goodcity library with better camera upload resolution restrictions
+
 ## v0.23.0
 
 - Added delete user functionality
