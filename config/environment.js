@@ -185,6 +185,9 @@ module.exports = function(environment) {
   }
 
   ENV.APP.SERVER_PATH = ENV.APP.API_HOST_URL + "/" + ENV.APP.NAMESPACE;
+  ENV.APP.LONG_TERM_IMAGE_STORAGE_ID_PREFIX = "azure-";
+  ENV.APP.LONG_TERM_IMAGE_STORAGE_BASE_URL =
+    "https://goodcityimages.blob.core.windows.net/images-" + environment + "/";
 
   return ENV;
 };
