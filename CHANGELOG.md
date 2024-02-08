@@ -1,5 +1,9 @@
 # Donor App
 
+## v0.23.3
+
+- Added ability to load images from Azure Storage rather than Cloudinary
+
 ## v0.23.2
 
 - Update with shared.goodcity to fix bug in chinese date selector
