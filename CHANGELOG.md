@@ -1,5 +1,10 @@
 # Donor App
 
+## v0.23.4
+
+- Added Donation Reference Number to transport screen
+- Updated Crossroads' contact number
+
 ## v0.23.3
 
 - Added ability to load images from Azure Storage rather than Cloudinary
