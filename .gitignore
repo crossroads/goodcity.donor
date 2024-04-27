@@ -6,7 +6,6 @@ tmp
 
 # dependencies
 node_modules
-bower_components
 
 # fastlane
 Preview.html
