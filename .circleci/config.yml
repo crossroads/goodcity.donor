@@ -26,7 +26,7 @@ aliases:
         - ~/.cache/yarn
   - &yarn
     |
-      yarn install --non-interactive --cache-folder ~/.cache/yarn --frozen-lockfile
+      ./yarn install --offline --non-interactive --cache-folder ~/.cache/yarn --frozen-lockfile
   - &restore-bower-cache
       key: app-goodcity-bower-components-{{ checksum "bower.json" }}
   - &save-bower-cache
@@ -79,7 +79,7 @@ jobs:
       - run: *yarn
       - save_cache: *save-yarn-cache
       - restore_cache: *restore-bower-cache
-      - run: yarn run bower install
+      - run: ./yarn run bower install
       - save_cache: *save-bower-cache
 
   tests:
@@ -97,14 +97,14 @@ jobs:
       - restore_cache: *restore-bower-cache
       - run:
           name: Start Ember test server
-          command: yarn run ember server --port 4200
+          command: ./yarn run ember server --port 4200
           background: true
       - run:
           name: Wait for Ember test server to start
           command: dockerize -wait tcp://localhost:4200 -timeout 1m
       - run:
           name: Run Ember tests
-          command: COVERAGE=true yarn run ember test
+          command: COVERAGE=true ./yarn run ember test
       - persist_to_workspace:
           root: .
           paths:
@@ -121,7 +121,7 @@ jobs:
       - run:
           name: Upload coverage results to Code Climate
           command: |
-            yarn run codeclimate-test-reporter < coverage*/lcov.info
+            ./yarn run codeclimate-test-reporter < coverage*/lcov.info
 
   www_build:
     <<: *defaults
@@ -136,7 +136,7 @@ jobs:
           command: |
             ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo "production"; else echo "staging"; fi)
             APP_SHA=$(echo $CIRCLE_SHA1 | cut -c1-7)
-            EMBER_CLI_CORDOVA=0 ENVIRONMENT=${ENVIRONMENT} APP_SHA=${APP_SHA} yarn run ember build --environment=production
+            EMBER_CLI_CORDOVA=0 ENVIRONMENT=${ENVIRONMENT} APP_SHA=${APP_SHA} ./yarn run ember build --environment=production
       - run: mv dist/ dist-www
       - persist_to_workspace:
           root: .
@@ -186,7 +186,7 @@ jobs:
             APP_SHA=$(echo $CIRCLE_SHA1 | cut -c1-7)
             APP_SHARED_SHA=$(grep "resolved.*shared.goodcity" yarn.lock | cut -d '#' -f2 | sed 's,\",,g')
             ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo "production"; else echo "staging"; fi)
-            EMBER_CLI_CORDOVA=1 ENVIRONMENT=${ENVIRONMENT} yarn run ember build --environment=production
+            EMBER_CLI_CORDOVA=1 ENVIRONMENT=${ENVIRONMENT} ./yarn run ember build --environment=production
       - run: mv dist/ cordova/www
       - persist_to_workspace:
           root: .
@@ -212,7 +212,7 @@ jobs:
           name: Setup Environment variables
           command: |
               echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
-              echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
+              echo 'export PATH=$PATH:`./yarn bin`' >> $BASH_ENV
       - run: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
       - azure-cli/install
       - azure-cli/login-with-service-principal
@@ -274,11 +274,11 @@ jobs:
           command: |
             npm install cordova@12
             node rename_package.js
-            yarn run cordova platform add ios@7
+            ../yarn run cordova platform add ios@7
             UUID=`openssl smime -inform der -verify -noverify -in "/Users/distiller/Library/MobileDevice/Provisioning Profiles/app-${ENVIRONMENT}.mobileprovision" | grep -A 1 UUID | sed "s@.*<string>\(.*\)</string>.*@\1@" | tail -n 1`
             PACKAGE_TYPE=$(if [ "$ENVIRONMENT" == "production" ]; then echo app-store; else echo development; fi)
             CODE_SIGN_IDENTITY=$(if [ "$ENVIRONMENT" == "production" ]; then echo 'iPhone Distribution'; else echo 'iPhone Developer'; fi)
-            yarn run cordova build ios --release --device --codeSignIdentity="${CODE_SIGN_IDENTITY}" --developmentTeam="6B8FS8W94M" \
+            ../yarn run cordova build ios --release --device --codeSignIdentity="${CODE_SIGN_IDENTITY}" --developmentTeam="6B8FS8W94M" \
                --packageType="${PACKAGE_TYPE}" --automaticProvisioning=true  --buildFlag="IPHONEOS_DEPLOYMENT_TARGET=13" \
                --provisioningProfile="${UUID}"
           working_directory: cordova
