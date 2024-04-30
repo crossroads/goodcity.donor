@@ -10,35 +10,23 @@ aliases:
       key: app-goodcity-repo-{{ .Environment.CIRCLE_SHA1 }}
   - &restore-yarn-cache
       keys:
-        - app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
+        - v1-app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
   - &save-yarn-cache
-      key: app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
+      key: v1-app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
       paths:
         - node_modules
         - ~/.cache/yarn
   - &restore-ios-yarn-cache
       keys:
-        - app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
+        - v1-app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
   - &save-ios-yarn-cache
-      key: app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
+      key: v1-app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
       paths:
         - node_modules
         - ~/.cache/yarn
   - &yarn
     |
       ./yarn install --offline --non-interactive --cache-folder ~/.cache/yarn --frozen-lockfile
-  - &restore-bower-cache
-      key: app-goodcity-bower-components-{{ checksum "bower.json" }}
-  - &save-bower-cache
-      key: app-goodcity-bower-components-{{ checksum "bower.json" }}
-      paths:
-        - bower_components
-  - &restore-ios-bower-cache
-      key: app-goodcity-ios-bower-components-{{ checksum "bower.json" }}
-  - &save-ios-bower-cache
-      key: app-goodcity-ios-bower-components-{{ checksum "bower.json" }}
-      paths:
-        - bower_components
   - &restore-bundler-cache
       key: app-goodcity-bundle-{{ checksum "Gemfile.lock" }}
   - &save-bundler-cache
@@ -78,9 +66,6 @@ jobs:
       - restore_cache: *restore-yarn-cache
       - run: *yarn
       - save_cache: *save-yarn-cache
-      - restore_cache: *restore-bower-cache
-      - run: ./yarn run bower install
-      - save_cache: *save-bower-cache
 
   tests:
     <<: *defaults
@@ -94,7 +79,6 @@ jobs:
       - browser-tools/install-chromedriver
       - restore_cache: *restore-repo-cache
       - restore_cache: *restore-yarn-cache
-      - restore_cache: *restore-bower-cache
       - run:
           name: Start Ember test server
           command: ./yarn run ember server --port 4200
@@ -115,7 +99,6 @@ jobs:
     steps:
       - restore_cache: *restore-repo-cache
       - restore_cache: *restore-yarn-cache
-      - restore_cache: *restore-bower-cache
       - attach_workspace:
           at: ~/code
       - run:
@@ -130,7 +113,6 @@ jobs:
     steps:
       - restore_cache: *restore-repo-cache
       - restore_cache: *restore-yarn-cache
-      - restore_cache: *restore-bower-cache
       - run:
           name: Ember build
           command: |
@@ -179,7 +161,6 @@ jobs:
     steps:
       - restore_cache: *restore-repo-cache
       - restore_cache: *restore-yarn-cache
-      - restore_cache: *restore-bower-cache
       - run:
           name: Ember build
           command: |
