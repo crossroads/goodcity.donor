@@ -198,7 +198,7 @@ jobs:
           name: Setup Environment variables
           command: |
               echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
-              echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
+              echo 'export PATH=$PATH:/home/circleci/code/cordova/node_modules/.bin' >> $BASH_ENV
       - run: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
       - azure-cli/install
       - azure-cli/login-with-service-principal
@@ -210,8 +210,8 @@ jobs:
           command: |
             npm install cordova@12
             node rename_package.js
-            yarn run cordova platform add android
-            yarn run cordova build android --release -- \
+            cordova platform add android
+            cordova build android --release -- \
               --packageType=apk --keystore=goodcity.keystore --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" \
               --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
           working_directory: cordova
