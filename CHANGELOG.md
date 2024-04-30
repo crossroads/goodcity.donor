@@ -4,9 +4,6 @@
 
 - Added Donation Reference Number to transport screen
 - Updated Crossroads' contact number
-- Setup yarn offline mirror
-- Updated documentation to use local yarn version
-- Checked in bower_components to remove external dependency
 
 ## v0.23.3
 

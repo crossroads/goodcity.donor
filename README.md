@@ -14,10 +14,10 @@ Install and configure NodeJS 12 using NVM: https://github.com/creationix/nvm#ins
 You can clone the GoodCity app repo direct:
 
 ```shell
-nvm use # switch to node as specified in .nvmrc
-./yarn add bower ember-cli phantomjs-prebuilt
+yarn add bower ember-cli phantomjs-prebuilt
 git clone https://github.com/crossroads/app.goodcity.git
-./yarn --offline
+yarn
+bower install
 ```
 
 Or use the more complicated setup where you link the `shared.goodcity` library also (useful for development):
@@ -25,19 +25,20 @@ Or use the more complicated setup where you link the `shared.goodcity` library a
 ```shell
 git clone https://github.com/crossroads/shared.goodcity.git
 cd shared.goodcity
-./yarn link
+yarn link
 cd ..
 git clone https://github.com/crossroads/app.goodcity.git
 cd app.goodcity
-./yarn link shared-goodcity
-./yarn
+yarn link shared-goodcity
+yarn
+bower install
 ```
 
 ## Running in development/staging mode
 
 ```shell
-./yarn start            # connects to API server at http://localhost:3000
-./yarn start:staging    # connects to API server at https://api-staging.goodcity.hk
+yarn start            # connects to API server at http://localhost:3000
+yarn start:staging    # connects to API server at https://api-staging.goodcity.hk
 ```
 
 Open a browser at http://localhost:4200
@@ -46,12 +47,12 @@ Open a browser at http://localhost:4200
 
 ```shell
 # start test server in background
-./yarn run ember server --port 4200
+yarn run ember server --port 4200
 
 # then in another window
-./yarn run ember test
-./yarn run ember test -f offer
-./yarn run ember test -f item
+yarn run ember test
+yarn run ember test -f offer
+yarn run ember test -f item
 ```
 
 If you are using WSL2 or headless linux, you can install Google Chrome browser and run the tests inside XVFB (Virtual frame buffer).
@@ -67,20 +68,20 @@ Prefix the test command with `xvfb-run` which will start/stop the XVFB process a
 
 ```shell
 # start test server in background
-./yarn run ember server --port 4200
+yarn run ember server --port 4200
 
 # in another window
-xvfb-run ./yarn run ember test
+xvfb-run yarn run ember test
 ```
 
 ## Building for Web
 
 ```shell
 # development
-EMBER_CLI_CORDOVA=0 ./yarn run ember build --environment=production
+EMBER_CLI_CORDOVA=0 yarn run ember build --environment=production
 
 # staging (great to get instant test data if not developing API locally)
-EMBER_CLI_CORDOVA=0 ENVIRONMENT=staging ./yarn run ember build --environment=production
+EMBER_CLI_CORDOVA=0 ENVIRONMENT=staging yarn run ember build --environment=production
 ```
 
 ## Cordova builds
@@ -92,7 +93,7 @@ CircleCI will automatically build apps for `master` and `live` branches. However
 
 ```shell
 # For cordova builds, it's often useful to point at api-staging.goodcity.hk for test data
-EMBER_CLI_CORDOVA=1 ENVIRONMENT=staging ./yarn run ember build --environment=production
+EMBER_CLI_CORDOVA=1 ENVIRONMENT=staging yarn run ember build --environment=production
 ln -s `pwd`/dist `pwd`/cordova/www
 cd cordova
 # can help to start with a clean env, if android build issues
@@ -109,7 +110,7 @@ First you will need to review the Cordova blog for changes in new versions of co
 cd cordova
 nvm use 18
 rm -rf node_modules/ platforms/ plugins/
-../yarn
+yarn
 npm install cordova@12
 cordova platform remove android
 cordova platform add android@12
@@ -133,7 +134,7 @@ To prepare the build environment the first time:
 
 ```shell
 docker build -f Dockerfile-cordova -t app.goodcity.hk:latest .
-EMBER_CLI_CORDOVA=1 ENVIRONMENT=staging ./yarn run ember build --environment=production
+EMBER_CLI_CORDOVA=1 ENVIRONMENT=staging yarn run ember build --environment=production
 cd cordova/
 ENVIRONMENT=staging node rename_package.js
 ````
@@ -152,7 +153,7 @@ To rebuild the app, it's sufficient to delete the app-debug.apk file, rebuild th
 
 ```shell
 docker container exec 812cb3 rm /home/circleci/project/cordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk
-EMBER_CLI_CORDOVA=1 ENVIRONMENT=staging ./yarn run ember build --environment=production
+EMBER_CLI_CORDOVA=1 ENVIRONMENT=staging yarn run ember build --environment=production
 docker container exec 812cb3 cordova build android --debug --device
 ```
 
@@ -182,23 +183,3 @@ Open a PowerShell in Administrator mode and run the following commands to assist
 Add-MpPreference -ExclusionPath ([System.Environment]::ExpandEnvironmentVariables("%APPDATA%\npm\"))
 Add-MpPreference -ExclusionPath (Get-ItemProperty "HKLM:SOFTWARE\Node.js" | Select-Object -Property InstallPath)
 ```
-
-## Yarn Offline Mirror
-
-To help future proof our installation and setup procedures, we store an offline copy of node_modules
-
-This largely follows information in https://classic.yarnpkg.com/blog/2016/11/24/offline-mirror/
-
-```bash
-mkdir npm-packages-offline-cache
-./yarn config set yarn-offline-mirror npm-packages-offline-cache
-./yarn config set yarn-offline-mirror-pruning true
-mv ~/.yarnrc ./
-rm -rf node_modules
-ls npm-packages-offline-cache/
-git add npm-packages-offline-cache # check in to git
-```
-
-Now when installing the project, use `./yarn --offline` to use the locally cached packages.
-
-We also bundle the JS release of yarn (hence the use of ./yarn) in the project folder so it can be run without depending on the OS/container installed version.
