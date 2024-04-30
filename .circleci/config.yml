@@ -10,17 +10,17 @@ aliases:
       key: app-goodcity-repo-{{ .Environment.CIRCLE_SHA1 }}
   - &restore-yarn-cache
       keys:
-        - app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
+        - v1-app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
   - &save-yarn-cache
-      key: app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
+      key: v1-app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
       paths:
         - node_modules
         - ~/.cache/yarn
   - &restore-ios-yarn-cache
       keys:
-        - app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
+        - v1-app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
   - &save-ios-yarn-cache
-      key: app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
+      key: v1-app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
       paths:
         - node_modules
         - ~/.cache/yarn
