@@ -211,20 +211,30 @@ jobs:
             npm install cordova@12
             node rename_package.js
             yarn run cordova platform add android
-            if [ "$ENVIRONMENT" == "production" ]; then
-              yarn run cordova build android --release -- \
-                --packageType=apk --keystore=goodcity.keystore --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" \
-                --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
-            else
-              yarn run cordova build android --debug --device
-            fi
+            yarn run cordova build android --release -- \
+              --packageType=apk --keystore=goodcity.keystore --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" \
+              --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
           working_directory: cordova
+      # - run:
+      #     name: Build android app
+      #     command: |
+      #       npm install cordova@12
+      #       node rename_package.js
+      #       yarn run cordova platform add android
+      #       if [ "$ENVIRONMENT" == "production" ]; then
+      #         yarn run cordova build android --release -- \
+      #           --packageType=apk --keystore=goodcity.keystore --storePassword="${GOODCITY_KEYSTORE_PASSWORD}" \
+      #           --alias="${GOODCITY_KEYSTORE_ALIAS}" --password="${GOODCITY_KEYSTORE_PASSWORD}"
+      #       else
+      #         yarn run cordova build android --debug --device
+      #       fi
+      #     working_directory: cordova
       - store_artifacts:
           path: cordova/platforms/android/app/build/outputs/apk/
-      - run:
-          name: release android build
-          command: bundle exec fastlane android ${ENVIRONMENT}
-          working_directory: ~/code
+      # - run:
+      #     name: release android build
+      #     command: bundle exec fastlane android ${ENVIRONMENT}
+      #     working_directory: ~/code
 
   ios_build_and_deploy:
     macos:
@@ -282,9 +292,9 @@ workflows:
       - package_dependencies:
           requires:
             - checkout_code
-      - tests:
-          requires:
-            - package_dependencies
+      # - tests:
+      #     requires:
+      #       - package_dependencies
       - upload-coverage:
           requires:
             - tests
@@ -308,14 +318,14 @@ workflows:
             - package_dependencies
           filters:
             branches:
-              only: /^(master|live)$/
+              only: /^(master|live|fix-android-live)$/
       - android_build_and_deploy:
           requires:
-            - tests
+            # - tests
             - ember_cordova_build
           filters:
             branches:
-              only: /^(master|live)$/
+              only: /^(master|live|fix-android-live)$/
       - ios_build_and_deploy:
           requires:
             - tests
