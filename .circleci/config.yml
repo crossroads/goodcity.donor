@@ -10,17 +10,9 @@ aliases:
       key: app-goodcity-repo-{{ .Environment.CIRCLE_SHA1 }}
   - &restore-yarn-cache
       keys:
-        - app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
+        - v1-app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
   - &save-yarn-cache
-      key: app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
-      paths:
-        - node_modules
-        - ~/.cache/yarn
-  - &restore-ios-yarn-cache
-      keys:
-        - app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
-  - &save-ios-yarn-cache
-      key: app-goodcity-ios-yarn-packages-{{ checksum "yarn.lock" }}
+      key: v1-app-goodcity-yarn-packages-{{ checksum "yarn.lock" }}
       paths:
         - node_modules
         - ~/.cache/yarn
@@ -28,15 +20,9 @@ aliases:
     |
       yarn install --non-interactive --cache-folder ~/.cache/yarn --frozen-lockfile
   - &restore-bower-cache
-      key: app-goodcity-bower-components-{{ checksum "bower.json" }}
+      key: v1-app-goodcity-bower-components-{{ checksum "bower.json" }}
   - &save-bower-cache
-      key: app-goodcity-bower-components-{{ checksum "bower.json" }}
-      paths:
-        - bower_components
-  - &restore-ios-bower-cache
-      key: app-goodcity-ios-bower-components-{{ checksum "bower.json" }}
-  - &save-ios-bower-cache
-      key: app-goodcity-ios-bower-components-{{ checksum "bower.json" }}
+      key: v1-app-goodcity-bower-components-{{ checksum "bower.json" }}
       paths:
         - bower_components
   - &restore-bundler-cache
@@ -46,9 +32,9 @@ aliases:
       paths:
         - vendor/bundle
   - &restore-ios-bundler-cache
-      key: v1-app-goodcity-ios-bundle-{{ checksum "Gemfile.lock" }}
+      key: v2-app-goodcity-ios-bundle-{{ checksum "Gemfile.lock" }}
   - &save-ios-bundler-cache
-      key: v1-app-goodcity-ios-bundle-{{ checksum "Gemfile.lock" }}
+      key: v2-app-goodcity-ios-bundle-{{ checksum "Gemfile.lock" }}
       paths:
         - vendor/bundle
 
@@ -212,7 +198,7 @@ jobs:
           name: Setup Environment variables
           command: |
               echo 'export ENVIRONMENT=$(if [ "$CIRCLE_BRANCH" == "live" ]; then echo production; else echo staging; fi)' >> $BASH_ENV
-              echo 'export PATH=$PATH:`yarn bin`' >> $BASH_ENV
+              echo 'export PATH=$PATH:/home/circleci/code/cordova/node_modules/.bin' >> $BASH_ENV
       - run: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
       - azure-cli/install
       - azure-cli/login-with-service-principal
@@ -242,7 +228,7 @@ jobs:
 
   ios_build_and_deploy:
     macos:
-      xcode: "14.3.1"
+      xcode: "15.0.0"
     resource_class: macos.x86.medium.gen2
     working_directory: ~/code
     shell: /bin/bash --login -eo pipefail
@@ -274,16 +260,16 @@ jobs:
           command: |
             npm install cordova@12
             node rename_package.js
-            yarn run cordova platform add ios@7
+            bundle exec yarn run cordova platform add ios@7
             UUID=`openssl smime -inform der -verify -noverify -in "/Users/distiller/Library/MobileDevice/Provisioning Profiles/app-${ENVIRONMENT}.mobileprovision" | grep -A 1 UUID | sed "s@.*<string>\(.*\)</string>.*@\1@" | tail -n 1`
             PACKAGE_TYPE=$(if [ "$ENVIRONMENT" == "production" ]; then echo app-store; else echo development; fi)
             CODE_SIGN_IDENTITY=$(if [ "$ENVIRONMENT" == "production" ]; then echo 'iPhone Distribution'; else echo 'iPhone Developer'; fi)
-            yarn run cordova build ios --release --device --codeSignIdentity="${CODE_SIGN_IDENTITY}" --developmentTeam="6B8FS8W94M" \
+            bundle exec yarn run cordova build ios --release --device --codeSignIdentity="${CODE_SIGN_IDENTITY}" --developmentTeam="6B8FS8W94M" \
                --packageType="${PACKAGE_TYPE}" --automaticProvisioning=true  --buildFlag="IPHONEOS_DEPLOYMENT_TARGET=13" \
                --provisioningProfile="${UUID}"
           working_directory: cordova
       - store_artifacts:
-          path: cordova/platforms/ios/build/device
+          path: cordova/platforms/ios/build/Release-iphoneos
       - run:
           name: Release ios build
           command: bundle exec fastlane ios ${ENVIRONMENT}
@@ -337,4 +323,3 @@ workflows:
           filters:
             branches:
               only: /^(master|live)$/
-
