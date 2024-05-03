@@ -1,5 +1,9 @@
 # Donor App
 
+## v0.24.0
+
+- Updated to XCode 15 / iOS SDK 17
+
 ## v0.23.4
 
 - Added Donation Reference Number to transport screen
