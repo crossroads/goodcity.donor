@@ -108,7 +108,7 @@ First you will need to review the Cordova blog for changes in new versions of co
 
 ````shell
 cd cordova
-nvm use 18
+nvm use 22
 rm -rf node_modules/ platforms/ plugins/
 yarn
 npm install cordova@12
@@ -121,7 +121,7 @@ cordova platform add ios@7
 
 If you want to run the app on a debug mobile device, you can use Android Studio to run the gradle builds and push to your development phone.
 
-- After running `cordova platform add android@12` above, open Android Studio with the project folder located at <project root>/cordova/platforms/android
+- After running `cordova platform add android@13` above, open Android Studio with the project folder located at <project root>/cordova/platforms/android
 - Connect your mobile phone and turn on debug mode
 - Run the usual gradle refresh and build processes
 - Once the app is launched on the phone, you will have useful logs (great for Push Notification debugging) inside Android Studio and you can also open Browser Inspector to view the usual processes: `edge://inspect/#devices`
