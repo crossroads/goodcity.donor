@@ -20,7 +20,7 @@
     "cordova-plugin-camera": "^8.0.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-dialogs": "^2.0.2",
-    "cordova-plugin-inappbrowser": "^5.0.0",
+    "cordova-plugin-inappbrowser": "^6.0.0",
     "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-statusbar": "^4.0.0",
@@ -32,16 +32,10 @@
       "ios"
     ],
     "plugins": {
-      "com.nrswolf.cordova.push-notifications-status": {},
-      "cordova-plugin-apprate": {},
       "cordova-plugin-dialogs": {},
       "cordova-plugin-device": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-nativestorage": {},
-      "@havesource/cordova-plugin-push": {
-        "ANDROIDX_CORE_VERSION": "1.6.+",
-        "FCM_VERSION": "23.+"
-      },
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
@@ -54,7 +48,13 @@
       },
       "cordova-plugin-network-information": {},
       "cordova-plugin-statusbar": {},
-      "es6-promise-plugin": {}
+      "es6-promise-plugin": {},
+      "@havesource/cordova-plugin-push": {
+        "ANDROIDX_CORE_VERSION": "1.6.+",
+        "FCM_VERSION": "23.+"
+      },
+      "com.nrswolf.cordova.push-notifications-status": {},
+      "cordova-plugin-apprate": {}
     }
   }
 }
