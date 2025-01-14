@@ -280,9 +280,9 @@ workflows:
       - package_dependencies:
           requires:
             - checkout_code
-      # - tests:
-      #     requires:
-      #       - package_dependencies
+      - tests:
+          requires:
+            - package_dependencies
       - upload-coverage:
           requires:
             - tests
